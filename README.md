@@ -1,68 +1,44 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# COVID-19 Vaccine R&D Dashboard
 
-## Available Scripts
+# Installation
 
-In the project directory, you can run:
+1. Clone the front end repository to your local machine: `https://github.com/ncov19-us/ncov19-vacc-dash-front-end.git`
+2. Run `yarn` at the root of the directory to install the client-side dependencies
+3. Run `yarn start` to run the app in development mode
+4. Open http://localhost:3000 to view it in the browser
 
-### `yarn start`
+# Contributing
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Git Workflow
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Our commits use a style called **[semantic commits](https://seesparkbox.com/foundry/semantic_commit_messages)**. 
+- Pick a task to work on from the Trello board, assign your name to it via the top right of the Trello card, and confirm that no one is already working on this task, or another task that is likely to cause merge issues with yours.
 
-### `yarn test`
+```sh
+git clone https://github.com/ncov19-us/ncov19-vacc-dash-front-end.git
+git checkout <staging-branch>
+git checkout -b <your-feature-branch>
+```
+Commit your work using semantic commits structure.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+When done:
+```sh
+git checkout <staging-branch>
+git pull  # sync your local feature branch with origin/github
+git checkout <your-feature-branch>
+git rebase <staging-branch>  # merge your branch w/ feature-branch
+git commit
+```
 
-### `yarn build`
+Push your branch: `git push origin <your-feature-branch>`. Then open a pull request from your working branch into `staging-branch` for review.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**If you do not have experience working with GitHub, or are confused about certain instructions, please message your project lead.**
+- Create a **new feature branch** with a name that accurately describes the task you are working on, and commit in a way that follows semantic guidelines. _DO NOT COMMIT OR MERGE TO MASTER_
+- When you complete a feature and it is **bug-free**, create a pull request to merge into **staging**, _NOT MASTER_, and request a review from at minimum your project lead.  It is a good idea to have other team members review your code as well.
+- _Your project lead_ will be the one to approve your PR. Should they make any comments/merge conflicts arise, please be responsive and communicate with them.
+- Once the PR has been successfully merged, you can delete the feature branch on GitHub (if all work on that branch is complete) and move your task's Trello card to _the appropriate "completed" column_ on the Trello board.
+- Remember, do not hesitate to ask questions. Questions now are better than merge conflicts later!
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Testing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Run `yarn test` to launch the test runner. Tests are written with Jest and React Testing Library.
