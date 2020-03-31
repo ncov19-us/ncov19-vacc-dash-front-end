@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+// burger for menu
+import burger from "../assets/menu.png";
+
+import { Modal } from "react-bulma-components";
 
 import "./pages.scss";
 
@@ -12,10 +16,19 @@ Styling is in pages.scss
 		
 */
 function Header() {
+	const [show, setShow] = useState(false);
+	// function openMenu() {
+	// 	// 	() => setShow(true);
+	// }
 	return (
 		<div className="header">
 			<div className="title">
 				<h1>COVID19 US Vaccine</h1>
+			</div>
+
+			<div className="mobile" onClick={() => setShow(true)}>
+				<Modal show={show} onClose={() => setShow(false)}></Modal>
+				<img src={burger} alt="menu-trigger" />
 			</div>
 			<div className="header-links">
 				<Link to="/about">About</Link>
