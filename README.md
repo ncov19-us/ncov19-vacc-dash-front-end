@@ -18,13 +18,12 @@
 git clone https://github.com/ncov19-us/ncov19-vacc-dash-front-end.git
 git checkout <staging-branch>
 git checkout -b <your-feature-branch>
-Commit your work according to the semantic commits structure
 ```
 Commit your work using semantic commits structure.
 
 When done:
 ```sh
-git checkout staging-branch
+git checkout <staging-branch>
 git pull  # sync your local feature branch with origin/github
 git checkout <your-feature-branch>
 git rebase <staging-branch>  # merge your branch w/ feature-branch
