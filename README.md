@@ -29,7 +29,8 @@ git checkout <your-feature-branch>
 git rebase <staging-branch>  # merge your branch w/ feature-branch
 git commit
 ```
-Open a pull request from your working branch into `staging-branch` for review.
+
+Push your branch: `git push origin <your-feature-branch>`. Then open a pull request from your working branch into `staging-branch` for review.
 
 **If you do not have experience working with GitHub, or are confused about certain instructions, please message your project lead.**
 - Create a **new feature branch** with a name that accurately describes the task you are working on, and commit in a way that follows semantic guidelines. _DO NOT COMMIT OR MERGE TO MASTER_
