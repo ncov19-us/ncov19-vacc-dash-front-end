@@ -34,3 +34,29 @@
 		}
 	}
 }
+
+// Footer
+.footer {
+	background: #010915;
+	color: #bdbdbd;
+	@include flex(space-around, row);
+	padding: 0 1%;
+	.footer-content {
+		width: 100%;
+		font-size: 0.65rem;
+		margin: auto;
+	}
+	.footer-copyright {
+		width: 100%;
+		font-size: 2rem;
+		padding: 0 2%;
+		@include flex(flex-end, row);
+		a {
+			margin: auto 2% auto 0;
+		}
+		img {
+			background: #bdbdbd;
+			border-radius: 100%;
+		}
+	}
+}
