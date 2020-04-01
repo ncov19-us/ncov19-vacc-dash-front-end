@@ -1,9 +1,12 @@
-import React from 'react';
+import React from "react";
+import DashTopper from "./DashTopper";
 
 import VaccineTable from './VaccineTable';
 
 function Main() {
   return (
+    	<>
+			<DashTopper />
     <main className="container">
       <div className="columns is-centered is-gapless">
         <div className="column">
@@ -19,7 +22,9 @@ function Main() {
         </div>
       </div>
     </main>
+    	</>
   );
+
 }
 
 export default Main;
