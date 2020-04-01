@@ -118,13 +118,14 @@ $gunmetal: #1f242d;
 		width: 100%;
 		font-size: 0.65rem;
 		margin: auto;
+		padding: 2%;
 	}
 	.foot-copyright {
+		@include flex(flex-end, row);
 		width: 100%;
 		font-size: 2rem;
 		padding: 0 2%;
 		margin: auto;
-		@include flex(flex-end, row);
 		a {
 			margin: auto 2% auto 0;
 		}
