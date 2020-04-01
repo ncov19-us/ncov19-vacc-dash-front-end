@@ -22,10 +22,6 @@ Media Queries for usage
 	flex-direction: $direction;
 }
 
-// Vaccine colors
-$gray-dark: #192029;
-$gunmetal: #1f242d;
-
 // menubar
 .menubar {
 	@include flex(space-around, row);
@@ -108,13 +104,4 @@ $gunmetal: #1f242d;
 			@include flex(center, row);
 		}
 	}
-}
-
-// main
-.main {
-	background-color: $gunmetal;
-}
-
-body {
-	background-color: $gray-dark;
 }

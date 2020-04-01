@@ -4,7 +4,7 @@ import Header from "./pages/Header";
 import Footer from "./pages/Footer";
 import Main from "./pages/Main";
 
-import "./App.css";
+import "./main.scss";
 
 export default function App() {
 	return (
