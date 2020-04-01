@@ -7,8 +7,8 @@ import "./pages.scss";
 
 export default function Footer() {
 	return (
-		<div className="footer">
-			<div className="footer-content">
+		<div className="foot">
+			<div className="foot-content">
 				<p>
 					This Website relies upon publicly available data from
 					various sources, including and not limited to U.S. Federal,
@@ -19,7 +19,7 @@ export default function Footer() {
 					medical guidance is strictly prohibited.
 				</p>
 			</div>
-			<div className="footer-copyright">
+			<div className="foot-copyright">
 				<a
 					href="https://github.com/ncov19-us/ncov19-sms-bot-frontend"
 					alt="github-project"
