@@ -24,7 +24,7 @@ Media Queries for usage
 
 // Vaccine colors
 $gray-dark: #192029;
-$gunmetal: #1F242D;
+$gunmetal: #1f242d;
 
 // menubar
 .menubar {
@@ -83,12 +83,14 @@ $gunmetal: #1F242D;
 		width: 100%;
 		font-size: 0.65rem;
 		margin: auto;
+		padding: 2%;
 	}
 	.foot-copyright {
+		@include flex(flex-end, row);
 		width: 100%;
 		font-size: 2rem;
 		padding: 0 2%;
-		@include flex(flex-end, row);
+		margin: auto;
 		a {
 			margin: auto 2% auto 0;
 		}
