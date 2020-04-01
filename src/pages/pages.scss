@@ -127,4 +127,7 @@ body {
 table.table.is-hoverable{
 	background-color:$gunmetal;
 	color: white;
+	:hover{
+		color: black;
+	}
 }
