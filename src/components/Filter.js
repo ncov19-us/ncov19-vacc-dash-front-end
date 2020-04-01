@@ -29,10 +29,10 @@ export function filter(command, data) {
 		}
 	}
 	// if the command is alternatives
-	if (command === "treatments") {
+	if (command === "alternative") {
 		// traverse the data and look for type = alternatives
 		for (let i = 0; i < Object.keys(data).length; i++) {
-			if (data[i + 1]["Type"] === "Treatment") {
+			if (data[i + 1]["Type"] === "Alternative") {
 				// add that element to the array
 				sorted.push(data[i + 1]);
 			}
