@@ -62,7 +62,7 @@ export default function DashTopper() {
 		const time = new Date();
 		setTime(time);
 
-		console.log("soreted", filter("vaccine", data));
+		console.log("soreted", filter("Preclinical", "Phase", data));
 	}, []);
 
 	return (
