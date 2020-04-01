@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // burger for menu
 import burger from "../assets/menu.png";
 
-import { Modal } from "react-bulma-components";
+import { Modal } from "semantic-ui-react";
 
 import "./pages.scss";
 
@@ -21,7 +21,6 @@ const aTags = { color: "white" };
 
 export default function Header() {
 	const [show, setShow] = useState(false);
-	console.log("show", show);
 	return (
 		<div className="menubar">
 			<div className="tittle">
@@ -29,7 +28,7 @@ export default function Header() {
 			</div>
 
 			<div className="mobile" onClick={() => setShow(true)}>
-				<Modal show={show} onClose={() => setShow(false)}>
+				<Modal trigger={<img src={burger} alt="menu-trigger" />} basic>
 					<Modal.Content>
 						<div
 							style={{
@@ -59,7 +58,6 @@ export default function Header() {
 						</div>
 					</Modal.Content>
 				</Modal>
-				<img src={burger} alt="menu-trigger" />
 			</div>
 			<div className="menubar-links">
 				<Link to="/about">About</Link>
