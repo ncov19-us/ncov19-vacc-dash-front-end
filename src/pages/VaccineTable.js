@@ -14,11 +14,14 @@ function VaccineTable() {
 
     return (
         <div>
+              <div class="trial-headers"  >
             <h2>COVID-19 Trials</h2>
             <h2>Vaccines</h2>
             <h2>Treatments</h2>
             <h2>Alternatives</h2>
+                </div>
             <Table data={tableData} />
+    
         </div>
     );
 }

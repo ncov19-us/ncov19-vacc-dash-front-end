@@ -116,3 +116,15 @@ $gunmetal: #1F242D;
 body {
 	background-color: $gray-dark;
 }
+
+.trial-headers{
+	display:flex;
+	flex-direction: row;
+	justify-content: space-around;
+	color: white;
+}
+
+table.table.is-hoverable{
+	background-color:$gunmetal;
+	color: white;
+}
