@@ -18,8 +18,8 @@ send old={numberOfOldTrial} new={numberOfNewTrial}
 */
 export default function DashTopper() {
 	const [time, setTime] = useState("");
-	useEffect(async () => {
-		const time = await new Date();
+	useEffect(() => {
+		const time = new Date();
 		setTime(time);
 	}, []);
 	return (

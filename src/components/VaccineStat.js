@@ -16,7 +16,7 @@ export default function VaccineStat({ old, newStat }) {
 			<div>
 				<img
 					src={good}
-					alt="status-image"
+					alt="getting-better"
 					style={{ transform: "rotate(58deg)" }}
 				/>
 			</div>
@@ -24,7 +24,7 @@ export default function VaccineStat({ old, newStat }) {
 	} else if (newStat > old) {
 		return (
 			<div>
-				<img src={bad} alt="status-image" />
+				<img src={bad} alt="getting-worse" />
 			</div>
 		);
 	} else return null;

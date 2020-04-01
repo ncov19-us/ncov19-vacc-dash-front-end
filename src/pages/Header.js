@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 // burger for menu
 import burger from "../assets/menu.png";
@@ -20,14 +20,13 @@ Needed inline styling for Modal
 const aTags = { color: "white" };
 
 export default function Header() {
-	const [show, setShow] = useState(false);
 	return (
 		<div className="menubar">
 			<div className="tittle">
 				<h1>COVID19 US Vaccine</h1>
 			</div>
 
-			<div className="mobile" onClick={() => setShow(true)}>
+			<div className="mobile">
 				<Modal trigger={<img src={burger} alt="menu-trigger" />} basic>
 					<Modal.Content>
 						<div
