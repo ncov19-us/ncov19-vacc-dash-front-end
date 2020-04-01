@@ -1,0 +1,105 @@
+$mobile: "only screen and (max-width: 500px)";
+$tablet: "only screen and (max-width: 700px)";
+/*
+Media Queries for usage 
+				@media #{$mobile} for mobile
+				@media #{$tablet} for table
+
+ Breakpoints at 
+	Mobile at 500px
+	Table 	800px 
+*/
+
+/*
+ DRY: for usage @include flex(content, direction)
+ For defaults
+    justify-content : flex-start
+    flex-direction : row
+*/
+@mixin flex($content, $direction) {
+	display: flex;
+	justify-content: $content;
+	flex-direction: $direction;
+}
+
+// menubar
+.menubar {
+	@include flex(space-around, row);
+	background: #010915;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	// position: fixed;
+	// top: 0;
+	width: 100%;
+	color: #f4f4f4;
+
+	.tittle {
+		width: 100%;
+		text-align: left;
+		padding-left: 2%;
+		font-size: 1.5rem;
+		padding: 2% 0;
+	}
+	.menubar-links {
+		@include flex(space-around, row);
+		width: 100%;
+		margin: auto;
+		a {
+			text-decoration: none;
+			color: #fff;
+		}
+	}
+	.mobile {
+		display: none;
+	}
+	@media #{$mobile} {
+		.title {
+			font-size: 1.5rem;
+		}
+		.menubar-links {
+			display: none;
+		}
+		.mobile {
+			display: block;
+			img {
+				filter: invert(100%);
+				background: white;
+				width: 40px;
+			}
+		}
+	}
+}
+
+// foot
+.foot {
+	@include flex(space-around, row);
+	background: #010915;
+	color: #bdbdbd;
+	padding: 0 1%;
+	.foot-content {
+		width: 100%;
+		font-size: 0.65rem;
+		margin: auto;
+	}
+	.foot-copyright {
+		width: 100%;
+		font-size: 2rem;
+		padding: 0 2%;
+		@include flex(flex-end, row);
+		a {
+			margin: auto 2% auto 0;
+		}
+		img {
+			background: #bdbdbd;
+			border-radius: 100%;
+		}
+	}
+	@media #{$mobile} {
+		@include flex(center, column);
+		padding: 2% 0;
+		.foot-copyright {
+			font-size: 1rem;
+			margin-top: 2%;
+			@include flex(center, row);
+		}
+	}
+}
