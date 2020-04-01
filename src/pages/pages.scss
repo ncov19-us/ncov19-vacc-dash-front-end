@@ -69,12 +69,47 @@ Media Queries for usage
 	}
 }
 
+// Vaccine Dashboard's header info
+.vacine-dash-header {
+	background: $gunmetal;
+	color: white;
+	padding: 2% 5%;
+	.date {
+		display: flex;
+		flex-direction: row;
+		.day {
+			color: #ffc428;
+		}
+		.format {
+			padding-left: 4px;
+			color: #ababab;
+		}
+	}
+	.cards {
+		@include flex(space-between, row);
+		.card {
+			border: 2px solid #dbbc6c;
+			padding: 2% 3%;
+			border-radius: 4px;
+			p {
+				font-size: 3rem;
+				color: #f4b000;
+			}
+			.stats {
+				@include flex(space-between, row);
+				img {
+					padding-left: 6px;
+				}
+			}
+		}
+	}
+}
 // foot
 .foot {
 	@include flex(space-around, row);
 	background: #010915;
 	color: #bdbdbd;
-	padding: 0 1%;
+	padding: 1% 3%;
 	.foot-content {
 		width: 100%;
 		font-size: 0.65rem;
@@ -105,3 +140,29 @@ Media Queries for usage
 		}
 	}
 }
+
+// main
+.main {
+	background-color: $gunmetal;
+}
+
+body {
+	background-color: $gray-dark;
+}
+
+
+.trial-headers{
+	display:flex;
+	flex-direction: row;
+	justify-content: space-around;
+	color: white;
+}
+
+table.table.is-hoverable{
+	background-color:$gunmetal;
+	color: white;
+	:hover{
+		color: black;
+	}
+}
+
