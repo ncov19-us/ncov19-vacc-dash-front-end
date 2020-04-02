@@ -23,7 +23,9 @@ export default function Header() {
 	return (
 		<div className="menubar">
 			<div className="tittle">
-				<h1>COVID19 US Vaccine</h1>
+				<Link to="/">
+					<h1>COVID19 US Vaccine</h1>
+				</Link>
 			</div>
 
 			<div className="mobile">

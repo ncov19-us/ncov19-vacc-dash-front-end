@@ -26,7 +26,7 @@ Media Queries for usage
 	flex-direction: $direction;
 }
 
-// menubar
+// Header Menu
 .menubar {
 	@include flex(space-around, row);
 	background: #010915;
@@ -42,6 +42,9 @@ Media Queries for usage
 		padding-left: 2%;
 		font-size: 1.5rem;
 		padding: 2% 0;
+		a {
+			color: white;
+		}
 	}
 	.menubar-links {
 		@include flex(space-around, row);
