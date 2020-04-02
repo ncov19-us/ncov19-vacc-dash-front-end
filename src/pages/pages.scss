@@ -154,6 +154,27 @@ body {
 	background-color: $gray-dark;
 }
 
+.about {
+	.title {
+		@include flex(center, row);
+		align-items: center;
+		background: url("../assets/virus-img.png");
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
+		height: 300px;
+		color: white;
+	}
+	.cards {
+		@include flex(space-around, row);
+		flex-wrap: wrap;
+		padding: 0 2%;
+		.card {
+			color: white;
+		}
+	}
+}
+
 .trial-headers {
 	@include flex(space-around, row);
 	color: white;
