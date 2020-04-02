@@ -50,9 +50,14 @@ Media Queries for usage
 		@include flex(space-around, row);
 		width: 100%;
 		margin: auto;
+		#sms {
+			border: 1px solid white;
+			border-radius: 4px;
+		}
 		a {
 			text-decoration: none;
 			color: #fff;
+			padding: 2% 2%;
 		}
 	}
 	.mobile {
@@ -67,6 +72,8 @@ Media Queries for usage
 		}
 		.mobile {
 			display: block;
+			margin: auto;
+			padding-right: 7px;
 			img {
 				filter: invert(100%);
 				background: white;
