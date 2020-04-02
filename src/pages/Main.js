@@ -12,9 +12,9 @@ function Main() {
     <>
       <DashTopper country={filteredCountry} />
       <main className="ui centered grid">
-        <div className="twelve wide column">
+        <div className="twelve wide column main">
           <div className="ui stackable grid">
-            <div className="two column row">
+            <div className="two column row content">
               <div className="sixteen wide tablet eight wide computer column">
                 <VaccineTable />
               </div>
