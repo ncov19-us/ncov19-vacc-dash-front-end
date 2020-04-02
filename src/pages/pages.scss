@@ -158,15 +158,68 @@ body {
 .trial-headers{
 	display:flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	color: white;
 }
 
-table.table.is-hoverable{
-	background-color:$gunmetal;
-	color: white;
-	:hover{
-		color: black;
+// Table
+$tableHover:#ffc428;
+$hoverShadow: #dbbc6c;
+.table { 
+	text-align: left;
+	overflow: hidden;
+	width: 80%;
+	font-size: 1rem;
+	margin: 0 auto;
+	display: table;
+	padding: 0 0 8em 0;
+
+	th {
+		font-weight: bold;
+		font-size: 1em;
+		text-align: center;
+		color: #dbbc6c;
+		padding: .3rem;
+		background-color: #2C3341;
+	}
+
+	td {
+		font-weight: normal;
+		color: white;
+		font-size: 1em;
+		box-shadow: 0 2px 2px -2px #0E1119;
+		padding: .3rem;
+			&:hover{
+				background-color: $tableHover;
+				color: $gunmetal;
+				font-weight: bold;
+				box-shadow: $hoverShadow -1px 1px, $hoverShadow -2px 2px, $hoverShadow -3px 3px, $hoverShadow -4px 4px, $hoverShadow -5px 5px, $hoverShadow -6px 6px;
+				transform: translate3d(6px, -6px, 0);
+
+				transition-delay: 0s;
+				transition-duration: 0.4s;
+				transition-property: all;
+				transition-timing-function: line;
+			}
+			&:first-child { 
+				color: White; 
+					&:hover{
+						color: $gunmetal;
+					}
+			}
+	}
+	tr {
+	/* Background-color of the odd rows */
+			&:nth-child(odd) {
+			background-color: #323C50;
+		}
+		/* Background-color of the even rows */
+			&:nth-child(even) {
+			background-color: #2C3341;
+		}
+			&:hover {
+			background-color: #40495B;
+			box-shadow: 0 6px 6px -6px #0E1119;
+		}
 	}
 }
-
