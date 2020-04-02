@@ -41,7 +41,7 @@ Media Queries for usage
 		text-align: left;
 		padding-left: 2%;
 		font-size: 1.5rem;
-		padding: 2% 0;
+		padding: 20px 0;
 		a {
 			color: white;
 		}
@@ -50,9 +50,14 @@ Media Queries for usage
 		@include flex(space-around, row);
 		width: 100%;
 		margin: auto;
+		#sms {
+			border: 1px solid white;
+			border-radius: 4px;
+		}
 		a {
 			text-decoration: none;
 			color: #fff;
+			padding: 10px 10px;
 		}
 	}
 	.mobile {
@@ -67,6 +72,8 @@ Media Queries for usage
 		}
 		.mobile {
 			display: block;
+			margin: auto;
+			padding-right: 7px;
 			img {
 				filter: invert(100%);
 				background: white;
@@ -117,6 +124,7 @@ Media Queries for usage
 	background: #010915;
 	color: #bdbdbd;
 	padding: 1% 3%;
+	margin-top: 1rem;
 	.foot-content {
 		width: 100%;
 		font-size: 0.65rem;

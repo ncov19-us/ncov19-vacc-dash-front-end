@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Table from "./Table";
+import TrialMenu from "../components/TrialMenu";
 
 import "./pages.scss";
 
@@ -43,17 +44,12 @@ function VaccineTable() {
     }
   ]);
 
-  return (
-    <>
-      <div className="trial-headers">
-        <h2 className="trial">COVID-19 Trials</h2>
-        <h2 className="trial">Vaccines</h2>
-        <h2 className="trial">Treatments</h2>
-        <h2 className="trial">Alternatives</h2>
-      </div>
-      <Table data={tableData} />
-    </>
-  );
+    return (
+        <div>
+          <TrialMenu />
+          <Table data={tableData} />
+        </div>
+    );
 }
 
 export default VaccineTable;
