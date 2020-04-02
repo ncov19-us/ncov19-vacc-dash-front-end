@@ -173,6 +173,21 @@ body {
 			padding: 1% 2%;
 			width: 300px;
 			color: white;
+			@media #{$tablet} {
+				width: 100%;
+			}
+		}
+	}
+	@media #{$mobile} {
+		.title {
+			height: 150px;
+		}
+		.cards {
+			@include flex(start, row);
+			.card {
+				padding: 2% 3%;
+				width: 100%;
+			}
 		}
 	}
 }
