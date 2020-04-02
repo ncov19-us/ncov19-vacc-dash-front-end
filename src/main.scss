@@ -1,0 +1,15 @@
+// Vaccine colors
+$gray-dark: #192029;
+$gunmetal: #1f242d;
+
+body {
+  background-color: $gray-dark;
+}
+
+.main {
+	background-color: $gunmetal;
+}
+
+.map-wrapper {
+	height: 60vh;
+}
