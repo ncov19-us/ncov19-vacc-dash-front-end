@@ -39,41 +39,25 @@ export default function Header() {
 								fontSize: "1.5rem",
 							}}
 						>
+							<a href="#" alt="mobile-sms" style={aTags}>
+								Get Mobile Updates
+							</a>
+							<Link to="/" style={aTags}>
+								Vaccine Tracker
+							</Link>
 							<Link to="/about" style={aTags}>
 								About
 							</Link>
-							<a
-								href="https://www.cdc.gov/coronavirus/2019-ncov/index.html"
-								alt="cdc-website"
-								style={aTags}
-							>
-								CDC Resources
-							</a>
-							<a
-								href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019"
-								alt="world-health-organization"
-								style={aTags}
-							>
-								WHO Resources
-							</a>
 						</div>
 					</Modal.Content>
 				</Modal>
 			</div>
 			<div className="menubar-links">
+				<a href="#" alt="mobile-sms" id="sms">
+					Get Mobile Updates
+				</a>
+				<Link to="/">Vaccine Tracker</Link>
 				<Link to="/about">About</Link>
-				<a
-					href="https://www.cdc.gov/coronavirus/2019-ncov/index.html"
-					alt="cdc-website"
-				>
-					CDC Resources
-				</a>
-				<a
-					href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019"
-					alt="world-health-organization"
-				>
-					WHO Resources
-				</a>
 			</div>
 		</div>
 	);
