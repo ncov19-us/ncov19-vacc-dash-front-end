@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import DashTopper from "./DashTopper";
 
 import VaccineTable from './VaccineTable';
+import Map from '../components/Map';
+import data from '../data/map-data';
 
 function Main() {
-  const [treatmentsList, setTreatmentsList] = useState(treatments);
+  const [treatmentsList, setTreatmentsList] = useState(null);
 
   return (
     	<>
