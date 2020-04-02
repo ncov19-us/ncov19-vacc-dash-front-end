@@ -7,11 +7,11 @@ import Main from "./pages/Main";
 import "./main.scss";
 
 export default function App() {
-	return (
-		<div className="App">
-			<Header />
-			<Main />
-			<Footer />
-		</div>
-	);
+  return (
+    <div className="App">
+      <Header />
+      <Main />
+      <Footer />
+    </div>
+  );
 }
