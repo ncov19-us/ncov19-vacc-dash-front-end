@@ -6,8 +6,10 @@ import { features } from '../data/features.json';
 // no chart will be rendered.
 const Map = ({ data, setCountry }) => {
   const logIt = feature => {
-    console.dir(feature);
-    setCountry(feature.properties.name);
+    if (feature.data) {
+      console.dir(feature);
+      setCountry(feature.properties.name);
+    }
   };
 
   return (

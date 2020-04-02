@@ -7,18 +7,17 @@ import data from '../data/map-data';
 
 function Main() {
   const [treatmentsList, setTreatmentsList] = useState(treatments);
-  const [filteredCountry, setFilteredCountry] = useState(null);
+  const [filteredCountry, setFilteredCountry] = useState('Global');
 
   return (
     <>
       <DashTopper />
       <main className="container">
         <div className="columns is-9-desktop is-centered is-gapless">
-          <div className="column main">
-            <div className="columns">
+          <div className="ui grid">
+            <div className="two column row">
               <div className="column">
-                <h1 className="title">Ncov-19 Vaccine Dashboard</h1>
-                <h3>{filteredCountry}</h3>
+                <h1 className="title">{filteredCountry} Dashboard</h1>
                 <VaccineTable />
               </div>
               <div className="column">
