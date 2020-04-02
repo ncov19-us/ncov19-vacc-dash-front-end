@@ -1,12 +1,15 @@
 import React from 'react';
 import { ResponsiveChoropleth } from '@nivo/geo';
-import { features } from '../data/features';
+import { features } from '../data/features.json';
 // make sure parent container has a defined height when using
 // responsive component, otherwise height will be 0 and
 // no chart will be rendered.
-const Map = ({ data }) => {
+const Map = ({ data, setCountry }) => {
   const logIt = feature => {
-    console.dir(feature);
+    if (feature.data) {
+      console.dir(feature);
+      setCountry(feature.properties.name);
+    }
   };
 
   return (
