@@ -1,17 +1,25 @@
 import React from "react";
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { features } from "../data/features";
+import styled from "styled-components";
 // make sure parent container has a defined height when using
 // responsive component, otherwise height will be 0 and
 
 // no chart will be rendered.
 
-const styles = {
-  fontFamily: "sans-serif",
-  textAlign: "Center",
-  height: 400,
-  margin: "20px"
-};
+const MapContainer = styled.div`
+  height: 400px;
+  border: 2px solid red;
+`;
+
+// const styles = {
+//   fontFamily: "sans-serif",
+//   textAlign: "Center",
+//   height: 400,
+//   margin: "20px",
+//   border: "1px",
+//   borderColor: "red"
+// };
 
 const WorldMap = ({ data, setCountry }) => {
   const getCountry = feature => {
@@ -22,7 +30,7 @@ const WorldMap = ({ data, setCountry }) => {
   };
 
   return (
-    <div style={styles}>
+    <MapContainer>
       <ResponsiveChoropleth
         data={data}
         features={features}
@@ -67,7 +75,7 @@ const WorldMap = ({ data, setCountry }) => {
         }
         onClick={feature => getCountry(feature)}
       />
-    </div>
+    </MapContainer>
   );
 };
 
