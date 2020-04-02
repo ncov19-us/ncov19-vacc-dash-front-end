@@ -166,10 +166,12 @@ body {
 		color: white;
 	}
 	.cards {
-		@include flex(space-around, row);
+		display: flex;
 		flex-wrap: wrap;
-		padding: 0 2%;
+		justify-content: center;
 		.card {
+			padding: 1% 2%;
+			width: 300px;
 			color: white;
 		}
 	}
