@@ -26,7 +26,7 @@ Media Queries for usage
 	flex-direction: $direction;
 }
 
-// menubar
+// Header Menu
 .menubar {
 	@include flex(space-around, row);
 	background: #010915;
@@ -42,6 +42,9 @@ Media Queries for usage
 		padding-left: 2%;
 		font-size: 1.5rem;
 		padding: 2% 0;
+		a {
+			color: white;
+		}
 	}
 	.menubar-links {
 		@include flex(space-around, row);
@@ -152,6 +155,44 @@ Media Queries for usage
 
 body {
 	background-color: $gray-dark;
+}
+
+.about {
+	.title {
+		@include flex(center, row);
+		align-items: center;
+		background: url("../assets/virus-img.png");
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
+		height: 300px;
+		color: white;
+	}
+	.cards {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		.card {
+			padding: 1% 2%;
+			width: 300px;
+			color: white;
+			@media #{$tablet} {
+				width: 100%;
+			}
+		}
+	}
+	@media #{$mobile} {
+		.title {
+			height: 150px;
+		}
+		.cards {
+			@include flex(start, row);
+			.card {
+				padding: 2% 3%;
+				width: 100%;
+			}
+		}
+	}
 }
 
 .trial-headers {
