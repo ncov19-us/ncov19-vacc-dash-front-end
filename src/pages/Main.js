@@ -12,15 +12,15 @@ function Main() {
   return (
     <>
       <DashTopper />
-      <main className="container">
-        <div className="columns is-9-desktop is-centered is-gapless">
-          <div className="ui grid">
+      <main className="ui centered grid">
+        <div className="twelve wide column">
+          <div className="ui stackable grid">
             <div className="two column row">
-              <div className="column">
+              <div className="sixteen wide tablet eight wide computer column">
                 <h1 className="title">{filteredCountry} Dashboard</h1>
                 <VaccineTable />
               </div>
-              <div className="column">
+              <div className="sixteen wide tablet eight wide computer column">
                 <div className="map-wrapper">
                   <Map data={data} setCountry={setFilteredCountry} />
                 </div>
