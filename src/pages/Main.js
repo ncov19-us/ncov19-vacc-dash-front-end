@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
-import DashTopper from './DashTopper';
-import VaccineTable from './VaccineTable';
-import Map from '../components/Map';
-import { treatments } from '../data/treatment-list';
-import data from '../data/map-data';
+import React, { useState } from "react";
+import DashTopper from "./DashTopper";
+import VaccineTable from "./VaccineTable";
+import WorldMap from "../components/WorldMap";
+import { treatments } from "../data/treatment-list";
+import data from "../data/map-data";
 
 function Main() {
-  const [treatmentsList, setTreatmentsList] = useState(treatments);
-  const [filteredCountry, setFilteredCountry] = useState('Global');
+  const [filteredCountry, setFilteredCountry] = useState("Global");
 
   return (
     <>
-      <DashTopper />
+      <DashTopper country={filteredCountry} />
       <main className="ui centered grid">
         <div className="twelve wide column main">
           <div className="ui stackable grid">
@@ -21,7 +20,7 @@ function Main() {
               </div>
               <div className="sixteen wide tablet eight wide computer column">
                 <div className="map-wrapper">
-                  <Map data={data} setCountry={setFilteredCountry} />
+                  <WorldMap data={data} setCountry={setFilteredCountry} />
                 </div>
               </div>
             </div>
