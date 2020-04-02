@@ -34,7 +34,7 @@ export default class Table extends React.Component {
     render() {
         return (
             <div class="table-wrapper">
-                <table class = "table is-hoverable">
+                <table className = "table is-hoverable">
                     <thead>
                         <tr>{this.getHeader()}</tr>
                     </thead>

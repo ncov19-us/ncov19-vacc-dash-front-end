@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Table from "./Table";
+import TrialMenu from "../components/TrialMenu";
 
 function VaccineTable() {
 
@@ -14,12 +15,13 @@ function VaccineTable() {
 
     return (
         <div>
-            <div class="trial-headers"  >
+            {/* <div class="trial-headers">
                 <h2>COVID-19 Trials</h2>
                 <h2>Vaccines</h2>
                 <h2>Treatments</h2>
                 <h2>Alternatives</h2>
-            </div>
+            </div> */}
+            <TrialMenu />
             <Table data={tableData} />
         </div>
     );
