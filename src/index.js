@@ -4,8 +4,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-import "./index.css";
-import "bulma/css/bulma.css";
+// import "./index.css";
+// import "bulma/css/bulma.css";
+import "semantic-ui-css/semantic.min.css";
 
 ReactDOM.render(
 	<React.StrictMode>
