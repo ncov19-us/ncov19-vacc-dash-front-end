@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import moment from "moment";
 
 import VaccineStat from "../components/VaccineStat";
+
+import { filter } from "../components/Filter";
+
 import "./pages.scss";
 import "semantic-ui-css/semantic.min.css";
 
@@ -19,10 +22,50 @@ send old={numberOfOldTrial} new={numberOfNewTrial}
 */
 export default function DashTopper() {
 	const [time, setTime] = useState("");
+	const data = {
+		1: {
+			Sponsors: "BioNTech SE and Pfizer Inc.",
+			Country: "USA",
+			Drug: "BNT162",
+			Phase: "Preclinical",
+			Type: "Vaccine",
+		},
+		2: {
+			Sponsors: "Gilead Sciences Inc.",
+			Country: "USA",
+			Drug: "remdesivir",
+			Phase: "Phase 2",
+			Type: "Treatment",
+		},
+		3: {
+			Sponsors: "GlaxoSmithKline",
+			Country: "USA",
+			Drug: "AS03 Adjuvant System",
+			Phase: "None",
+			Type: "Adjuvant platform for vaccines",
+		},
+		4: {
+			Sponsors: "Heat Biologics Inc.",
+			Country: "USA",
+			Drug: "None",
+			Phase: "Preclinical",
+			Type: "Vaccine",
+		},
+		5: {
+			Sponsors: "Inovio Pharmaceuticals Inc.",
+			Country: "USA",
+			Drug: "INO-4800",
+			Phase: "Preclinical",
+			Type: "DNA-based vaccine",
+		},
+	};
 	useEffect(() => {
 		const time = new Date();
 		setTime(time);
+
+		console.log("soreted", filter("Preclinical", "Phase", data));
 	}, []);
+
 	return (
 		<div className="vacine-dash-header">
 			<div className="title">
@@ -31,7 +74,7 @@ export default function DashTopper() {
 			<div className="date">
 				<p className="day">{moment(`${time}`).format("dddd")}</p>
 				<p className="format">
-					{` -  ${moment(`${time}`).format("LL")}`}
+					{` •  ${moment(`${time}`).format("LL")}`}
 				</p>
 			</div>
 			<div className="cards">
