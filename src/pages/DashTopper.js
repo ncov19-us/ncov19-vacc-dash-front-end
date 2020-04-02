@@ -3,6 +3,7 @@ import moment from "moment";
 
 import VaccineStat from "../components/VaccineStat";
 import "./pages.scss";
+import "semantic-ui-css/semantic.min.css";
 
 /*
 Used Moment to get format date that we get using new Date

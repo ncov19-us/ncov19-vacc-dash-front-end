@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import burger from "../assets/menu.png";
 
 import { Modal } from "semantic-ui-react";
-
+import "semantic-ui-css/semantic.min.css";
 import "./pages.scss";
 
 /*

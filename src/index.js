@@ -5,7 +5,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 import "./index.css";
-import "semantic-ui-css/semantic.min.css";
+import "bulma/css/bulma.css";
 
 ReactDOM.render(
 	<React.StrictMode>
