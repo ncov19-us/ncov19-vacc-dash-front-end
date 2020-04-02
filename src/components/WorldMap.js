@@ -14,9 +14,11 @@ const styles = {
 };
 
 const WorldMap = ({ data, setCountry }) => {
-  const logIt = feature => {
-    console.dir(feature);
-    setCountry(feature.properties.name);
+  const getCountry = feature => {
+    if (feature.data) {
+      console.dir(feature);
+      setCountry(feature.properties.name);
+    }
   };
 
   return (
@@ -61,7 +63,7 @@ const WorldMap = ({ data, setCountry }) => {
             ]
           }
         ]}
-        onClick={feature => logIt(feature)}
+        onClick={feature => getCountry(feature)}
       />
     </div>
   );
