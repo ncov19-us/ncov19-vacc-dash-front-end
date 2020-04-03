@@ -4,6 +4,8 @@ import {
 	IS_LOADING,
 	GET_TRIALS_SUCCESS,
 	GET_TRIALS_ERROR,
+	SET_FILTER_SUCCESS,
+	SET_FILTER_ERROR,
 } from "./types";
 
 const setIsLoading = (state, action) => {
@@ -40,6 +42,20 @@ const getTrialsError = (state, action) => {
 		is_loading: false,
 	};
 };
+const mapFilter = (state, action) => {
+	return {
+		...state,
+		is_loading: false,
+		filter: { ...action.payload },
+	};
+};
+const mapFilterError = (state, action) => {
+	return {
+		...state,
+		error: action.payload,
+		is_loading: false,
+	};
+};
 export const reducer = (state, action) => {
 	switch (action.type) {
 		case IS_LOADING:
@@ -52,6 +68,10 @@ export const reducer = (state, action) => {
 			return getTrials(state, action);
 		case GET_TRIALS_ERROR:
 			return getTrialsError(state, action);
+		case SET_FILTER_SUCCESS:
+			return mapFilter(state, action);
+		case SET_FILTER_ERROR:
+			return mapFilterError(state, action);
 		default:
 			return state;
 	}
