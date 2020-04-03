@@ -62,8 +62,6 @@ export default function DashTopper({ filteredCountry }) {
 	useEffect(() => {
 		const time = new Date();
 		setTime(time);
-
-		console.log("soreted", filter("Preclinical", "Phase", data));
 	}, []);
 
 	return (
