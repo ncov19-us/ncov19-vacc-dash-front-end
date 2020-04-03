@@ -66,8 +66,14 @@ Media Queries for usage
 			padding: 6px 10px;
 			font-size: 1.05rem;
 		}
+		a:hover {
+			color: #f4b000;
+		}
 		.menubar-right {
 			font-size: 1.05rem;
+			:hover {
+				color: #f4b000;
+			}
 		}
 	}
 	.mobile {
