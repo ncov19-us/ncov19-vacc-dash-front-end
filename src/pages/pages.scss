@@ -111,7 +111,7 @@ Media Queries for usage
 	.cards {
 		@include flex(space-between, row);
 		align-items: center;
-		align-content: stretch;
+		// align-content: stretch;
 
 		.card {
 			border: 2px solid #dbbc6c;
@@ -139,7 +139,6 @@ Media Queries for usage
 	margin-left: 8%;
 	margin-right: 8%;
 	max-width: 1440px;
-	position: fixed;
 	left: 0;
 	bottom: 0;
 	.foot-content {
