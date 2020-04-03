@@ -4,15 +4,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-import "./index.css";
-import "react-bulma-components/dist/react-bulma-components.min.css";
+import "semantic-ui-css/semantic.min.css";
 
 ReactDOM.render(
-	<React.StrictMode>
-		<Router>
-			<App />
-		</Router>
-	</React.StrictMode>,
+	<Router>
+		<App />
+	</Router>,
 	document.getElementById("root")
 );
 
