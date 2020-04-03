@@ -15,6 +15,11 @@ body {
 	background-color: $gunmetal;
 }
 
+.ui.secondary.inverted.pointing.menu {
+	border-color: transparent;
+	border-radius: 0;
+}
+
 .ui.secondary.inverted.menu a.active.item {
 	color: $gold!important;
 	border-bottom-color: $gold!important;
@@ -33,6 +38,19 @@ body {
 	color: white;
 }
 
+.map-title {
+	font-size: 1.7rem;
+	color: white;
+	padding-top: 2%;
+	padding-left: 5%;
+
+	@media (max-width: 991px) {
+		display: none;
+	}
+}
+
 .map-wrapper {
-	height: 60vh;
+	@media (max-width: 991px) {
+		padding: 2% 0;
+	}
 }
