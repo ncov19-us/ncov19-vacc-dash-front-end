@@ -13,6 +13,9 @@ import { reducer } from "./reducers";
 
 export const TableContext = createContext();
 
+/* 
+Creating Global state with React Context 
+*/
 export const TableState = props => {
 	const initialState = { error: "", isLoading: false, table: [], trials: [] };
 
