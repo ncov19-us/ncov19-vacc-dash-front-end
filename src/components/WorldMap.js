@@ -46,6 +46,7 @@ const WorldMap = ({ data, setCountry }) => {
         graticuleLineColor="#dddddd"
         borderWidth={0.5}
         borderColor="#c0c0c0"
+        tooltip={function(e) {}}
         legends={
           [
             // {
