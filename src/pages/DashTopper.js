@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import moment from "moment";
 
-import VaccineStat from "../components/VaccineStat";
-
 import { filter } from "../components/Filter";
 import { TableContext } from "../utils/TableContext/TableState";
 
@@ -49,22 +47,19 @@ export default function DashTopper() {
 			<div className="cards">
 				<div className="card">
 					<div className="stats">
-						<h3>Total Vaccine trials</h3>
-						<VaccineStat old={9} newStat={6} />
+						<h4>Early Phase Trials</h4>
 					</div>
 					<p>29</p>
 				</div>
 				<div className="card">
 					<div className="stats">
-						<h3>Total Treatment trials</h3>
-						<VaccineStat old={3} newStat={6} />
+						<h4>Mid Phase Trials</h4>
 					</div>
 					<p>59</p>
 				</div>
 				<div className="card">
 					<div className="stats">
-						<h3>Somethings else</h3>
-						<VaccineStat old={6} newStat={6} />
+						<h4>Completed Trials</h4>
 					</div>
 					<p>29</p>
 				</div>
