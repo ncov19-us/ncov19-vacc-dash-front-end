@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import DashTopper from "./DashTopper";
 import VaccineTable from "./VaccineTable";
 import WorldMap from "../components/WorldMap";
-import { treatments } from "../data/treatment-list";
 import data from "../data/map-data";
 
 function Main() {
