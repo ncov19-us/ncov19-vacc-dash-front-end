@@ -26,7 +26,7 @@ export default function Footer() {
 				>
 					<img src={github} alt="project-covid19-vaccine" />
 				</a>
-				<p>© Copyright 2020</p>
+				<p>Copyright 2020</p>
 			</div>
 		</div>
 	);

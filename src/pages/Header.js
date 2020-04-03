@@ -23,7 +23,9 @@ export default function Header() {
 	return (
 		<div className="menubar">
 			<div className="tittle">
-				<h1>COVID19 US Vaccine</h1>
+				<Link to="/">
+					<h1 className="title-name">COVID-19 Tracker</h1>
+				</Link>
 			</div>
 
 			<div className="mobile">
@@ -37,41 +39,25 @@ export default function Header() {
 								fontSize: "1.5rem",
 							}}
 						>
-							<Link to="/about" style={aTags}>
+							<a href="#" alt="mobile-sms" style={aTags}>
+								Get Mobile Updates
+							</a>
+							<Link to="/" style={aTags} className="menubar-right">
+								Vaccine Tracker
+							</Link>
+							<Link to="/about" style={aTags} className="menubar-right">
 								About
 							</Link>
-							<a
-								href="https://www.cdc.gov/coronavirus/2019-ncov/index.html"
-								alt="cdc-website"
-								style={aTags}
-							>
-								CDC Resources
-							</a>
-							<a
-								href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019"
-								alt="world-health-organization"
-								style={aTags}
-							>
-								WHO Resources
-							</a>
 						</div>
 					</Modal.Content>
 				</Modal>
 			</div>
 			<div className="menubar-links">
+				<a href="#" alt="mobile-sms" id="sms">
+					Get Mobile Updates
+				</a>
+				<Link to="/">Vaccine Tracker</Link>
 				<Link to="/about">About</Link>
-				<a
-					href="https://www.cdc.gov/coronavirus/2019-ncov/index.html"
-					alt="cdc-website"
-				>
-					CDC Resources
-				</a>
-				<a
-					href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019"
-					alt="world-health-organization"
-				>
-					WHO Resources
-				</a>
 			</div>
 		</div>
 	);
