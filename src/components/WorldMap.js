@@ -7,17 +7,8 @@ import styled from "styled-components";
 // no chart will be rendered.
 
 const MapContainer = styled.div`
-  height: 400px;
+  height: 900px;
   `;
-
-// const styles = {
-//   fontFamily: "sans-serif",
-//   textAlign: "Center",
-//   height: 400,
-//   margin: "20px",
-//   border: "1px",
-//   borderColor: "red"
-// };
 
 const WorldMap = ({ data, country, setCountry }) => {
   const getCountry = feature => {
@@ -46,29 +37,30 @@ const WorldMap = ({ data, country, setCountry }) => {
         borderColor="#c0c0c0"
         legends={
           [
-            // {
-            //   anchor: "bottom-left",
-            //   direction: "column",
-            //   justify: false,
-            //   translateX: 420,
-            //   translateY: -20,
-            //   itemsSpacing: 0,
-            //   itemWidth: 94,
-            //   itemHeight: 18,
-            //   itemDirection: "left-to-right",
-            //   itemTextColor: "#444444",
-            //   itemOpacity: 0.85,
-            //   symbolSize: 18,
-            //   effects: [
-            //     {
-            //       on: "hover",
-            //       style: {
-            //         itemTextColor: "#000000",
-            //         itemOpacity: 1
-            //       }
-            //     }
-            //   ]
-            // }
+            {
+              anchor: "top-left",
+              direction: "row",
+              justify: false,
+              translateX: 37,
+              translateY: 40,
+              itemsSpacing: 0,
+              itemWidth: 94,
+              itemHeight: 18,
+              itemDirection: "left-to-right",
+              itemTextColor: "#444444",
+              itemOpacity: 0.85,
+              symbolSize: 40,
+              symbolShape: "circle",
+              effects: [
+                {
+                  on: "hover",
+                  style: {
+                    itemTextColor: "#000000",
+                    itemOpacity: 1
+                  }
+                }
+              ]
+            }
           ]
         }
         onClick={feature => getCountry(feature)}
