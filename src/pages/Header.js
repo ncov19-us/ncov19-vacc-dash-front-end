@@ -24,7 +24,7 @@ export default function Header() {
 		<div className="menubar">
 			<div className="tittle">
 				<Link to="/">
-					<h1>COVID19 US Vaccine</h1>
+					<h1 className="title-name">COVID-19 Tracker</h1>
 				</Link>
 			</div>
 
@@ -42,10 +42,10 @@ export default function Header() {
 							<a href="#" alt="mobile-sms" style={aTags}>
 								Get Mobile Updates
 							</a>
-							<Link to="/" style={aTags}>
+							<Link to="/" style={aTags} className="menubar-right">
 								Vaccine Tracker
 							</Link>
-							<Link to="/about" style={aTags}>
+							<Link to="/about" style={aTags} className="menubar-right">
 								About
 							</Link>
 						</div>

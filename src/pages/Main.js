@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import DashTopper from "./DashTopper";
 import VaccineTable from "./VaccineTable";
 import WorldMap from "../components/WorldMap";
-import { treatments } from "../data/treatment-list";
 import data from "../data/map-data";
 
 function Main() {
@@ -13,7 +12,7 @@ function Main() {
 			<main className="ui centered grid">
 				<div
 					className="twelve wide column main"
-					style={{ marginTop: "35px" }}
+					style={{ marginTop: "14px" }}
 				>
 					<div className="ui stackable grid">
 						<div className="two column row content">
