@@ -12,7 +12,7 @@ function Main() {
 			<main className="ui centered grid">
 				<div
 					className="twelve wide column main"
-					style={{ marginTop: "35px" }}
+					style={{ marginTop: "14px" }}
 				>
 					<div className="ui stackable grid">
 						<div className="two column row content">

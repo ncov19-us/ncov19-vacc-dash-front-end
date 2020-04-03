@@ -135,6 +135,9 @@ Media Queries for usage
 	margin-left: 8%;
 	margin-right: 8%;
 	max-width: 1440px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
 	.foot-content {
 		font-size: 0.75rem;
 		margin: auto;
