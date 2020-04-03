@@ -29,7 +29,6 @@ const WorldMap = ({ data, country, setCountry }) => {
         unknownColor="#666666"
         label="properties.name"
         valueFormat=".2s"
-        projectionType="equalEarth"
         projectionTranslation={[0.5, 0.5]}
         projectionRotation={[0, 0, 0]}
         enableGraticule={false}
