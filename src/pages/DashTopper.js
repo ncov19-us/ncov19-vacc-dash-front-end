@@ -27,7 +27,7 @@ export default function DashTopper() {
 
 	console.log("data", data);
 
-	console.log(filter("phase 4", "phase", data));
+	// console.log(filter("phase 4", "phase", data));
 	useEffect(() => {
 		const time = new Date();
 		setTime(time);
