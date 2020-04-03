@@ -10,7 +10,7 @@ function TrialMenu() {
   };
 
   return (
-    <div className="ui center aligned container">
+    <div className="ui left aligned container">
       <h3 className="trials">COVID-19 Trials</h3>
       <Menu compact pointing secondary inverted>
         <Menu.Item

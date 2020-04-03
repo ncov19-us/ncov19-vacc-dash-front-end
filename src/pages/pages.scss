@@ -105,7 +105,7 @@ Media Queries for usage
 // Vaccine Dashboard's header info
 .vacine-dash-header {
   margin-top: 10%;
-  background: $gunmetal;
+//   background: $gunmetal;
   color: white;
   padding: 2% 5%;
   .date {
@@ -121,10 +121,10 @@ Media Queries for usage
   }
   .cards {
     @include flex(space-between, row);
-    align-items: center;
+	align-items: center;
     // align-content: stretch;
-
     .card {
+	  background: $gunmetal;
       border: 2px solid #dbbc6c;
       padding: 2% 3%;
       border-radius: 4px;
@@ -141,6 +141,17 @@ Media Queries for usage
     }
   }
 }
+@media #{$mobile} {
+	.vacine-dash-header {
+		background: $gunmetal;
+	}
+}
+
+// trial menu
+.trial-padding {
+	padding: 2% 5%;
+}
+
 // foot
 .foot {
   @include flex(space-around, row);
@@ -191,7 +202,6 @@ Media Queries for usage
     @include flex(center, row);
     padding: 2.5% 6% 3.5% 3%;
     margin: auto;
-    margin-right: -3%;
     .foot-copyright {
       font-size: 1rem;
       a {
