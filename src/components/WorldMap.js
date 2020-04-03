@@ -4,13 +4,11 @@ import { features } from "../data/features";
 import styled from "styled-components";
 // make sure parent container has a defined height when using
 // responsive component, otherwise height will be 0 and
-
 // no chart will be rendered.
 
 const MapContainer = styled.div`
   height: 400px;
-  border: 2px solid red;
-`;
+  `;
 
 // const styles = {
 //   fontFamily: "sans-serif",
@@ -21,7 +19,7 @@ const MapContainer = styled.div`
 //   borderColor: "red"
 // };
 
-const WorldMap = ({ data, setCountry }) => {
+const WorldMap = ({ data, country, setCountry }) => {
   const getCountry = feature => {
     if (feature.data) {
       console.dir(feature);

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DashTopper from "./DashTopper";
 import VaccineTable from "./VaccineTable";
 import WorldMap from "../components/WorldMap";
-import data from "../data/map-data";
+import data from "../data/map-data.json";
 
 function Main() {
   const [filteredCountry, setFilteredCountry] = useState("Global");
@@ -10,7 +10,10 @@ function Main() {
   return (
     <>
       <main className="ui centered grid">
-        <div className="twelve wide column main" style={{ marginTop: "14px" }}>
+        <div
+          className="sixteen wide mobile twelve wide computer column main"
+          style={{ marginTop: "14px" }}
+        >
           <div className="ui stackable grid">
             <div className="two column row content">
               <div className="sixteen wide tablet eight wide computer column">
@@ -19,6 +22,9 @@ function Main() {
               </div>
               <div className="sixteen wide tablet eight wide computer column">
                 <div className="map-wrapper">
+                  <h3 className="map-title">
+                    {`COVID-19 ${filteredCountry} Trials`}
+                  </h3>
                   <WorldMap data={data} setCountry={setFilteredCountry} />
                 </div>
               </div>
