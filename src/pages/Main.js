@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DashTopper from './DashTopper';
 import VaccineTable from './VaccineTable';
 import WorldMap from '../components/WorldMap';
-import data from '../data/map-data';
+import data from '../data/map-data.json';
 
 function Main() {
   const [filteredCountry, setFilteredCountry] = useState('Global');
@@ -22,7 +22,9 @@ function Main() {
               </div>
               <div className="sixteen wide tablet eight wide computer column">
                 <div className="map-wrapper">
-                  <h3 className="map-title">{`COVID-19 ${filteredCountry} Trials`}</h3>
+                  <h3 className="map-title">
+                    {`COVID-19 ${filteredCountry} Trials`}
+                  </h3>
                   <WorldMap data={data} setCountry={setFilteredCountry} />
                 </div>
               </div>

@@ -19,7 +19,7 @@ const MapContainer = styled.div`
 //   borderColor: "red"
 // };
 
-const WorldMap = ({ data, setCountry }) => {
+const WorldMap = ({ data, country, setCountry }) => {
   const getCountry = feature => {
     if (feature.data) {
       console.dir(feature);
