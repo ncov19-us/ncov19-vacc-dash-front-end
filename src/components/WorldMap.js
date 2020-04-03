@@ -7,7 +7,7 @@ import styled from "styled-components";
 // no chart will be rendered.
 
 const MapContainer = styled.div`
-  height: 400px;
+  height: 600px;
   `;
 
 // const styles = {
@@ -46,29 +46,29 @@ const WorldMap = ({ data, country, setCountry }) => {
         borderColor="#c0c0c0"
         legends={
           [
-            // {
-            //   anchor: "bottom-left",
-            //   direction: "column",
-            //   justify: false,
-            //   translateX: 420,
-            //   translateY: -20,
-            //   itemsSpacing: 0,
-            //   itemWidth: 94,
-            //   itemHeight: 18,
-            //   itemDirection: "left-to-right",
-            //   itemTextColor: "#444444",
-            //   itemOpacity: 0.85,
-            //   symbolSize: 18,
-            //   effects: [
-            //     {
-            //       on: "hover",
-            //       style: {
-            //         itemTextColor: "#000000",
-            //         itemOpacity: 1
-            //       }
-            //     }
-            //   ]
-            // }
+            {
+              anchor: "bottom-left",
+              direction: "column",
+              justify: false,
+              translateX: 20,
+              translateY: -20,
+              itemsSpacing: 0,
+              itemWidth: 94,
+              itemHeight: 18,
+              itemDirection: "left-to-right",
+              itemTextColor: "#444444",
+              itemOpacity: 0.85,
+              symbolSize: 18,
+              effects: [
+                {
+                  on: "hover",
+                  style: {
+                    itemTextColor: "#000000",
+                    itemOpacity: 1
+                  }
+                }
+              ]
+            }
           ]
         }
         onClick={feature => getCountry(feature)}
