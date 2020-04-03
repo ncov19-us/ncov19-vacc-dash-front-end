@@ -15,7 +15,7 @@ function Main() {
             <div className="two column row content">
               <div className="sixteen wide tablet eight wide computer column">
                 <DashTopper />
-                <VaccineTable />
+                <VaccineTable country={filteredCountry} />
               </div>
               <div className="sixteen wide tablet eight wide computer column">
                 <div className="map-wrapper">
