@@ -8,10 +8,10 @@ import styled from "styled-components";
 
 const MapContainer = styled.div`
   height: 900px;
-  `;
+`;
 
 const WorldMap = ({ data, country, setCountry }) => {
-  const getCountry = feature => {
+  const getCountry = (feature) => {
     if (feature.data) {
       console.dir(feature);
       setCountry(feature.properties.name);
@@ -35,35 +35,34 @@ const WorldMap = ({ data, country, setCountry }) => {
         graticuleLineColor="#dddddd"
         borderWidth={0.5}
         borderColor="#c0c0c0"
-        legends={
-          [
-            {
-              anchor: "top-left",
-              direction: "row",
-              justify: false,
-              translateX: 37,
-              translateY: 40,
-              itemsSpacing: 0,
-              itemWidth: 94,
-              itemHeight: 18,
-              itemDirection: "left-to-right",
-              itemTextColor: "#444444",
-              itemOpacity: 0.85,
-              symbolSize: 40,
-              symbolShape: "circle",
-              effects: [
-                {
-                  on: "hover",
-                  style: {
-                    itemTextColor: "#000000",
-                    itemOpacity: 1
-                  }
-                }
-              ]
-            }
-          ]
-        }
-        onClick={feature => getCountry(feature)}
+        // tooltip={function(e) {}}
+        legends={[
+          {
+            anchor: "top-left",
+            direction: "row",
+            justify: false,
+            translateX: 37,
+            translateY: 40,
+            itemsSpacing: 0,
+            itemWidth: 94,
+            itemHeight: 18,
+            itemDirection: "left-to-right",
+            itemTextColor: "#444444",
+            itemOpacity: 0.85,
+            symbolSize: 40,
+            symbolShape: "square",
+            effects: [
+              {
+                on: "hover",
+                style: {
+                  itemTextColor: "#000000",
+                  itemOpacity: 1,
+                },
+              },
+            ],
+          },
+        ]}
+        onClick={(feature) => getCountry(feature)}
       />
     </MapContainer>
   );
