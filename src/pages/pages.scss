@@ -146,6 +146,7 @@ Media Queries for usage
 	.foot-content {
 		font-size: 0.75rem;
 		margin: auto;
+		margin-right: 3%;
 	}
 	.foot-copyright {
 		@include flex(flex-end, row);
@@ -161,12 +162,38 @@ Media Queries for usage
 		}
 	}
 	@media #{$mobile} {
-		@include flex(center, column);
-		padding: 2% 0;
+		@include flex(center, row);
+		padding: 2.5% 4% 3.5% 3%;
+		margin: auto;
 		.foot-copyright {
 			font-size: 1rem;
-			margin-top: 2%;
-			@include flex(center, row);
+			a {
+				margin: auto 13% auto 0;
+			}
+			p {
+				margin-right: 5%;
+			}
+		}
+		.foot-content {
+			padding: 0% 7% 0% 2%;
+		}
+	}
+	@media #{$tablet} {
+		@include flex(center, row);
+		padding: 2.5% 6% 3.5% 3%;
+		margin: auto;
+		margin-right: -3%;
+		.foot-copyright {
+			font-size: 1rem;
+			a {
+				margin: auto 13% auto 0;
+			}
+			p {
+				margin-right: 5%;
+			}
+		}
+		.foot-content {
+			padding: 0% 7% 0% 2%;
 		}
 	}
 }
