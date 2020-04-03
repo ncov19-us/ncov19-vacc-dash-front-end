@@ -51,7 +51,7 @@ const RenderRow = (props) => {
     if (key === 'Sponsors') {
       return (
         <td key={props.data[key]} className="block">
-          <p className="country">COUNTRY</p>
+          {/* <p className="country">COUNTRY</p> */}
           <p>{props.data[key]}</p>
         </td>
       );
