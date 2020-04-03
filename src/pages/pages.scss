@@ -136,14 +136,13 @@ Media Queries for usage
 	background: #010915;
 	color: #bdbdbd;
 	padding: 1.5% 3%;
-	margin-left: 8%;
-	margin-right: 8%;
 	max-width: 1440px;
 	left: 0;
 	bottom: 0;
 	.foot-content {
 		font-size: 0.75rem;
 		margin: auto;
+		margin-right: 3%;
 	}
 	.foot-copyright {
 		@include flex(flex-end, row);
