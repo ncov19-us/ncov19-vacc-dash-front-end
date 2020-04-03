@@ -16,7 +16,7 @@ function VaccineTable() {
 	}, []);
 
 	return (
-		<div>
+		<div className="trial-padding">
 			<TrialMenu />
 			{/* {data={tableData}} */}
 			{/* <Table /> */}

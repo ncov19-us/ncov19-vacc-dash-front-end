@@ -147,6 +147,11 @@ Media Queries for usage
 	}
 }
 
+// trial menu
+.trial-padding {
+	padding: 2% 5%;
+}
+
 // foot
 .foot {
   @include flex(space-around, row);
