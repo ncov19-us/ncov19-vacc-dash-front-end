@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Table from "./Table";
 import TrialMenu from "../components/TrialMenu";
+import treatments from "../data/treatments";
 
 import "./pages.scss";
 
