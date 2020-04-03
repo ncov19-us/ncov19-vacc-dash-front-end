@@ -24,7 +24,7 @@ export default function Header() {
 		<div className="menubar">
 			<div className="tittle">
 				<Link to="/">
-					<h1 className="title-name">COVID-19 Tracker</h1>
+					<h1 className="title-name">COVID-19 <span className="title-unbold">Tracker</span></h1>
 				</Link>
 			</div>
 

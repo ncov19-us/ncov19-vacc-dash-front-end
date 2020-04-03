@@ -38,59 +38,68 @@ Media Queries for usage
   color: #f4f4f4;
   z-index: 4;
 
-  .tittle {
-    width: 100%;
-    text-align: left;
-    margin-left: 3%;
-    padding: 16.5px 0;
-    a {
-      color: white;
-      .title-name {
-        font-size: 2.2rem;
-      }
-    }
-  }
-  .menubar-links {
-    @include flex(flex-end, row);
-    width: 100%;
-    margin: auto;
-    margin-right: 3%;
-    #sms {
-      border: 1px solid white;
-      border-radius: 4px;
-      margin-right: 2%;
-    }
-    a {
-      text-decoration: none;
-      color: #fff;
-      padding: 6px 10px;
-      font-size: 1.05rem;
-    }
-    .menubar-right {
-      font-size: 1.05rem;
-    }
-  }
-  .mobile {
-    display: none;
-  }
-  @media #{$mobile} {
-    .title {
-      font-size: 1.5rem;
-    }
-    .menubar-links {
-      display: none;
-    }
-    .mobile {
-      display: block;
-      margin: auto;
-      padding-right: 10px;
-      img {
-        filter: invert(100%);
-        background: white;
-        width: 40px;
-      }
-    }
-  }
+	.tittle {
+		width: 100%;
+		text-align: left;
+		margin-left: 3%;
+		padding: 16.5px 0;
+		a {
+			color: white;
+			.title-name {
+				font-size: 2.2rem;
+			}
+			.title-unbold {
+				font-weight: normal;
+			}
+		}
+	}
+	.menubar-links {
+		@include flex(flex-end, row);
+		width: 100%;
+		margin: auto;
+		margin-right: 3%;
+		#sms {
+			border: 1px solid white;
+			border-radius: 4px;
+			margin-right: 2%;
+		}
+		a {
+			text-decoration: none;
+			color: #fff;
+			padding: 6px 10px;
+			font-size: 1.05rem;
+		}
+		a:hover {
+			color: #f4b000;
+		}
+		.menubar-right {
+			font-size: 1.05rem;
+			:hover {
+				color: #f4b000;
+			}
+		}
+	}
+	.mobile {
+		display: none;
+	}
+	@media #{$mobile} {
+		.title {
+			font-size: 1.5rem;
+		}
+		.menubar-links {
+			display: none;
+		}
+		.mobile {
+			display: block;
+			margin: auto;
+			padding-right: 10px;
+			img {
+				filter: invert(100%);
+				background: white;
+				width: 40px;
+			}
+		}
+	}
 }
 
 // Vaccine Dashboard's header info
