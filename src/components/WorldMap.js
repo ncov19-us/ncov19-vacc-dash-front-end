@@ -7,20 +7,11 @@ import styled from "styled-components";
 // no chart will be rendered.
 
 const MapContainer = styled.div`
-  height: 400px;
-  `;
-
-// const styles = {
-//   fontFamily: "sans-serif",
-//   textAlign: "Center",
-//   height: 400,
-//   margin: "20px",
-//   border: "1px",
-//   borderColor: "red"
-// };
+  height: 900px;
+`;
 
 const WorldMap = ({ data, country, setCountry }) => {
-  const getCountry = feature => {
+  const getCountry = (feature) => {
     if (feature.data) {
       console.dir(feature);
       setCountry(feature.properties.name);
@@ -44,35 +35,34 @@ const WorldMap = ({ data, country, setCountry }) => {
         graticuleLineColor="#dddddd"
         borderWidth={0.5}
         borderColor="#c0c0c0"
-        tooltip={function(e) {}}
-        legends={
-          [
-            // {
-            //   anchor: "bottom-left",
-            //   direction: "column",
-            //   justify: false,
-            //   translateX: 420,
-            //   translateY: -20,
-            //   itemsSpacing: 0,
-            //   itemWidth: 94,
-            //   itemHeight: 18,
-            //   itemDirection: "left-to-right",
-            //   itemTextColor: "#444444",
-            //   itemOpacity: 0.85,
-            //   symbolSize: 18,
-            //   effects: [
-            //     {
-            //       on: "hover",
-            //       style: {
-            //         itemTextColor: "#000000",
-            //         itemOpacity: 1
-            //       }
-            //     }
-            //   ]
-            // }
-          ]
-        }
-        onClick={feature => getCountry(feature)}
+        // tooltip={function(e) {}}
+        legends={[
+          {
+            anchor: "top-left",
+            direction: "row",
+            justify: false,
+            translateX: 37,
+            translateY: 40,
+            itemsSpacing: 0,
+            itemWidth: 94,
+            itemHeight: 18,
+            itemDirection: "left-to-right",
+            itemTextColor: "#444444",
+            itemOpacity: 0.85,
+            symbolSize: 40,
+            symbolShape: "square",
+            effects: [
+              {
+                on: "hover",
+                style: {
+                  itemTextColor: "#000000",
+                  itemOpacity: 1,
+                },
+              },
+            ],
+          },
+        ]}
+        onClick={(feature) => getCountry(feature)}
       />
     </MapContainer>
   );
