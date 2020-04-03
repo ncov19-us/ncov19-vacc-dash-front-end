@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 
-import VaccineStat from "../components/VaccineStat";
-
 import { filter } from "../components/Filter";
 
 import "./pages.scss";
@@ -20,7 +18,7 @@ send old={numberOfOldTrial} new={numberOfNewTrial}
 	if the new number is greater it will return a red return 
 	if the number number is the same it will return nothing 
 */
-export default function DashTopper({ filteredCountry }) {
+export default function DashTopper({ country }) {
 	const [time, setTime] = useState("");
 	const data = {
 		1: {
@@ -67,7 +65,7 @@ export default function DashTopper({ filteredCountry }) {
 	return (
 		<div className="vacine-dash-header">
 			<div className="title">
-				<h1>{filteredCountry} Dashboard</h1>
+				<h1>{`${country} Dashboard`}</h1>
 			</div>
 			<div className="date">
 				<p className="day">{moment(`${time}`).format("dddd")}</p>
@@ -78,22 +76,19 @@ export default function DashTopper({ filteredCountry }) {
 			<div className="cards">
 				<div className="card">
 					<div className="stats">
-						<h3>Total Vaccine trials</h3>
-						<VaccineStat old={9} newStat={6} />
+						<h4>Early Phase Trials</h4>
 					</div>
 					<p>29</p>
 				</div>
 				<div className="card">
 					<div className="stats">
-						<h3>Total Treatment trials</h3>
-						<VaccineStat old={3} newStat={6} />
+						<h4>Mid Phase Trials</h4>
 					</div>
 					<p>59</p>
 				</div>
 				<div className="card">
 					<div className="stats">
-						<h3>Somethings else</h3>
-						<VaccineStat old={6} newStat={6} />
+						<h4>Completed Trials</h4>
 					</div>
 					<p>29</p>
 				</div>

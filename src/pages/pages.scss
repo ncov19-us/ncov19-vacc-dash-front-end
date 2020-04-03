@@ -110,6 +110,9 @@ Media Queries for usage
 	}
 	.cards {
 		@include flex(space-between, row);
+		align-items: center;
+		align-content: stretch;
+
 		.card {
 			border: 2px solid #dbbc6c;
 			padding: 2% 3%;

@@ -28,7 +28,7 @@ export default function About() {
 						<br />
 					</p>
 					Source:{" "}
-					<a src="https://WHO.org" alt="who-source">
+					<a href="https://WHO.org" alt="who-source">
 						Who.org
 					</a>
 				</div>
@@ -48,7 +48,7 @@ export default function About() {
 						<br />
 					</p>
 					Source:{" "}
-					<a src="https://WHO.org" alt="who-source">
+					<a href="https://WHO.org" alt="who-source">
 						Who.org
 					</a>
 				</div>
@@ -68,7 +68,7 @@ export default function About() {
 						<br />
 					</p>
 					Source:{" "}
-					<a src="https://WHO.org" alt="who-source">
+					<a href="https://WHO.org" alt="who-source">
 						Who.org
 					</a>
 				</div>
@@ -88,7 +88,7 @@ export default function About() {
 						<br />
 					</p>
 					Source:{" "}
-					<a src="https://WHO.org" alt="who-source">
+					<a href="https://WHO.org" alt="who-source">
 						Who.org
 					</a>
 				</div>
@@ -108,7 +108,7 @@ export default function About() {
 						<br />
 					</p>
 					Source:{" "}
-					<a src="https://WHO.org" alt="who-source">
+					<a href="https://WHO.org" alt="who-source">
 						Who.org
 					</a>
 				</div>
@@ -128,7 +128,7 @@ export default function About() {
 						<br />
 					</p>
 					Source:{" "}
-					<a src="https://WHO.org" alt="who-source">
+					<a href="https://WHO.org" alt="who-source">
 						Who.org
 					</a>
 				</div>
