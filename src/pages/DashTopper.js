@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import moment from "moment";
 
 import { filter } from "../components/Filter";
+import { TableContext } from "../utils/TableContext/TableState";
 
 import "./pages.scss";
 import "semantic-ui-css/semantic.min.css";
@@ -18,45 +19,15 @@ send old={numberOfOldTrial} new={numberOfNewTrial}
 	if the new number is greater it will return a red return 
 	if the number number is the same it will return nothing 
 */
-export default function DashTopper({ country }) {
+export default function DashTopper() {
+	const { table, trials } = useContext(TableContext);
+
 	const [time, setTime] = useState("");
-	const data = {
-		1: {
-			Sponsors: "BioNTech SE and Pfizer Inc.",
-			Country: "USA",
-			Drug: "BNT162",
-			Phase: "Preclinical",
-			Type: "Vaccine",
-		},
-		2: {
-			Sponsors: "Gilead Sciences Inc.",
-			Country: "USA",
-			Drug: "remdesivir",
-			Phase: "Phase 2",
-			Type: "Treatment",
-		},
-		3: {
-			Sponsors: "GlaxoSmithKline",
-			Country: "USA",
-			Drug: "AS03 Adjuvant System",
-			Phase: "None",
-			Type: "Adjuvant platform for vaccines",
-		},
-		4: {
-			Sponsors: "Heat Biologics Inc.",
-			Country: "USA",
-			Drug: "None",
-			Phase: "Preclinical",
-			Type: "Vaccine",
-		},
-		5: {
-			Sponsors: "Inovio Pharmaceuticals Inc.",
-			Country: "USA",
-			Drug: "INO-4800",
-			Phase: "Preclinical",
-			Type: "DNA-based vaccine",
-		},
-	};
+	const data = trials.trials;
+
+	console.log("data", data);
+
+	console.log(filter("phase 4", "phase", data));
 	useEffect(() => {
 		const time = new Date();
 		setTime(time);
@@ -65,7 +36,7 @@ export default function DashTopper({ country }) {
 	return (
 		<div className="vacine-dash-header">
 			<div className="title">
-				<h1>{`${country} Dashboard`}</h1>
+				<h1>{table && table.country} Dashboard</h1>
 			</div>
 			<div className="date">
 				<p className="day">{moment(`${time}`).format("dddd")}</p>
