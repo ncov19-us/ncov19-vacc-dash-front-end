@@ -251,7 +251,7 @@ body {
 	max-width: 1190px;
 	margin: auto;
 	margin-top: 2%;
-	margin-bottom: 2%;
+	margin-bottom: 3%;
     .card {
       padding: 1% 2%;
       width: 300px;
@@ -263,7 +263,7 @@ body {
   }
   @media #{$mobile} {
     .title {
-      height: 150px;
+      height: 310px;
     }
     .cards {
       @include flex(start, row);
@@ -271,6 +271,12 @@ body {
         padding: 2% 3%;
         width: 100%;
       }
+    }
+  }
+  @media #{$tablet} {
+    .title {
+	  height: 372px;
+	  margin-bottom: -6%;
     }
   }
 }
