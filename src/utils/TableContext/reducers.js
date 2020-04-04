@@ -10,6 +10,7 @@ import {
 	FILTER_BY_ON_CLICK_ERROR,
 } from "./types";
 
+// updates the state
 const setIsLoading = (state, action) => {
 	return {
 		...state,
@@ -72,6 +73,8 @@ const filterByOnClickError = (state, action) => {
 		is_loading: false,
 	};
 };
+
+// cases
 export const reducer = (state, action) => {
 	switch (action.type) {
 		case IS_LOADING:

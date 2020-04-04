@@ -20,12 +20,11 @@ send old={numberOfOldTrial} new={numberOfNewTrial}
 	if the number number is the same it will return nothing 
 */
 export default function DashTopper() {
-	const { table, trials, filter } = useContext(TableContext);
+	const { trials, filter } = useContext(TableContext);
 
 	const [time, setTime] = useState("");
 	const data = trials.trials;
 
-	// console.log(filter("phase 4", "phase", data));
 	useEffect(() => {
 		const time = new Date();
 		setTime(time);

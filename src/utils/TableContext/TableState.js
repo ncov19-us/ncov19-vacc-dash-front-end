@@ -18,9 +18,23 @@ import { reducer } from "./reducers";
 export const TableContext = createContext();
 
 /* 
-Creating Global state with React Context 
+GOAL: 
+	Create Global state with React Context 
+	Create communication with backend server with CRUD operations
+
+USAGE: 
+	Wrap ContextState in app to initialize global state
+	import useContext in component wherever needed
+	import {DatatContext} from './path to State'
+	create variable 
+		const {state, or method-function, or both} = useContext({DataContext})
+
+RETURNS: 
+	Updated state
+
 */
-export const TableState = props => {
+export const TableState = (props) => {
+	// create and initial state
 	const initialState = {
 		error: "",
 		isLoading: false,
@@ -29,14 +43,19 @@ export const TableState = props => {
 		filter: [],
 	};
 
+	// get updated state from localStorage
 	const localState = loadState("table");
 
+	// use reducer on local state or start fresh with initial state
 	const [state, dispatch] = useReducer(reducer, localState || initialState);
 
+	// save state to localstorage on page render
 	useEffect(() => {
 		saveState("table", state);
 	}, [state]);
 
+	// method that will dispatch success or error
+	// send CRUD operation to backend server
 	const getTable = async () => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
@@ -61,7 +80,7 @@ export const TableState = props => {
 			}
 		}
 	};
-	const mapFilter = async country => {
+	const mapFilter = async (country) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
 			dispatch({ type: SET_FILTER_SUCCESS, payload: country });
@@ -72,7 +91,7 @@ export const TableState = props => {
 			}
 		}
 	};
-	const filterByOnClick = async data => {
+	const filterByOnClick = async (data) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
 			dispatch({ type: FILTER_BY_ON_CLICK_SUCCESS, payload: data });
@@ -86,6 +105,8 @@ export const TableState = props => {
 			}
 		}
 	};
+
+	// Provider values are in function or state
 	return (
 		<TableContext.Provider
 			value={{

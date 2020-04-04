@@ -3,6 +3,13 @@ import { Menu } from "semantic-ui-react";
 import { TableContext } from "../utils/TableContext/TableState";
 import { filter } from "../components/Filter";
 
+/*
+GOAL: 
+	On tab click filter data on table accordinly
+
+RETURNS: 
+	Filtered data
+*/
 function TrialMenu() {
 	const { getTrials, filterByOnClick, trials } = useContext(TableContext);
 	const [active, setActive] = useState("all");
@@ -11,13 +18,13 @@ function TrialMenu() {
 	const handleClick = (evt, { name }) => {
 		setActive(name);
 		if (name === "vaccines") {
-			const sorting = filter("vaccines", name, trials.trials);
+			const sorting = filter("Vaccines", name, trials.trials);
 			filterByOnClick(sorting);
 		} else if (name === "treatments") {
-			const sorting = filter("treatments", name, trials.trials);
+			const sorting = filter("Treatments", name, trials.trials);
 			filterByOnClick(sorting);
 		} else if (name === "alternatives") {
-			const sorting = filter("alternatives", name, trials.trials);
+			const sorting = filter("Alternatives", name, trials.trials);
 			filterByOnClick(sorting);
 		} else {
 			getTrials();

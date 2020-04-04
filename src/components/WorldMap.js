@@ -7,10 +7,26 @@ import data from "../data/map-data.json";
 
 import { filter } from "../components/Filter";
 
+/*
+GOAL:
+	* Use global in conjunction with the map 
+	* Upon clicking a country on the map it filter name on dash board and map to display that country. 
+	* And have that countries information filter in a table
+	
+
+USAGE: 
+	- Onclick funtion that passes the contries data and use "mapFilter" function on Context to save the data to Global state
+	- then use a filter function to display filtered data on table
+
+RETURNS: 
+	- Updated Global Country Name
+	- Filtered Countries' data 
+*/
+
 const WorldMap = () => {
 	const { mapFilter, filterByOnClick, trials } = useContext(TableContext);
 
-	const setCountry = e => {
+	const setCountry = (e) => {
 		mapFilter(e);
 		const sorting = filter("country", e.label, trials.trials);
 		filterByOnClick(sorting);
@@ -62,7 +78,7 @@ const WorldMap = () => {
 						// },
 					]
 				}
-				onClick={feature => setCountry(feature)}
+				onClick={(feature) => setCountry(feature)}
 			/>
 		</div>
 	);
