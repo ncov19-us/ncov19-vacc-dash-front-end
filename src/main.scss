@@ -9,6 +9,11 @@ body {
 
 .main {
 	background-color: #010915;
+	max-width: 1440px;
+}
+
+.vaccine-dash-header .title {
+	margin-left: 3%;
 }
 
 .ui.inverted.menu {
@@ -52,6 +57,7 @@ body {
 
 .map-wrapper {
 	padding: 10% 0;
+	margin-top: 5%;
 
 	@media (max-width: 991px) {
 		padding: 2% 0;

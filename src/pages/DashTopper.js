@@ -33,8 +33,8 @@ export default function DashTopper({ country }) {
 
 	return (
 		<div className="vacine-dash-header">
-			<div className="title">
-				<h1>{`${country} Dashboard`}</h1>
+			<div className="title-dash">
+				<h1>{`${country} Dashboard`}</h1>  
 			</div>
 			<div className="date">
 				<p className="day">{moment(`${time}`).format("dddd")}</p>

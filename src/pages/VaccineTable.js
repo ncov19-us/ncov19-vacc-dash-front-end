@@ -18,35 +18,35 @@ function VaccineTable({ country }) {
   const dummyData = [
     {
       Sponsors: 'BioNTech SE and Pfizer Inc.',
-      country: 'USA',
+      Country: 'USA',
       Drug: 'BNT162',
       Phase: 'Preclinical',
       Type: 'Vaccine',
     },
     {
       Sponsors: 'Gilead Sciences Inc.',
-      country: 'China',
+      Country: 'China',
       Drug: 'remdesivir',
       Phase: 'Phase 2',
       Type: 'Treatment',
     },
     {
       Sponsors: 'GlaxoSmithKline',
-      country: 'USA',
+      Country: 'USA',
       Drug: 'AS03 Adjuvant System',
       Phase: 'None',
       Type: 'Adjuvant platform for vaccines',
     },
     {
       Sponsors: 'Heat Biologics Inc.',
-      country: 'USA',
+      Country: 'USA',
       Drug: 'None',
       Phase: 'Preclinical',
       Type: 'Vaccine',
     },
     {
       Sponsors: 'Inovio Pharmaceuticals Inc.',
-      country: 'USA',
+      Country: 'USA',
       Drug: 'INO-4800',
       Phase: 'Preclinical',
       Type: 'DNA-based vaccine',
@@ -59,7 +59,7 @@ function VaccineTable({ country }) {
 	useEffect(() => {
 		setTrials(() => {
 			if (country !== 'Global') {
-				return dummyData.filter(trial => trial.country === country);
+				return dummyData.filter(trial => trial['Country'] === country);
 			} 
 			
 			return dummyData;
