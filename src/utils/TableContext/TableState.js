@@ -8,6 +8,8 @@ import {
 	GET_TRIALS_ERROR,
 	SET_FILTER_SUCCESS,
 	SET_FILTER_ERROR,
+	FILTER_BY_ON_CLICK_SUCCESS,
+	FILTER_BY_ON_CLICK_ERROR,
 } from "./types";
 import { loadState, saveState } from "../localStorage";
 import { axiosWithAuth, client } from "../axiosWithAuth";
@@ -70,6 +72,20 @@ export const TableState = props => {
 			}
 		}
 	};
+	const filterByOnClick = async data => {
+		dispatch({ type: IS_LOADING, payload: true });
+		try {
+			dispatch({ type: FILTER_BY_ON_CLICK_SUCCESS, payload: data });
+		} catch (e) {
+			console.log("error", e);
+			{
+				dispatch({
+					type: FILTER_BY_ON_CLICK_ERROR,
+					payload: e.response,
+				});
+			}
+		}
+	};
 	return (
 		<TableContext.Provider
 			value={{
@@ -81,6 +97,7 @@ export const TableState = props => {
 				getTable,
 				getTrials,
 				mapFilter,
+				filterByOnClick,
 			}}
 		>
 			{props.children}

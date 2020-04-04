@@ -1,77 +1,41 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from "react";
 
-import { TableContext } from '../utils/TableContext/TableState';
+import { TableContext } from "../utils/TableContext/TableState";
 
-import Table from './Table';
-import TrialMenu from '../components/TrialMenu';
-import treatments from '../data/treatments';
+import Table from "./Table";
+import TrialMenu from "../components/TrialMenu";
+import treatments from "../data/treatments";
 
-import './pages.scss';
+import "./pages.scss";
 
-function VaccineTable({ country }) {
-  const { getTable, getTrials } = useContext(TableContext);
-  useEffect(async () => {
-    getTable();
-    getTrials();
-  }, []);
-
-  const dummyData = [
-    {
-      Sponsors: 'BioNTech SE and Pfizer Inc.',
-      Country: 'USA',
-      Drug: 'BNT162',
-      Phase: 'Preclinical',
-      Type: 'Vaccine',
-    },
-    {
-      Sponsors: 'Gilead Sciences Inc.',
-      Country: 'China',
-      Drug: 'remdesivir',
-      Phase: 'Phase 2',
-      Type: 'Treatment',
-    },
-    {
-      Sponsors: 'GlaxoSmithKline',
-      Country: 'USA',
-      Drug: 'AS03 Adjuvant System',
-      Phase: 'None',
-      Type: 'Adjuvant platform for vaccines',
-    },
-    {
-      Sponsors: 'Heat Biologics Inc.',
-      Country: 'USA',
-      Drug: 'None',
-      Phase: 'Preclinical',
-      Type: 'Vaccine',
-    },
-    {
-      Sponsors: 'Inovio Pharmaceuticals Inc.',
-      Country: 'USA',
-      Drug: 'INO-4800',
-      Phase: 'Preclinical',
-      Type: 'DNA-based vaccine',
-    },
-  ];
-
-	const [trials, setTrials] = useState(dummyData);
-
-	// TODO: separate state for all trials vs. displayed trials
+function VaccineTable() {
+	const { getTable, getTrials, trials } = useContext(TableContext);
 	useEffect(() => {
-		setTrials(() => {
-			if (country !== 'Global') {
-				return dummyData.filter(trial => trial['Country'] === country);
-			} 
-			
-			return dummyData;
-		});
-	}, [country]);
-
-  return (
-    <div>
-      <TrialMenu />
-      <Table data={trials} />
-    </div>
-  );
+		getTable();
+		getTrials();
+	}, []);
+	const length = trials.trials.length;
+	return (
+		<div className="trial-padding">
+			<TrialMenu />
+			{(() => {
+				if (length > 0) {
+					return <Table data={trials.trials} />;
+				} else
+					return (
+						<p
+							style={{
+								color: "white",
+								marginTop: "30px",
+								marginLeft: "130px",
+							}}
+						>
+							NO RECORD ON FILE
+						</p>
+					);
+			})()}
+		</div>
+	);
 }
 
 export default VaccineTable;

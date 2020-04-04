@@ -1,19 +1,20 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { ResponsiveChoropleth } from "@nivo/geo";
 
 import { TableContext } from "../utils/TableContext/TableState";
 import { features } from "../data/features.json";
 import data from "../data/map-data.json";
 
-const WorldMap = ({ setCountry }) => {
-	const { mapFilter } = useContext(TableContext);
+import { filter } from "../components/Filter";
 
-	const getCountry = (feature) => {
-    if (feature.data) {
-      console.dir(feature);
-			setCountry(feature.properties.name);
-		}
-  };
+const WorldMap = () => {
+	const { mapFilter, filterByOnClick, trials } = useContext(TableContext);
+
+	const setCountry = e => {
+		mapFilter(e);
+		const sorting = filter("country", e.label, trials.trials);
+		filterByOnClick(sorting);
+	};
 
 	return (
 		<div style={{ height: "600px" }}>
@@ -33,33 +34,35 @@ const WorldMap = ({ setCountry }) => {
 				borderWidth={0.5}
 				borderColor="#c0c0c0"
 				// tooltip={function(e) {}}
-				legends={[
-					// {
-					// 	anchor: "top-left",
-					// 	direction: "row",
-					// 	justify: false,
-					// 	translateX: 37,
-					// 	translateY: 40,
-					// 	itemsSpacing: 0,
-					// 	itemWidth: 94,
-					// 	itemHeight: 18,
-					// 	itemDirection: "left-to-right",
-					// 	itemTextColor: "#444444",
-					// 	itemOpacity: 0.85,
-					// 	symbolSize: 40,
-					// 	symbolShape: "square",
-					// 	effects: [
-					// 		{
-					// 			on: "hover",
-					// 			style: {
-					// 				itemTextColor: "#000000",
-					// 				itemOpacity: 1,
-					// 			},
-					// 		},
-					// 	],
-					// },
-				]}
-				onClick={(feature) => getCountry(feature)}
+				legends={
+					[
+						// {
+						// 	anchor: "top-left",
+						// 	direction: "row",
+						// 	justify: false,
+						// 	translateX: 37,
+						// 	translateY: 40,
+						// 	itemsSpacing: 0,
+						// 	itemWidth: 94,
+						// 	itemHeight: 18,
+						// 	itemDirection: "left-to-right",
+						// 	itemTextColor: "#444444",
+						// 	itemOpacity: 0.85,
+						// 	symbolSize: 40,
+						// 	symbolShape: "square",
+						// 	effects: [
+						// 		{
+						// 			on: "hover",
+						// 			style: {
+						// 				itemTextColor: "#000000",
+						// 				itemOpacity: 1,
+						// 			},
+						// 		},
+						// 	],
+						// },
+					]
+				}
+				onClick={feature => setCountry(feature)}
 			/>
 		</div>
 	);

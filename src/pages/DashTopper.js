@@ -19,8 +19,8 @@ send old={numberOfOldTrial} new={numberOfNewTrial}
 	if the new number is greater it will return a red return 
 	if the number number is the same it will return nothing 
 */
-export default function DashTopper({ country }) {
-	const { table, trials } = useContext(TableContext);
+export default function DashTopper() {
+	const { table, trials, filter } = useContext(TableContext);
 
 	const [time, setTime] = useState("");
 	const data = trials.trials;
@@ -33,8 +33,8 @@ export default function DashTopper({ country }) {
 
 	return (
 		<div className="vacine-dash-header">
-			<div className="title-dash">
-				<h1>{`${country} Dashboard`}</h1>  
+			<div className="title">
+				<h1>{filter && filter.label} Dashboard</h1>
 			</div>
 			<div className="date">
 				<p className="day">{moment(`${time}`).format("dddd")}</p>

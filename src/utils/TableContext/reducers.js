@@ -6,6 +6,8 @@ import {
 	GET_TRIALS_ERROR,
 	SET_FILTER_SUCCESS,
 	SET_FILTER_ERROR,
+	FILTER_BY_ON_CLICK_SUCCESS,
+	FILTER_BY_ON_CLICK_ERROR,
 } from "./types";
 
 const setIsLoading = (state, action) => {
@@ -56,6 +58,20 @@ const mapFilterError = (state, action) => {
 		is_loading: false,
 	};
 };
+const filterByOnClick = (state, action) => {
+	return {
+		...state,
+		is_loading: false,
+		trials: { trials: { ...action.payload } },
+	};
+};
+const filterByOnClickError = (state, action) => {
+	return {
+		...state,
+		error: action.payload,
+		is_loading: false,
+	};
+};
 export const reducer = (state, action) => {
 	switch (action.type) {
 		case IS_LOADING:
@@ -72,6 +88,10 @@ export const reducer = (state, action) => {
 			return mapFilter(state, action);
 		case SET_FILTER_ERROR:
 			return mapFilterError(state, action);
+		case FILTER_BY_ON_CLICK_SUCCESS:
+			return filterByOnClick(state, action);
+		case FILTER_BY_ON_CLICK_ERROR:
+			return filterByOnClickError(state, action);
 		default:
 			return state;
 	}
