@@ -37,8 +37,13 @@ Media Queries for usage
   width: 100%;
   color: #f4f4f4;
   z-index: 4;
+  margin-top: 1%;
 
-	.tittle {
+  .title-name {
+    margin-left: 3%;
+  }
+
+	.title {
 		width: 100%;
 		text-align: left;
 		margin-left: 3%;
@@ -46,7 +51,8 @@ Media Queries for usage
 		a {
 			color: white;
 			.title-name {
-				font-size: 2.2rem;
+        font-size: 2.0rem;
+        
 			}
 			.title-unbold {
 				font-weight: normal;
@@ -105,14 +111,17 @@ Media Queries for usage
 // Vaccine Dashboard's header info
 .vacine-dash-header {
   margin-top: 10%;
+
 //   background: $gunmetal;
   color: white;
   padding: 2% 5%;
   .date {
     display: flex;
     flex-direction: row;
+    margin-left: 3%;
     .day {
       color: #ffc428;
+
     }
     .format {
       padding-left: 4px;
@@ -120,14 +129,16 @@ Media Queries for usage
     }
   }
   .cards {
-    @include flex(space-between, row);
-	align-items: center;
+    @include flex(space-around, row);
+    // margin-left: 5%;
+	  align-items: center;
     // align-content: stretch;
     .card {
-	  background: $gunmetal;
+	    background: $gunmetal;
       border: 2px solid #dbbc6c;
       padding: 2% 3%;
       border-radius: 4px;
+      width: 28%;
       p {
         font-size: 3rem;
         color: #f4b000;
@@ -227,21 +238,42 @@ body {
   background-color: $gray-dark;
 }
 
+.title-dash {
+  margin-left: 3%;
+}
+
+.tittle {
+  margin-left: 3%;
+  width: 100%;
+}
+
 .about {
-  .title {
+  .tittle {
     @include flex(center, row);
-    align-items: center;
+   align-items: center;
     background: url("../assets/virus-img.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    height: 300px;
-    color: white;
+
+    height: 442px;
+	color: white;
+	width: 100%;
+	max-width: 1440px;
+	margin: auto;
+	h1 {
+		font-size: 2.2rem;
+	}
+
   }
   .cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+	justify-content: center;
+	max-width: 1190px;
+	margin: auto;
+	margin-top: 2%;
+	margin-bottom: 2%;
     .card {
       padding: 1% 2%;
       width: 300px;
@@ -253,7 +285,7 @@ body {
   }
   @media #{$mobile} {
     .title {
-      height: 150px;
+      height: 310px;
     }
     .cards {
       @include flex(start, row);
@@ -261,6 +293,12 @@ body {
         padding: 2% 3%;
         width: 100%;
       }
+    }
+  }
+  @media #{$tablet} {
+    .title {
+	  height: 372px;
+	  margin-bottom: -6%;
     }
   }
 }
@@ -275,6 +313,11 @@ body {
 }
 
 // Table
+
+.ui-left-aligned-container {
+  margin-left: 8%;
+}
+
 $tableHover: rgba(161, 161, 161, 0.5);
 $hoverShadow: #40495b;
 .table-wrapper {
@@ -282,13 +325,13 @@ $hoverShadow: #40495b;
     .table {
       text-align: left;
       overflow: hidden;
-      width: 80%;
+      width: 85%;
       font-size: 1rem;
       margin: 0 auto;
       display: table;
       padding: 0 0 8em 0;
       background-color: #2c3341;
-      border-radius: 15px;
+      // border-radius: 15px;
       border-collapse: collapse;
       th {
         font-weight: bold;

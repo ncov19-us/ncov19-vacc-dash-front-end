@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import DashTopper from "./DashTopper";
 import VaccineTable from "./VaccineTable";
 import WorldMap from "../components/WorldMap";
-
+import data from "../data/map-data.json";
 import { TableContext } from "../utils/TableContext/TableState";
 
 function Main() {
@@ -11,10 +11,7 @@ function Main() {
 	return (
 		<>
 			<main className="ui centered grid">
-				<div
-					className="twelve wide column main"
-					style={{ marginTop: "100px" }}
-				>
+				<div className="column main" style={{ marginTop: "5px" }}>
 					<div className="ui stackable grid">
 						<div className="two column row content">
 							<div className="sixteen wide tablet eight wide computer column">

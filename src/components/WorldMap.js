@@ -34,33 +34,35 @@ const WorldMap = () => {
 				borderWidth={0.5}
 				borderColor="#c0c0c0"
 				// tooltip={function(e) {}}
-				legends={[
-					{
-						anchor: "top-left",
-						direction: "row",
-						justify: false,
-						translateX: 37,
-						translateY: 40,
-						itemsSpacing: 0,
-						itemWidth: 94,
-						itemHeight: 18,
-						itemDirection: "left-to-right",
-						itemTextColor: "#444444",
-						itemOpacity: 0.85,
-						symbolSize: 40,
-						symbolShape: "square",
-						effects: [
-							{
-								on: "hover",
-								style: {
-									itemTextColor: "#000000",
-									itemOpacity: 1,
-								},
-							},
-						],
-					},
-				]}
-				onClick={e => setCountry(e)}
+				legends={
+					[
+						// {
+						// 	anchor: "top-left",
+						// 	direction: "row",
+						// 	justify: false,
+						// 	translateX: 37,
+						// 	translateY: 40,
+						// 	itemsSpacing: 0,
+						// 	itemWidth: 94,
+						// 	itemHeight: 18,
+						// 	itemDirection: "left-to-right",
+						// 	itemTextColor: "#444444",
+						// 	itemOpacity: 0.85,
+						// 	symbolSize: 40,
+						// 	symbolShape: "square",
+						// 	effects: [
+						// 		{
+						// 			on: "hover",
+						// 			style: {
+						// 				itemTextColor: "#000000",
+						// 				itemOpacity: 1,
+						// 			},
+						// 		},
+						// 	],
+						// },
+					]
+				}
+				onClick={feature => setCountry(feature)}
 			/>
 		</div>
 	);
