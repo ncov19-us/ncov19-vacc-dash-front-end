@@ -23,7 +23,8 @@ export default function Header() {
 	return (
 		<div className="menubar">
 			<div className="tittle">
-				<Link to="/">
+					
+				<Link to="/" style={{ color: "white" }}>
 					<h1 className="title-name">COVID-19 <span className="title-unbold">Tracker</span></h1>
 				</Link>
 			</div>

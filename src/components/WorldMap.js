@@ -5,12 +5,15 @@ import { TableContext } from "../utils/TableContext/TableState";
 import { features } from "../data/features.json";
 import data from "../data/map-data.json";
 
-const WorldMap = () => {
+const WorldMap = ({ setCountry }) => {
 	const { mapFilter } = useContext(TableContext);
 
-	const setCountry = e => {
-		mapFilter(e);
-	};
+	const getCountry = (feature) => {
+    if (feature.data) {
+      console.dir(feature);
+			setCountry(feature.properties.name);
+		}
+  };
 
 	return (
 		<div style={{ height: "600px" }}>
@@ -31,32 +34,32 @@ const WorldMap = () => {
 				borderColor="#c0c0c0"
 				// tooltip={function(e) {}}
 				legends={[
-					{
-						anchor: "top-left",
-						direction: "row",
-						justify: false,
-						translateX: 37,
-						translateY: 40,
-						itemsSpacing: 0,
-						itemWidth: 94,
-						itemHeight: 18,
-						itemDirection: "left-to-right",
-						itemTextColor: "#444444",
-						itemOpacity: 0.85,
-						symbolSize: 40,
-						symbolShape: "square",
-						effects: [
-							{
-								on: "hover",
-								style: {
-									itemTextColor: "#000000",
-									itemOpacity: 1,
-								},
-							},
-						],
-					},
+					// {
+					// 	anchor: "top-left",
+					// 	direction: "row",
+					// 	justify: false,
+					// 	translateX: 37,
+					// 	translateY: 40,
+					// 	itemsSpacing: 0,
+					// 	itemWidth: 94,
+					// 	itemHeight: 18,
+					// 	itemDirection: "left-to-right",
+					// 	itemTextColor: "#444444",
+					// 	itemOpacity: 0.85,
+					// 	symbolSize: 40,
+					// 	symbolShape: "square",
+					// 	effects: [
+					// 		{
+					// 			on: "hover",
+					// 			style: {
+					// 				itemTextColor: "#000000",
+					// 				itemOpacity: 1,
+					// 			},
+					// 		},
+					// 	],
+					// },
 				]}
-				onClick={e => setCountry(e)}
+				onClick={(feature) => getCountry(feature)}
 			/>
 		</div>
 	);
