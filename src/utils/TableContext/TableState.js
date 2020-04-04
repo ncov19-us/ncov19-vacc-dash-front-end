@@ -10,6 +10,8 @@ import {
 	SET_FILTER_ERROR,
 	FILTER_BY_ON_CLICK_SUCCESS,
 	FILTER_BY_ON_CLICK_ERROR,
+	GET_MAP_SUCCESS,
+	GET_MAP_ERROR,
 } from "./types";
 import { loadState, saveState } from "../localStorage";
 import { axiosWithAuth, client } from "../axiosWithAuth";
@@ -41,6 +43,7 @@ export const TableState = (props) => {
 		table: [],
 		trials: [],
 		filter: [],
+		map: [],
 	};
 
 	// get updated state from localStorage
@@ -59,7 +62,7 @@ export const TableState = (props) => {
 	const getTable = async () => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
-			const table = await client().get("api/totals");
+			const table = await client().get("/api/totals");
 			dispatch({ type: GET_TABLE_SUCCESS, payload: table.data });
 		} catch (e) {
 			console.log("error", e);
@@ -70,7 +73,7 @@ export const TableState = (props) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
 			const res = await client().get(
-				`api/trials?type=vaccine&max=10&page=4`
+				`/api/trials?type=vaccines&countries=china`
 			);
 			dispatch({ type: GET_TRIALS_SUCCESS, payload: res.data });
 		} catch (e) {
@@ -105,6 +108,18 @@ export const TableState = (props) => {
 			}
 		}
 	};
+	const getMap = async () => {
+		dispatch({ type: IS_LOADING, payload: true });
+		try {
+			const res = await client().get(`/api/map`);
+			dispatch({ type: GET_MAP_SUCCESS, payload: res.data });
+		} catch (e) {
+			console.log("error getting map", e);
+			{
+				dispatch({ type: GET_MAP_ERROR, payload: e.response });
+			}
+		}
+	};
 
 	// Provider values are in function or state
 	return (
@@ -112,11 +127,13 @@ export const TableState = (props) => {
 			value={{
 				error: state.error,
 				table: state.table,
+				map: state.map,
 				trials: state.trials,
 				filter: state.filter,
 				isLoading: state.isLoading,
 				getTable,
 				getTrials,
+				getMap,
 				mapFilter,
 				filterByOnClick,
 			}}

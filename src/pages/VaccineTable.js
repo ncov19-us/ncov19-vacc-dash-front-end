@@ -19,11 +19,11 @@ function VaccineTable() {
 		getTable();
 		getTrials();
 	}, []);
-	const length = trials.trials.length;
+
 	return (
 		<div className="trial-padding">
 			<TrialMenu />
-			{length > 0 ? (
+			{trials.trials > 0 ? (
 				<Table data={trials.trials} />
 			) : (
 				<p

@@ -8,6 +8,8 @@ import {
 	SET_FILTER_ERROR,
 	FILTER_BY_ON_CLICK_SUCCESS,
 	FILTER_BY_ON_CLICK_ERROR,
+	GET_MAP_SUCCESS,
+	GET_MAP_ERROR,
 } from "./types";
 
 // updates the state
@@ -73,7 +75,20 @@ const filterByOnClickError = (state, action) => {
 		is_loading: false,
 	};
 };
-
+const getMap = (state, action) => {
+	return {
+		...state,
+		is_loading: false,
+		map: { ...action.payload },
+	};
+};
+const getMapError = (state, action) => {
+	return {
+		...state,
+		error: action.payload,
+		is_loading: false,
+	};
+};
 // cases
 export const reducer = (state, action) => {
 	switch (action.type) {
@@ -95,6 +110,10 @@ export const reducer = (state, action) => {
 			return filterByOnClick(state, action);
 		case FILTER_BY_ON_CLICK_ERROR:
 			return filterByOnClickError(state, action);
+		case GET_MAP_SUCCESS:
+			return getMap(state, action);
+		case GET_MAP_ERROR:
+			return getMapError(state, action);
 		default:
 			return state;
 	}
