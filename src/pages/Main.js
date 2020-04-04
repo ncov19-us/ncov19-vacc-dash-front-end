@@ -7,7 +7,7 @@ import { TableContext } from "../utils/TableContext/TableState";
 
 function Main() {
 	const { filter } = useContext(TableContext);
-	console.log("filter", filter.label);
+
 	return (
 		<>
 			<main className="ui centered grid">
@@ -23,22 +23,9 @@ function Main() {
 							</div>
 							<div className="sixteen wide tablet eight wide computer column">
 								<div className="map-wrapper">
-									{(() => {
-										if (filter.length > 0) {
-											return (
-												<h1 style={{ color: "white" }}>
-													Global Dashboard
-												</h1>
-											);
-										} else {
-											return (
-												<h1 style={{ color: "white" }}>
-													{filter && filter.label}{" "}
-													Dashboard
-												</h1>
-											);
-										}
-									})()}
+									<h1 style={{ color: "white" }}>
+										{filter && filter.label} Dashboard
+									</h1>
 									<WorldMap />
 								</div>
 							</div>

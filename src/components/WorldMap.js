@@ -1,15 +1,19 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { ResponsiveChoropleth } from "@nivo/geo";
 
 import { TableContext } from "../utils/TableContext/TableState";
 import { features } from "../data/features.json";
 import data from "../data/map-data.json";
 
+import { filter } from "../components/Filter";
+
 const WorldMap = () => {
-	const { mapFilter } = useContext(TableContext);
+	const { mapFilter, filterByOnClick, trials } = useContext(TableContext);
 
 	const setCountry = e => {
 		mapFilter(e);
+		const sorting = filter("country", e.label, trials.trials);
+		filterByOnClick(sorting);
 	};
 
 	return (

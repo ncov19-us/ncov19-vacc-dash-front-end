@@ -9,17 +9,31 @@ import treatments from "../data/treatments";
 import "./pages.scss";
 
 function VaccineTable() {
-	const { getTable, getTrials } = useContext(TableContext);
-	useEffect(async () => {
+	const { getTable, getTrials, trials } = useContext(TableContext);
+	useEffect(() => {
 		getTable();
 		getTrials();
 	}, []);
-
+	const length = trials.trials.length;
 	return (
 		<div className="trial-padding">
 			<TrialMenu />
-			{/* {data={tableData}} */}
-			{/* <Table /> */}
+			{(() => {
+				if (length > 0) {
+					return <Table data={trials.trials} />;
+				} else
+					return (
+						<p
+							style={{
+								color: "white",
+								marginTop: "30px",
+								marginLeft: "130px",
+							}}
+						>
+							NO RECORD ON FILE
+						</p>
+					);
+			})()}
 		</div>
 	);
 }
