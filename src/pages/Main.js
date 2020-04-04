@@ -14,7 +14,7 @@ function Main() {
           <div className="ui stackable grid">
             <div className="two column row content">
               <div className="sixteen wide tablet eight wide computer column">
-                <DashTopper />
+                <DashTopper country={filteredCountry} />
                 <VaccineTable country={filteredCountry} />
               </div>
               <div className="sixteen wide tablet eight wide computer column">
