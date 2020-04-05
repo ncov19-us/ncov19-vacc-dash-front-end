@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
+import { Menu } from "semantic-ui-react";
+
 import moment from "moment";
 
 import { filter } from "../components/Filter";
@@ -20,21 +22,65 @@ send old={numberOfOldTrial} new={numberOfNewTrial}
 	if the number number is the same it will return nothing 
 */
 export default function DashTopper() {
-	const { table, trials, filter } = useContext(TableContext);
-
+	const { getTrials, table, trials, getTrialByCountryAndType } = useContext(
+		TableContext
+	);
+	const [active, setActive] = useState("all");
+	const [numPhase, setNumPhase] = useState([]);
 	const [time, setTime] = useState("");
-	// const data = trials.trials;
 
-	// console.log(filter("phase 4", "phase", data));
 	useEffect(() => {
 		const time = new Date();
 		setTime(time);
+
+		// active === "all"
+		// 	? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
+		// 	: setNumPhase(getPhase([`${active.toLowerCase()}`]));
 	}, []);
+
+	/*
+	function that sums all the phases together 
+	where 
+		1-2 early
+		3-4 mid 
+		5 complete
+	
+	USAGE: 
+		accepts an array parameter of what to is going to be sorted
+	*/
+	function getPhase(type) {
+		// keep track of sum phases
+		const sumPhase = {
+			early: 0,
+			mid: 0,
+			complete: 0,
+		};
+		for (let i = 0; i < type.length; i++) {
+			sumPhase.early = table[`${type[i]}`][0] + sumPhase.early;
+			sumPhase.early = table[`${type[i]}`][1] + sumPhase.early;
+			sumPhase.mid = table[`${type[i]}`][2] + sumPhase.mid;
+			sumPhase.mid = table[`${type[i]}`][3] + sumPhase.mid;
+			sumPhase.complete = table[`${type[i]}`][4] + sumPhase.complete;
+		}
+		return sumPhase;
+	}
+
+	// Semantic calls onClick with event, object containing all props
+	const handleClick = (evt, { name }) => {
+		setActive(name);
+		const countryName = table.countries.toLowerCase();
+		name === "all"
+			? getTrials()
+			: getTrialByCountryAndType(name, countryName);
+		// active === "all"
+		// 	? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
+		// 	: setNumPhase(getPhase([`${active.toLowerCase()}`]));
+	};
 
 	return (
 		<div className="vacine-dash-header">
 			<div className="title">
-				<h1>{filter && filter.label} Dashboard</h1>
+				<h1>{table && table.countries} Dashboard</h1>
 			</div>
 			<div className="date">
 				<p className="day">{moment(`${time}`).format("dddd")}</p>
@@ -47,20 +93,53 @@ export default function DashTopper() {
 					<div className="stats">
 						<h4>Early Phase Trials</h4>
 					</div>
-					<p>29</p>
+					<p>{numPhase && numPhase.early}</p>
 				</div>
 				<div className="card">
 					<div className="stats">
 						<h4>Mid Phase Trials</h4>
 					</div>
-					<p>59</p>
+					<p>{numPhase && numPhase.mid}</p>
 				</div>
 				<div className="card">
 					<div className="stats">
 						<h4>Completed Trials</h4>
 					</div>
-					<p>29</p>
+					<p>{numPhase && numPhase.complete}</p>
 				</div>
+			</div>
+			<div className="ui-left-aligned-container">
+				<h3 className="trials">COVID-19 Trials</h3>
+				<Menu compact pointing secondary inverted>
+					<Menu.Item
+						name="all"
+						active={active === "all"}
+						onClick={handleClick}
+					>
+						Trials
+					</Menu.Item>
+					<Menu.Item
+						name="vaccines"
+						active={active === "vaccines"}
+						onClick={handleClick}
+					>
+						Vaccines
+					</Menu.Item>
+					<Menu.Item
+						name="treatments"
+						active={active === "treatments"}
+						onClick={handleClick}
+					>
+						Treatments
+					</Menu.Item>
+					<Menu.Item
+						name="alternatives"
+						active={active === "alternatives"}
+						onClick={handleClick}
+					>
+						Alternatives
+					</Menu.Item>
+				</Menu>
 			</div>
 		</div>
 	);

@@ -1,21 +1,40 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ResponsiveChoropleth } from "@nivo/geo";
 
 import { TableContext } from "../utils/TableContext/TableState";
 import { features } from "../data/features.json";
-import data from "../data/map-data.json";
 
 import { filter } from "../components/Filter";
 
+/*
+GOAL:
+	* Use global in conjunction with the map 
+	* Upon clicking a country on the map it filter name on dash board and map to display that country. 
+	* And have that countries information filter in a table
+	
+
+USAGE: 
+	- Onclick funtion that passes the contries data and use "mapFilter" function on Context to save the data to Global state
+	- then use a filter function to display filtered data on table
+
+RETURNS: 
+	- Updated Global Country Name
+	- Filtered Countries' data 
+*/
+
 const WorldMap = () => {
-	const { mapFilter, filterByOnClick, trials } = useContext(TableContext);
-
-	const setCountry = e => {
-		mapFilter(e);
-		const sorting = filter("country", e.label, trials.trials);
-		filterByOnClick(sorting);
+	const [data, setData] = useState([]);
+	const { mapFilterByCountry, getMap, map } = useContext(TableContext);
+	useEffect(async () => {
+		getMap();
+		for (let i = 0; i < Object.keys(map).length; i++) {
+			delete map[i].country;
+		}
+		setData([map]);
+	}, []);
+	const setCountry = (e) => {
+		mapFilterByCountry(e);
 	};
-
 	return (
 		<div style={{ height: "600px" }}>
 			<ResponsiveChoropleth
@@ -48,8 +67,8 @@ const WorldMap = () => {
 						// 	itemDirection: "left-to-right",
 						// 	itemTextColor: "#444444",
 						// 	itemOpacity: 0.85,
-						// 	symbolSize: 40,
-						// 	symbolShape: "square",
+						// symbolSize: 40,
+						// symbolShape: "square",
 						// 	effects: [
 						// 		{
 						// 			on: "hover",
@@ -62,7 +81,7 @@ const WorldMap = () => {
 						// },
 					]
 				}
-				onClick={feature => setCountry(feature)}
+				onClick={(feature) => setCountry(feature)}
 			/>
 		</div>
 	);

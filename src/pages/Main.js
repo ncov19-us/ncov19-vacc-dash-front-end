@@ -1,9 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import DashTopper from "./DashTopper";
 import VaccineTable from "./VaccineTable";
 import WorldMap from "../components/WorldMap";
+
 import { TableContext } from "../utils/TableContext/TableState";
 
+/*
+GOAL:
+	* Display current country's been display as dashboard title
+	 
+*/
 function Main() {
 	const { filter } = useContext(TableContext);
 
