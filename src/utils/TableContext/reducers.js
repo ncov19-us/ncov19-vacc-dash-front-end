@@ -39,7 +39,8 @@ const getTrials = (state, action) => {
 	return {
 		...state,
 		is_loading: false,
-		trials: { ...action.payload },
+		trials: action.payload.results,
+		count: action.payload.count
 	};
 };
 const getTrialsError = (state, action) => {

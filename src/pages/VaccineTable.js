@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 import { TableContext } from "../utils/TableContext/TableState";
 
-// import Table from "./Table";
-import Tables from "./Tables";
-import treatments from "../data/treatments";
+import Table from "./Table";
+import TrialMenu from "../components/TrialMenu";
+import PageBar from "../components/PageBar";
 
 import "./pages.scss";
 
@@ -19,21 +19,49 @@ function VaccineTable() {
 		getTable();
 		getTrials();
 	}, []);
-	// console.log("trials", trials);
+	// // console.log("trials", trials);
+	// return (
+	// 	<div className="trial-padding">
+	// 	</div>
+	// );
+	const { getTrials, trials, isLoading, count } = useContext(TableContext);
+
+	const [apiUrl, setApiUrl] = useState("api/trials?limit=15&page=1");
+
+	useEffect(() => {
+		getTrials(apiUrl);
+	}, [apiUrl]);
+
 	return (
 		<div className="trial-padding">
-			{trials.results.length > 0 ? (
-				<Tables />
-			) : (
-				<p
-					style={{
-						color: "white",
-						marginTop: "30px",
-						marginLeft: "130px",
-					}}
-				>
-					NO RECORD ON FILE
-				</p>
+			<TrialMenu />
+			{isLoading && (
+				<div className="ui inverted segment">
+					<div className="ui active inverted loader" />
+					<br />
+					<br />
+					<br />
+				</div>
+			)}
+			{!isLoading && trials && (
+				<>
+					{trials.results.length > 0 ? (
+						<Tables />
+					) : (
+						<p
+							style={{
+								color: "white",
+								marginTop: "30px",
+								marginLeft: "130px",
+							}}
+						>
+							NO RECORD ON FILE
+						</p>
+					)}
+
+					{/* <Table data={trials} /> */}
+					<PageBar count={count} setUrl={setApiUrl} />
+				</>
 			)}
 		</div>
 	);

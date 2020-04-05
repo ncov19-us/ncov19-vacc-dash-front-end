@@ -45,13 +45,15 @@ export const TableState = (props) => {
 		table: [],
 		trials: [],
 		map: [],
+		count: null,
+		filter: [],
 	};
 
 	// get updated state from localStorage
 	const localState = loadState("table");
 
-	// use reducer on local state or start fresh with initial state
-	const [state, dispatch] = useReducer(reducer, localState || initialState);
+	// const [state, dispatch] = useReducer(reducer, localState || initialState);
+	const [state, dispatch] = useReducer(reducer, initialState);
 
 	// save state to localstorage on page render
 	useEffect(() => {
@@ -70,22 +72,12 @@ export const TableState = (props) => {
 			dispatch({ type: GET_TABLE_ERROR, payload: e.response });
 		}
 	};
-	const getTrials = async () => {
+	const getTrials = async (apiUrl) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
-			const vaccines = await client().get(`/api/trials?type=vaccines`);
-			const treatments = await client().get(
-				`/api/trials?type=treatments`
-			);
-			const alternatives = await client().get(
-				`/api/trials?type=alternatives`
-			);
-			const getAll = {
-				...vaccines.data,
-				...treatments.data,
-				...alternatives.data,
-			};
-			dispatch({ type: GET_TRIALS_SUCCESS, payload: getAll });
+			const res = await client().get(apiUrl);
+
+			dispatch({ type: GET_TRIALS_SUCCESS, payload: res.data });
 		} catch (e) {
 			console.log("error", e.message);
 			{
@@ -160,6 +152,7 @@ export const TableState = (props) => {
 				table: state.table,
 				map: state.map,
 				trials: state.trials,
+				count: state.count,
 				filter: state.filter,
 				isLoading: state.isLoading,
 				getTable,
