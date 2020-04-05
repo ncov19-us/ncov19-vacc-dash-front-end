@@ -23,7 +23,7 @@ export default function DashTopper() {
 	const { table, trials, filter } = useContext(TableContext);
 
 	const [time, setTime] = useState("");
-	const data = trials.trials;
+	// const data = trials.trials;
 
 	// console.log(filter("phase 4", "phase", data));
 	useEffect(() => {

@@ -1,18 +1,21 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 import { TableContext } from '../utils/TableContext/TableState';
 
 import Table from './Table';
 import TrialMenu from '../components/TrialMenu';
+import PageBar from '../components/PageBar';
 
 import './pages.scss';
 
 function VaccineTable() {
-  const { getTrials, trials, isLoading } = useContext(TableContext);
+  const { getTrials, trials, isLoading, count } = useContext(TableContext);
+
+	const [apiUrl, setApiUrl] = useState('api/trials?limit=15&page=1');
 
   useEffect(() => {
-    getTrials();
-  }, []);
+    getTrials(apiUrl);
+  }, [apiUrl]);
 
   return (
     <div className="trial-padding">
@@ -25,7 +28,12 @@ function VaccineTable() {
           <br />
         </div>
       )}
-      {!isLoading && trials && <Table data={trials} />}
+      {!isLoading && trials && (
+				<>
+				<Table data={trials} />
+				<PageBar count={count} setUrl={setApiUrl} />
+				</>
+			)}
     </div>
   );
 }
