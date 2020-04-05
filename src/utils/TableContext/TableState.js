@@ -62,16 +62,7 @@ export const TableState = (props) => {
 
 	// method that will dispatch success or error
 	// send CRUD operation to backend server
-	const getTable = async () => {
-		dispatch({ type: IS_LOADING, payload: true });
-		try {
-			const table = await client().get("/api/totals");
-			dispatch({ type: GET_TABLE_SUCCESS, payload: table.data });
-		} catch (e) {
-			console.log("error", e.message);
-			dispatch({ type: GET_TABLE_ERROR, payload: e.response });
-		}
-	};
+
 	const getTrials = async (apiUrl) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
@@ -125,7 +116,19 @@ export const TableState = (props) => {
 			}
 		}
 	};
-	const getTrialByCountry = async (type, country) => {
+	// const getTrialByCountry = async () => {
+	// 	dispatch({ type: IS_LOADING, payload: true });
+	// 	try {
+	// 		const res = await client().call(`endpoint`);
+	// 		dispatch({ type: TYPENAME_SUCCESS, payload: res.data });
+	// 	} catch (e) {
+	// 		console.log("error", e);
+	// 		{
+	// 			dispatch({ type: TYPENAME_ERROR, payload: e.response });
+	// 		}
+	// 	}
+	// };
+	const getTrialByCountryAndType = async (type, country) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
 			const res = await client().get(
@@ -155,12 +158,11 @@ export const TableState = (props) => {
 				count: state.count,
 				filter: state.filter,
 				isLoading: state.isLoading,
-				getTable,
 				getTrials,
 				getMap,
 				mapFilterByCountry,
 				filterByOnClick,
-				getTrialByCountry,
+				getTrialByCountryAndType,
 			}}
 		>
 			{props.children}

@@ -22,7 +22,7 @@ send old={numberOfOldTrial} new={numberOfNewTrial}
 	if the number number is the same it will return nothing 
 */
 export default function DashTopper() {
-	const { getTrials, table, trials, getTrialByCountry } = useContext(
+	const { getTrials, table, trials, getTrialByCountryAndType } = useContext(
 		TableContext
 	);
 	const [active, setActive] = useState("all");
@@ -33,9 +33,9 @@ export default function DashTopper() {
 		const time = new Date();
 		setTime(time);
 
-		active === "all"
-			? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
-			: setNumPhase(getPhase([`${active.toLowerCase()}`]));
+		// active === "all"
+		// 	? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
+		// 	: setNumPhase(getPhase([`${active.toLowerCase()}`]));
 	}, []);
 
 	/*
@@ -69,10 +69,12 @@ export default function DashTopper() {
 	const handleClick = (evt, { name }) => {
 		setActive(name);
 		const countryName = table.countries.toLowerCase();
-		name === "all" ? getTrials() : getTrialByCountry(name, countryName);
-		active === "all"
-			? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
-			: setNumPhase(getPhase([`${active.toLowerCase()}`]));
+		name === "all"
+			? getTrials()
+			: getTrialByCountryAndType(name, countryName);
+		// active === "all"
+		// 	? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
+		// 	: setNumPhase(getPhase([`${active.toLowerCase()}`]));
 	};
 
 	return (
