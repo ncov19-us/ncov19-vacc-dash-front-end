@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import DashTopper from "./DashTopper";
 import VaccineTable from "./VaccineTable";
 import WorldMap from "../components/WorldMap";
@@ -13,6 +13,8 @@ GOAL:
 function Main() {
 	const { table } = useContext(TableContext);
 
+	const [selectedCountry, setSelectedCountry] = useState('Global');
+
 	return (
 		<>
 			<main className="ui centered grid">
@@ -20,7 +22,7 @@ function Main() {
 					<div className="ui stackable grid">
 						<div className="two column row content">
 							<div className="sixteen wide tablet eight wide computer column">
-								<DashTopper />
+								<DashTopper selectedCountry={selectedCountry} />
 								<VaccineTable />
 							</div>
 							<div className="sixteen wide tablet eight wide computer column">
@@ -28,7 +30,7 @@ function Main() {
 									<h1 style={{ color: "white" }}>
 										{table && table.countries} Dashboard
 									</h1>
-									<WorldMap />
+									<WorldMap setSelectedCountry={setSelectedCountry}/>
 								</div>
 							</div>
 						</div>

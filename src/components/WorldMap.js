@@ -22,13 +22,13 @@ RETURNS:
 	- Filtered Countries' data 
 */
 
-const WorldMap = () => {
+const WorldMap = ({ setSelectedCountry }) => {
 	const [data, setData] = useState([]);
 	const {
 		mapFilterDashCards,
 		mapFilterByCountryTrials,
 		getMap,
-		map,
+		map
 	} = useContext(TableContext);
 
 	useEffect(async () => {
@@ -42,6 +42,8 @@ const WorldMap = () => {
 	const setCountry = (e) => {
 		mapFilterDashCards(e.properties.name); //populate dash cards
 		mapFilterByCountryTrials(e.properties.name); //populate table
+
+		setSelectedCountry(e.properties.name);
 	};
 	return (
 		<div style={{ height: "600px" }}>

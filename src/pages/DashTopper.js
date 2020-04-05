@@ -21,31 +21,46 @@ send old={numberOfOldTrial} new={numberOfNewTrial}
 	if the new number is greater it will return a red return 
 	if the number number is the same it will return nothing 
 */
-export default function DashTopper() {
+export default function DashTopper({ selectedCountry }) {
 	const {
 		getTrials,
 		table,
 		getTrialByCountryAndType,
 		mapFilterDashCards,
 		populateWorld,
+		populateDashCards,
+		country
 	} = useContext(TableContext);
 	const [active, setActive] = useState("all");
 	const [numPhase, setNumPhase] = useState([]);
 	const [time, setTime] = useState("");
-	const name = table.countries;
 
 	useEffect(() => {
 		const time = new Date();
 		setTime(time);
 
-		table && table.countries === "world"
-			? mapFilterDashCards(name)
-			: populateWorld();
+		/* 
+			populateDashCards() hits /api/totals 
+			and stores the entire response in `table` in Context.
+		*/
 
+		populateDashCards(selectedCountry);
+
+		// table && table.countries === "world"
+		// 	? mapFilterDashCards(table.countries)
+		// 	: populateWorld();
+
+	}, [selectedCountry]);
+	
+	useEffect(() => {
 		active === "all"
 			? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
 			: setNumPhase(getPhase([`${active}`]));
-	}, []);
+		
+		console.log(table);
+
+	}, [table]);
+
 	/*
 	function that sums all the phases together 
 	where 
@@ -56,22 +71,24 @@ export default function DashTopper() {
 	USAGE: 
 		accepts an array parameter of what to is going to be sorted
 	*/
-	function getPhase(type) {
+	function getPhase(types) {
 		// keep track of sum phases
 		const sumPhase = {
 			early: 0,
 			mid: 0,
 			complete: 0,
 		};
-		for (let i = 0; i < type.length; i++) {
-			console.log("type[i]", table.type[i][0]);
-			console.log("table[type[i]", table.type[i]);
-			sumPhase.early = table[`${type[i]}`][0] + sumPhase.early;
-			sumPhase.early = table[`${type[i]}`][1] + sumPhase.early;
-			sumPhase.mid = table[`${type[i]}`][2] + sumPhase.mid;
-			sumPhase.mid = table[`${type[i]}`][3] + sumPhase.mid;
-			sumPhase.complete = table[`${type[i]}`][4] + sumPhase.complete;
-		}
+
+		types.forEach(type => {
+			if (table.countries) {
+				const typeTotals = table[type];
+				
+				sumPhase.early += typeTotals[0] + typeTotals[1];
+				sumPhase.mid += typeTotals[2] + typeTotals[3];
+				sumPhase.complete += typeTotals[4];
+			}
+		});
+
 		return sumPhase;
 	}
 

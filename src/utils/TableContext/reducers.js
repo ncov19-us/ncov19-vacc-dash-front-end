@@ -15,7 +15,7 @@ import {
 	SET_MAP_FILTER_TABLE_SUCCESS,
 	SET_MAP_FILTER_TABLE_ERROR,
 	POPULATE_WORLD_SUCCESS,
-	POPULATE_WORLD_ERROR,
+	POPULATE_WORLD_ERROR
 } from "./types";
 
 // updates the state
@@ -138,6 +138,14 @@ const populateWorldError = (state, action) => {
 		is_loading: false,
 	};
 };
+
+const changeCountry = (state, action) => {
+	return {
+		...state,
+		country: action.payload
+	}
+};
+
 // cases
 export const reducer = (state, action) => {
 	switch (action.type) {

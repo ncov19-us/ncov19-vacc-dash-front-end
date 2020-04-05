@@ -17,7 +17,7 @@ import {
 	SET_MAP_FILTER_TABLE_SUCCESS,
 	SET_MAP_FILTER_TABLE_ERROR,
 	POPULATE_WORLD_SUCCESS,
-	POPULATE_WORLD_ERROR,
+	POPULATE_WORLD_ERROR
 } from "./types";
 import { loadState, saveState } from "../localStorage";
 import { axiosWithAuth, client } from "../axiosWithAuth";
@@ -46,15 +46,17 @@ export const TableState = (props) => {
 	const initialState = {
 		error: "",
 		isLoading: false,
-		table: [],
+		table: {},
 		trials: [],
 		map: [],
 		count: null,
+		country: "Global"
 	};
 
 	// get updated state from localStorage
 	const localState = loadState("table");
 
+	// NOTE: uncomment local storage hook for now for debugging purposes
 	// const [state, dispatch] = useReducer(reducer, localState || initialState);
 	const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -129,6 +131,23 @@ export const TableState = (props) => {
 		}
 	};
 
+	const populateDashCards = async (country) => {
+		dispatch({ type: IS_LOADING, payload: true });
+
+		let apiUrl = '/api/totals';
+		if (country !== 'Global') {
+			apiUrl = `/api/totals?countries=${country.toLowerCase()}`
+		}
+
+		try {
+			const res = await client().get(apiUrl);
+			dispatch({ type: SET_FILTER_SUCCESS, payload: res.data });
+		} catch ({ message, response }) {
+			console.log(message);
+			dispatch({ type: SET_FILTER_ERROR, payload: response });
+		}
+	};
+
 	const filterByOnClick = async (data) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
@@ -194,6 +213,7 @@ export const TableState = (props) => {
 				mapFilterDashCards,
 				mapFilterByCountryTrials,
 				populateWorld,
+				populateDashCards
 			}}
 		>
 			{props.children}
