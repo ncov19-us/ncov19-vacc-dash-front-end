@@ -11,7 +11,7 @@ GOAL:
 	 
 */
 function Main() {
-	const { filter } = useContext(TableContext);
+	const { table } = useContext(TableContext);
 
 	return (
 		<>
@@ -26,7 +26,7 @@ function Main() {
 							<div className="sixteen wide tablet eight wide computer column">
 								<div className="map-wrapper">
 									<h1 style={{ color: "white" }}>
-										{filter && filter.label} Dashboard
+										{table && table.countries} Dashboard
 									</h1>
 									<WorldMap />
 								</div>
