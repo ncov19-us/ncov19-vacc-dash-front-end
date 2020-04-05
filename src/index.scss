@@ -1,4 +1,29 @@
 @charset 'utf-8';
 
-@import './main.scss';
-@import './pages/pages.scss';
+// Abstracts
+@import './stylesheets/variables';
+@import './stylesheets/mixins';
+// ...functions, placeholders
+
+// Vendors
+
+// Base
+@import './stylesheets/reset';
+// @import './stylesheets/typography';
+
+// Layout
+// navigation, grid, header, footer, sidebar, forms, etc.
+@import './stylesheets/header';
+@import './stylesheets/footer';
+
+// Components
+// buttons, carousel, cover, dropdown, etc.
+
+// Pages
+@import './stylesheets/table';
+@import './stylesheets/map';
+@import './stylesheets/about';
+
+// Originals
+@import './stylesheets/main';
+@import './stylesheets/pages';

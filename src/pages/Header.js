@@ -5,8 +5,6 @@ import burger from '../assets/menu.png';
 
 import { Modal } from 'semantic-ui-react';
 
-// import "./pages.scss";
-
 /*
 menubar COMPONENT 
 Styling is in pages.scss 

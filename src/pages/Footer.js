@@ -3,8 +3,6 @@ import React from 'react';
 // github icon'
 import github from '../assets/github.svg';
 
-// import "./pages.scss";
-
 export default function Footer() {
   return (
     <div className="foot">

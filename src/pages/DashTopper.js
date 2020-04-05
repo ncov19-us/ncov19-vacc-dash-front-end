@@ -6,8 +6,7 @@ import moment from 'moment';
 import { filter } from '../components/Filter';
 import { TableContext } from '../utils/TableContext/TableState';
 
-// import "./pages.scss";
-// FIXME: DON'T DO THIS HERE
+// FIXME: Move this to stylesheets.
 import 'semantic-ui-css/semantic.min.css';
 
 /*

@@ -1,7 +1,5 @@
 import React from 'react';
 
-// import "./pages.scss";
-
 const header =
   'Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus';
 
