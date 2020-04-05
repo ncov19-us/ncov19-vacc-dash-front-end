@@ -12,6 +12,8 @@ import {
 	GET_MAP_ERROR,
 	GET_TRIAL_BY_COUNTRY_SUCCESS,
 	GET_TRIAL_BY_COUNTRY_ERROR,
+	SET_MAP_FILTER_TABLE_SUCCESS,
+	SET_MAP_FILTER_TABLE_ERROR,
 } from "./types";
 
 // updates the state
@@ -39,8 +41,8 @@ const getTrials = (state, action) => {
 	return {
 		...state,
 		is_loading: false,
-		trials: action.payload.results,
-		count: action.payload.count
+		trials: action.payload,
+		count: action.payload.count,
 	};
 };
 const getTrialsError = (state, action) => {
@@ -54,7 +56,7 @@ const mapFilter = (state, action) => {
 	return {
 		...state,
 		is_loading: false,
-		table: { ...action.payload },
+		table: action.payload,
 	};
 };
 const mapFilterError = (state, action) => {
@@ -106,6 +108,20 @@ const getTrialByCountryError = (state, action) => {
 		is_loading: false,
 	};
 };
+const setMapFilterTable = (state, action) => {
+	return {
+		...state,
+		is_loading: false,
+		trials: action.payload,
+	};
+};
+const setMapFilterTableError = (state, action) => {
+	return {
+		...state,
+		error: action.payload,
+		is_loading: false,
+	};
+};
 // cases
 export const reducer = (state, action) => {
 	switch (action.type) {
@@ -135,6 +151,10 @@ export const reducer = (state, action) => {
 			return getTrialByCountry(state, action);
 		case GET_TRIAL_BY_COUNTRY_ERROR:
 			return getTrialByCountryError(state, action);
+		case SET_MAP_FILTER_TABLE_SUCCESS:
+			return setMapFilterTable(state, action);
+		case SET_MAP_FILTER_TABLE_ERROR:
+			return setMapFilterTableError(state, action);
 		default:
 			return state;
 	}

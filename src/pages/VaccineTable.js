@@ -2,26 +2,19 @@ import React, { useContext, useState, useEffect } from "react";
 
 import { TableContext } from "../utils/TableContext/TableState";
 
-import Table from "./Table";
+import Tables from "./Table";
 import PageBar from "../components/PageBar";
 
 import "./pages.scss";
 
 /*
-GOAL:
+GOAL: 
 	* Display current country's data on table
 	 
 */
 function VaccineTable() {
-	const { getTable, getTrials, trials, isLoading, count } = useContext(
-		TableContext
-	);
+	const { getTrials, trials, isLoading, count } = useContext(TableContext);
 	const [apiUrl, setApiUrl] = useState("api/trials?limit=15&page=1");
-
-	// useEffect(() => {
-	// 	// getTrials();
-	// }, []);
-	// console.log("trials", trials);
 
 	useEffect(() => {
 		getTrials(apiUrl);
@@ -29,18 +22,31 @@ function VaccineTable() {
 
 	return (
 		<div className="trial-padding">
-			{isLoading && (
-				<div className="ui inverted segment">
-					<div className="ui active inverted loader" />
-					<br />
-					<br />
-					<br />
+			{trials.length > 0 ? (
+				<div>
+					<div className="table">
+						<div className="title">
+							<h4 className="sponsor">Sponsor</h4>
+							<h4 className="country">Country</h4>
+							{/* <h4>Drug</h4> */}
+							<h4 className="phase">Phase</h4>
+							<h4 className="type">Type</h4>
+						</div>
+
+						{trials &&
+							trials.map((data) => (
+								<div className="content" key={data.id}>
+									<p className="sponsor">{data.sponsors}</p>
+									<p className="country">{data.countries}</p>
+									<p className="phase">{data.phase_num}</p>
+									<p className="intervention_type">
+										{data.intervention}
+									</p>
+								</div>
+							))}
+					</div>
+					<PageBar count={count} setUrl={setApiUrl} />
 				</div>
-			)}
-			{!isLoading && trials && (
-				<>
-					{/* {trials.length > 0 ? (
-				<Table />
 			) : (
 				<p
 					style={{
@@ -51,10 +57,6 @@ function VaccineTable() {
 				>
 					NO RECORD ON FILE
 				</p>
-			)} */}
-					<Table data={trials} />
-					<PageBar count={count} setUrl={setApiUrl} />
-				</>
 			)}
 		</div>
 	);

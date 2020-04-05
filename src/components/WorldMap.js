@@ -24,7 +24,12 @@ RETURNS:
 
 const WorldMap = () => {
 	const [data, setData] = useState([]);
-	const { mapFilterByCountry, getMap, map } = useContext(TableContext);
+	const {
+		mapFilterDashCards,
+		mapFilterByCountryTrials,
+		getMap,
+		map,
+	} = useContext(TableContext);
 	useEffect(async () => {
 		getMap();
 		for (let i = 0; i < Object.keys(map).length; i++) {
@@ -33,7 +38,8 @@ const WorldMap = () => {
 		setData([map]);
 	}, []);
 	const setCountry = (e) => {
-		mapFilterByCountry(e);
+		mapFilterDashCards(e); //populate dash cards
+		mapFilterByCountryTrials(e); //populate table
 	};
 	return (
 		<div style={{ height: "600px" }}>

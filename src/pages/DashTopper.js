@@ -22,7 +22,7 @@ send old={numberOfOldTrial} new={numberOfNewTrial}
 	if the number number is the same it will return nothing 
 */
 export default function DashTopper() {
-	const { getTrials, table, trials, getTrialByCountryAndType } = useContext(
+	const { getTrials, table, getTrialByCountryAndType } = useContext(
 		TableContext
 	);
 	const [active, setActive] = useState("all");
@@ -64,7 +64,7 @@ export default function DashTopper() {
 		}
 		return sumPhase;
 	}
-
+	console.log("table", table);
 	// Semantic calls onClick with event, object containing all props
 	const handleClick = (evt, { name }) => {
 		setActive(name);
@@ -80,7 +80,11 @@ export default function DashTopper() {
 	return (
 		<div className="vacine-dash-header">
 			<div className="title">
-				<h1>{table && table.countries} Dashboard</h1>
+				{table && table.countries ? (
+					<h1> {table.countries} Dashboard </h1>
+				) : (
+					<h1>World Dashboard</h1>
+				)}
 			</div>
 			<div className="date">
 				<p className="day">{moment(`${time}`).format("dddd")}</p>
