@@ -30,6 +30,7 @@ const WorldMap = () => {
 		getMap,
 		map,
 	} = useContext(TableContext);
+
 	useEffect(async () => {
 		getMap();
 		for (let i = 0; i < Object.keys(map).length; i++) {
@@ -37,9 +38,10 @@ const WorldMap = () => {
 		}
 		setData([map]);
 	}, []);
+
 	const setCountry = (e) => {
-		mapFilterDashCards(e); //populate dash cards
-		mapFilterByCountryTrials(e); //populate table
+		mapFilterDashCards(e.properties.name); //populate dash cards
+		mapFilterByCountryTrials(e.properties.name); //populate table
 	};
 	return (
 		<div style={{ height: "600px" }}>

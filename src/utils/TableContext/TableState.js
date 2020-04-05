@@ -16,6 +16,8 @@ import {
 	GET_TRIAL_BY_COUNTRY_ERROR,
 	SET_MAP_FILTER_TABLE_SUCCESS,
 	SET_MAP_FILTER_TABLE_ERROR,
+	POPULATE_WORLD_SUCCESS,
+	POPULATE_WORLD_ERROR,
 } from "./types";
 import { loadState, saveState } from "../localStorage";
 import { axiosWithAuth, client } from "../axiosWithAuth";
@@ -97,9 +99,7 @@ export const TableState = (props) => {
 	const mapFilterByCountryTrials = async (country) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
-			const res = await client().get(
-				`/api/trials?countries=${country.properties.name.toLowerCase()}`
-			);
+			const res = await client().get(`/api/trials?countries=${country}`);
 			dispatch({
 				type: SET_MAP_FILTER_TABLE_SUCCESS,
 				payload: res.data.results,
@@ -119,9 +119,7 @@ export const TableState = (props) => {
 	const mapFilterDashCards = async (country) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
-			const res = await client().get(
-				`/api/totals?countries=${country.properties.name}`
-			);
+			const res = await client().get(`/api/totals?countries=${country}`);
 			dispatch({ type: SET_FILTER_SUCCESS, payload: res.data });
 		} catch (e) {
 			console.log("error", e);
@@ -130,6 +128,7 @@ export const TableState = (props) => {
 			}
 		}
 	};
+
 	const filterByOnClick = async (data) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
@@ -163,6 +162,19 @@ export const TableState = (props) => {
 			}
 		}
 	};
+	// populate world
+	const populateWorld = async () => {
+		dispatch({ type: IS_LOADING, payload: true });
+		try {
+			const res = await client().get(`api/totals`);
+			dispatch({ type: POPULATE_WORLD_SUCCESS, payload: res.data });
+		} catch (e) {
+			console.log("error", e);
+			{
+				dispatch({ type: POPULATE_WORLD_ERROR, payload: e.response });
+			}
+		}
+	};
 
 	// Provider values are in function or state
 	return (
@@ -181,6 +193,7 @@ export const TableState = (props) => {
 				getTrialByCountryAndType,
 				mapFilterDashCards,
 				mapFilterByCountryTrials,
+				populateWorld,
 			}}
 		>
 			{props.children}

@@ -14,6 +14,8 @@ import {
 	GET_TRIAL_BY_COUNTRY_ERROR,
 	SET_MAP_FILTER_TABLE_SUCCESS,
 	SET_MAP_FILTER_TABLE_ERROR,
+	POPULATE_WORLD_SUCCESS,
+	POPULATE_WORLD_ERROR,
 } from "./types";
 
 // updates the state
@@ -122,6 +124,20 @@ const setMapFilterTableError = (state, action) => {
 		is_loading: false,
 	};
 };
+const populateWorld = (state, action) => {
+	return {
+		...state,
+		is_loading: false,
+		table: action.payload,
+	};
+};
+const populateWorldError = (state, action) => {
+	return {
+		...state,
+		error: action.payload,
+		is_loading: false,
+	};
+};
 // cases
 export const reducer = (state, action) => {
 	switch (action.type) {
@@ -155,6 +171,10 @@ export const reducer = (state, action) => {
 			return setMapFilterTable(state, action);
 		case SET_MAP_FILTER_TABLE_ERROR:
 			return setMapFilterTableError(state, action);
+		case POPULATE_WORLD_SUCCESS:
+			return populateWorld(state, action);
+		case POPULATE_WORLD_ERROR:
+			return populateWorldError(state, action);
 		default:
 			return state;
 	}
