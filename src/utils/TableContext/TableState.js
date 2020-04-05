@@ -45,7 +45,6 @@ export const TableState = (props) => {
 		table: [],
 		trials: [],
 		map: [],
-		phase: [],
 	};
 
 	// get updated state from localStorage
@@ -100,7 +99,6 @@ export const TableState = (props) => {
 			const res = await client().get(
 				`/api/totals?countries=${country.properties.name}`
 			);
-			console.log("res", res);
 			dispatch({ type: SET_FILTER_SUCCESS, payload: res.data });
 		} catch (e) {
 			console.log("error", e);
