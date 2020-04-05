@@ -1,11 +1,11 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from 'react';
 
-import { TableContext } from "../utils/TableContext/TableState";
+import { TableContext } from '../utils/TableContext/TableState';
 
-import Table from "./Table";
-import PageBar from "../components/PageBar";
+import Table from './Table';
+import PageBar from '../components/PageBar';
 
-import "./pages.scss";
+// import "./pages.scss";
 
 /*
 GOAL:
@@ -13,33 +13,33 @@ GOAL:
 	 
 */
 function VaccineTable() {
-	const { getTable, getTrials, trials, isLoading, count } = useContext(
-		TableContext
-	);
-	const [apiUrl, setApiUrl] = useState("api/trials?limit=15&page=1");
+  const { getTable, getTrials, trials, isLoading, count } = useContext(
+    TableContext
+  );
+  const [apiUrl, setApiUrl] = useState('api/trials?limit=15&page=1');
 
-	// useEffect(() => {
-	// 	// getTrials();
-	// }, []);
-	// console.log("trials", trials);
+  // useEffect(() => {
+  // 	// getTrials();
+  // }, []);
+  // console.log("trials", trials);
 
-	useEffect(() => {
-		getTrials(apiUrl);
-	}, [apiUrl]);
+  useEffect(() => {
+    getTrials(apiUrl);
+  }, [apiUrl]);
 
-	return (
-		<div className="trial-padding">
-			{isLoading && (
-				<div className="ui inverted segment">
-					<div className="ui active inverted loader" />
-					<br />
-					<br />
-					<br />
-				</div>
-			)}
-			{!isLoading && trials && (
-				<>
-					{/* {trials.length > 0 ? (
+  return (
+    <div className="trial-padding">
+      {isLoading && (
+        <div className="ui inverted segment">
+          <div className="ui active inverted loader" />
+          <br />
+          <br />
+          <br />
+        </div>
+      )}
+      {!isLoading && trials && (
+        <>
+          {/* {trials.length > 0 ? (
 				<Table />
 			) : (
 				<p
@@ -52,12 +52,12 @@ function VaccineTable() {
 					NO RECORD ON FILE
 				</p>
 			)} */}
-					<Table data={trials} />
-					<PageBar count={count} setUrl={setApiUrl} />
-				</>
-			)}
-		</div>
-	);
+          <Table data={trials} />
+          <PageBar count={count} setUrl={setApiUrl} />
+        </>
+      )}
+    </div>
+  );
 }
 
 export default VaccineTable;
