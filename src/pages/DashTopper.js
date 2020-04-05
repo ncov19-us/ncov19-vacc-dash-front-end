@@ -22,30 +22,22 @@ send old={numberOfOldTrial} new={numberOfNewTrial}
 	if the number number is the same it will return nothing 
 */
 export default function DashTopper() {
-	const {
-		getTrials,
-		table,
-		getTrialByCountryAndType,
-		mapFilterDashCards,
-		populateWorld,
-	} = useContext(TableContext);
+	const { getTrials, table, trials, getTrialByCountryAndType } = useContext(
+		TableContext
+	);
 	const [active, setActive] = useState("all");
 	const [numPhase, setNumPhase] = useState([]);
 	const [time, setTime] = useState("");
-	const name = table.countries;
 
 	useEffect(() => {
 		const time = new Date();
 		setTime(time);
 
-		table && table.countries === "world"
-			? mapFilterDashCards(name)
-			: populateWorld();
-
-		active === "all"
-			? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
-			: setNumPhase(getPhase([`${active}`]));
+		// active === "all"
+		// 	? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
+		// 	: setNumPhase(getPhase([`${active.toLowerCase()}`]));
 	}, []);
+
 	/*
 	function that sums all the phases together 
 	where 
@@ -64,8 +56,6 @@ export default function DashTopper() {
 			complete: 0,
 		};
 		for (let i = 0; i < type.length; i++) {
-			console.log("type[i]", table.type[i][0]);
-			console.log("table[type[i]", table.type[i]);
 			sumPhase.early = table[`${type[i]}`][0] + sumPhase.early;
 			sumPhase.early = table[`${type[i]}`][1] + sumPhase.early;
 			sumPhase.mid = table[`${type[i]}`][2] + sumPhase.mid;
@@ -78,21 +68,19 @@ export default function DashTopper() {
 	// Semantic calls onClick with event, object containing all props
 	const handleClick = (evt, { name }) => {
 		setActive(name);
-		const countryName = table.countries;
-
+		const countryName = table.countries.toLowerCase();
 		name === "all"
-			? mapFilterDashCards(countryName)
+			? getTrials()
 			: getTrialByCountryAndType(name, countryName);
-
 		// active === "all"
 		// 	? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
-		// 	: setNumPhase(getPhase([`${active}`]));
+		// 	: setNumPhase(getPhase([`${active.toLowerCase()}`]));
 	};
 
 	return (
 		<div className="vacine-dash-header">
 			<div className="title">
-				<h1>{table && table.countries} Dashboard </h1>
+				<h1>{table && table.countries} Dashboard</h1>
 			</div>
 			<div className="date">
 				<p className="day">{moment(`${time}`).format("dddd")}</p>
