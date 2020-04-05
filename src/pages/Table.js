@@ -15,18 +15,17 @@ export default class Table extends React.Component {
 
   getHeader = function () {
     var keys = this.getColumns();
-    return keys.map((key, index) => {
+    return keys.map((key) => {
       return <th key={key}>{key}</th>;
     });
   };
 
   getRowsData = function () {
     var items = this.props.data;
-    var keys = this.getColumns();
     return items.map((row, index) => {
       return (
         <tr key={index}>
-          <RenderRow key={index} data={row} keys={keys} />
+          <RenderRow key={index} data={row} />
         </tr>
       );
     });
@@ -47,16 +46,15 @@ export default class Table extends React.Component {
 }
 
 const RenderRow = (props) => {
-  return props.keys.map((key, index) => {
-    if (key === 'Sponsors') {
-      return (
-        <td key={props.data[key]} className="block">
-          {/* <p className="country">COUNTRY</p> */}
-          <p>{props.data[key]}</p>
-        </td>
-      );
-    } else {
-      return <td key={props.data[key]}>{props.data[key]}</td>;
-    }
-  });
+  // props.data
+
+  return (
+    <>
+      <td>{props.data.sponsors}</td>
+      <td>{props.data.countries}</td>
+      <td>{props.data.intervention}</td>
+      <td>{props.data.phase}</td>
+      <td>{props.data.intervention_type}</td>
+    </>
+  );
 };

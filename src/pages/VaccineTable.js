@@ -1,41 +1,33 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from 'react';
 
-import { TableContext } from "../utils/TableContext/TableState";
+import { TableContext } from '../utils/TableContext/TableState';
 
-import Table from "./Table";
-import TrialMenu from "../components/TrialMenu";
-import treatments from "../data/treatments";
+import Table from './Table';
+import TrialMenu from '../components/TrialMenu';
 
-import "./pages.scss";
+import './pages.scss';
 
 function VaccineTable() {
-	const { getTable, getTrials, trials } = useContext(TableContext);
-	useEffect(() => {
-		getTable();
-		getTrials();
-	}, []);
-	const length = trials.trials.length;
-	return (
-		<div className="trial-padding">
-			<TrialMenu />
-			{(() => {
-				if (length > 0) {
-					return <Table data={trials.trials} />;
-				} else
-					return (
-						<p
-							style={{
-								color: "white",
-								marginTop: "30px",
-								marginLeft: "130px",
-							}}
-						>
-							NO RECORD ON FILE
-						</p>
-					);
-			})()}
-		</div>
-	);
+  const { getTrials, trials, isLoading } = useContext(TableContext);
+
+  useEffect(() => {
+    getTrials();
+  }, []);
+
+  return (
+    <div className="trial-padding">
+      <TrialMenu />
+      {isLoading && (
+        <div className="ui inverted segment">
+          <div className="ui active inverted loader" />
+          <br />
+          <br />
+          <br />
+        </div>
+      )}
+      {!isLoading && trials && <Table data={trials} />}
+    </div>
+  );
 }
 
 export default VaccineTable;

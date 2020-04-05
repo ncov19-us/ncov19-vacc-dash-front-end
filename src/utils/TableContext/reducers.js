@@ -34,7 +34,7 @@ const getTrials = (state, action) => {
 	return {
 		...state,
 		is_loading: false,
-		trials: { ...action.payload },
+		trials: action.payload,
 	};
 };
 const getTrialsError = (state, action) => {

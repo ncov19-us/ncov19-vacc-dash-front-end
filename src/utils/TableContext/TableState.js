@@ -51,9 +51,9 @@ export const TableState = props => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
 			const res = await client().get(
-				`api/trials?type=vaccine&max=10&page=4`
+				`api/trials?limit=20&page=1`
 			);
-			dispatch({ type: GET_TRIALS_SUCCESS, payload: res.data });
+			dispatch({ type: GET_TRIALS_SUCCESS, payload: res.data.results });
 		} catch (e) {
 			console.log("error", e);
 			{
