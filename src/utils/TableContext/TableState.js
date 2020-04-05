@@ -12,6 +12,8 @@ import {
 	FILTER_BY_ON_CLICK_ERROR,
 	GET_MAP_SUCCESS,
 	GET_MAP_ERROR,
+	GET_TRIAL_BY_COUNTRY_SUCCESS,
+	GET_TRIAL_BY_COUNTRY_ERROR,
 } from "./types";
 import { loadState, saveState } from "../localStorage";
 import { axiosWithAuth, client } from "../axiosWithAuth";
@@ -42,8 +44,8 @@ export const TableState = (props) => {
 		isLoading: false,
 		table: [],
 		trials: [],
-		filter: [],
 		map: [],
+		phase: [],
 	};
 
 	// get updated state from localStorage
@@ -65,28 +67,41 @@ export const TableState = (props) => {
 			const table = await client().get("/api/totals");
 			dispatch({ type: GET_TABLE_SUCCESS, payload: table.data });
 		} catch (e) {
-			console.log("error", e);
+			console.log("error", e.message);
 			dispatch({ type: GET_TABLE_ERROR, payload: e.response });
 		}
 	};
 	const getTrials = async () => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
-			const res = await client().get(
-				`/api/trials?type=vaccines&countries=china`
+			const vaccines = await client().get(`/api/trials?type=vaccines`);
+			const treatments = await client().get(
+				`/api/trials?type=treatments`
 			);
-			dispatch({ type: GET_TRIALS_SUCCESS, payload: res.data });
+			const alternatives = await client().get(
+				`/api/trials?type=alternatives`
+			);
+			const getAll = {
+				...vaccines.data,
+				...treatments.data,
+				...alternatives.data,
+			};
+			dispatch({ type: GET_TRIALS_SUCCESS, payload: getAll });
 		} catch (e) {
-			console.log("error", e);
+			console.log("error", e.message);
 			{
 				dispatch({ type: GET_TRIALS_ERROR, payload: e.response });
 			}
 		}
 	};
-	const mapFilter = async (country) => {
+	const mapFilterByCountry = async (country) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
-			dispatch({ type: SET_FILTER_SUCCESS, payload: country });
+			const res = await client().get(
+				`/api/totals?countries=${country.properties.name}`
+			);
+			console.log("res", res);
+			dispatch({ type: SET_FILTER_SUCCESS, payload: res.data });
 		} catch (e) {
 			console.log("error", e);
 			{
@@ -120,6 +135,24 @@ export const TableState = (props) => {
 			}
 		}
 	};
+	const getTrialByCountry = async (type, country) => {
+		dispatch({ type: IS_LOADING, payload: true });
+		try {
+			const res = await client().get(
+				`/api/trials?type=${type}&countries=${country}`
+			);
+			console.log("countryTrial", res);
+			dispatch({ type: GET_TRIAL_BY_COUNTRY_SUCCESS, payload: res.data });
+		} catch (e) {
+			console.log("error", e);
+			{
+				dispatch({
+					type: GET_TRIAL_BY_COUNTRY_ERROR,
+					payload: e.response,
+				});
+			}
+		}
+	};
 
 	// Provider values are in function or state
 	return (
@@ -134,8 +167,9 @@ export const TableState = (props) => {
 				getTable,
 				getTrials,
 				getMap,
-				mapFilter,
+				mapFilterByCountry,
 				filterByOnClick,
+				getTrialByCountry,
 			}}
 		>
 			{props.children}

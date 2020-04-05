@@ -1,9 +1,9 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { TableContext } from "../utils/TableContext/TableState";
 
-import Table from "./Table";
-import TrialMenu from "../components/TrialMenu";
+// import Table from "./Table";
+import Tables from "./Tables";
 import treatments from "../data/treatments";
 
 import "./pages.scss";
@@ -19,12 +19,11 @@ function VaccineTable() {
 		getTable();
 		getTrials();
 	}, []);
-
+	// console.log("trials", trials);
 	return (
 		<div className="trial-padding">
-			<TrialMenu />
-			{trials.trials > 0 ? (
-				<Table data={trials.trials} />
+			{trials.results.length > 0 ? (
+				<Tables />
 			) : (
 				<p
 					style={{

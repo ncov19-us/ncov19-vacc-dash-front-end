@@ -11,7 +11,7 @@ GOAL:
 	 
 */
 function Main() {
-	const { filter, getMap } = useContext(TableContext);
+	const { filter } = useContext(TableContext);
 
 	return (
 		<>

@@ -10,6 +10,8 @@ import {
 	FILTER_BY_ON_CLICK_ERROR,
 	GET_MAP_SUCCESS,
 	GET_MAP_ERROR,
+	GET_TRIAL_BY_COUNTRY_SUCCESS,
+	GET_TRIAL_BY_COUNTRY_ERROR,
 } from "./types";
 
 // updates the state
@@ -51,7 +53,7 @@ const mapFilter = (state, action) => {
 	return {
 		...state,
 		is_loading: false,
-		filter: { ...action.payload },
+		table: { ...action.payload },
 	};
 };
 const mapFilterError = (state, action) => {
@@ -89,6 +91,20 @@ const getMapError = (state, action) => {
 		is_loading: false,
 	};
 };
+const getTrialByCountry = (state, action) => {
+	return {
+		...state,
+		is_loading: false,
+		trials: { ...action.payload },
+	};
+};
+const getTrialByCountryError = (state, action) => {
+	return {
+		...state,
+		error: action.payload,
+		is_loading: false,
+	};
+};
 // cases
 export const reducer = (state, action) => {
 	switch (action.type) {
@@ -114,6 +130,10 @@ export const reducer = (state, action) => {
 			return getMap(state, action);
 		case GET_MAP_ERROR:
 			return getMapError(state, action);
+		case GET_TRIAL_BY_COUNTRY_SUCCESS:
+			return getTrialByCountry(state, action);
+		case GET_TRIAL_BY_COUNTRY_ERROR:
+			return getTrialByCountryError(state, action);
 		default:
 			return state;
 	}
