@@ -1,6 +1,6 @@
 export const initialState = {
   page: 1,
-  country: 'Global',
+  country: 'global',
   type: 'all',
 };
 
@@ -20,7 +20,11 @@ export const filterReducer = (state, action) => {
       };
 
     case 'CHANGE_TYPE':
-      return state;
+      return {
+        ...state,
+        page: 1,
+        type: action.payload,
+      };
 
     default:
       return state;

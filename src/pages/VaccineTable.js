@@ -20,8 +20,12 @@ function VaccineTable({ filterInfo, dispatch }) {
   useEffect(() => {
     let apiUrl = `api/trials?limit=8&page=${filterInfo.page}`;
 
-    if (filterInfo.country && filterInfo.country !== 'Global') {
+    if (filterInfo.country && filterInfo.country !== 'global') {
       apiUrl += `&countries=${filterInfo.country}`;
+    }
+
+		if (filterInfo.type && filterInfo.type !== 'all') {
+      apiUrl += `&type=${filterInfo.type}`;
     }
 
     getTrials(apiUrl);

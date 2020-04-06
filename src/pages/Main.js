@@ -20,7 +20,10 @@ function Main() {
           <div className="ui stackable grid">
             <div className="two column row content">
               <div className="sixteen wide tablet eight wide computer column">
-                <DashTopper selectedCountry={selectedCountry} />
+                <DashTopper
+                  selectedCountry={selectedCountry}
+                  dispatch={dispatch}
+                />
                 <VaccineTable filterInfo={filterInfo} dispatch={dispatch} />
               </div>
               <div className="sixteen wide tablet eight wide computer column">
