@@ -43,8 +43,8 @@ const getTrials = (state, action) => {
 	return {
 		...state,
 		is_loading: false,
-		trials: action.payload,
-		count: action.payload.count,
+		trials: action.payload.results,
+		count: action.payload.count
 	};
 };
 const getTrialsError = (state, action) => {
@@ -58,7 +58,7 @@ const mapFilter = (state, action) => {
 	return {
 		...state,
 		is_loading: false,
-		table: action.payload,
+		table: { ...action.payload },
 	};
 };
 const mapFilterError = (state, action) => {
@@ -175,14 +175,6 @@ export const reducer = (state, action) => {
 			return getTrialByCountry(state, action);
 		case GET_TRIAL_BY_COUNTRY_ERROR:
 			return getTrialByCountryError(state, action);
-		case SET_MAP_FILTER_TABLE_SUCCESS:
-			return setMapFilterTable(state, action);
-		case SET_MAP_FILTER_TABLE_ERROR:
-			return setMapFilterTableError(state, action);
-		case POPULATE_WORLD_SUCCESS:
-			return populateWorld(state, action);
-		case POPULATE_WORLD_ERROR:
-			return populateWorldError(state, action);
 		default:
 			return state;
 	}

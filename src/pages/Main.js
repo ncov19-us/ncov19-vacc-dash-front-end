@@ -11,7 +11,7 @@ GOAL:
 	 
 */
 function Main() {
-	const { table } = useContext(TableContext);
+	const { filter } = useContext(TableContext);
 
 	const [selectedCountry, setSelectedCountry] = useState('Global');
 
@@ -28,7 +28,7 @@ function Main() {
 							<div className="sixteen wide tablet eight wide computer column">
 								<div className="map-wrapper">
 									<h1 style={{ color: "white" }}>
-										{table && table.countries} Dashboard
+										{filter && filter.label} Dashboard
 									</h1>
 									<WorldMap setSelectedCountry={setSelectedCountry}/>
 								</div>

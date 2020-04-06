@@ -38,7 +38,6 @@ const WorldMap = ({ setSelectedCountry }) => {
 		}
 		setData([map]);
 	}, []);
-
 	const setCountry = (e) => {
 		mapFilterDashCards(e.properties.name); //populate dash cards
 		mapFilterByCountryTrials(e.properties.name); //populate table

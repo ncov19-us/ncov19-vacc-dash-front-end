@@ -28,8 +28,7 @@ export default function DashTopper({ selectedCountry }) {
 		getTrialByCountryAndType,
 		mapFilterDashCards,
 		populateWorld,
-		populateDashCards,
-		country
+		populateDashCards
 	} = useContext(TableContext);
 	const [active, setActive] = useState("all");
 	const [numPhase, setNumPhase] = useState([]);
@@ -95,21 +94,19 @@ export default function DashTopper({ selectedCountry }) {
 	// Semantic calls onClick with event, object containing all props
 	const handleClick = (evt, { name }) => {
 		setActive(name);
-		const countryName = table.countries;
-
+		const countryName = table.countries.toLowerCase();
 		name === "all"
-			? mapFilterDashCards(countryName)
+			? getTrials()
 			: getTrialByCountryAndType(name, countryName);
-
 		// active === "all"
 		// 	? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
-		// 	: setNumPhase(getPhase([`${active}`]));
+		// 	: setNumPhase(getPhase([`${active.toLowerCase()}`]));
 	};
 
 	return (
 		<div className="vacine-dash-header">
 			<div className="title">
-				<h1>{table && table.countries} Dashboard </h1>
+				<h1>{table && table.countries} Dashboard</h1>
 			</div>
 			<div className="date">
 				<p className="day">{moment(`${time}`).format("dddd")}</p>
