@@ -42,7 +42,7 @@ const WorldMap = ({ setSelectedCountry }) => {
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, []);
 
   useEffect(async () => {
     getMap();

@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const header =
-  'Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus';
+  "Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus";
 
-export default function About() {
+const About = () => {
   return (
     <div className="about">
       <div className="title">
@@ -23,7 +23,7 @@ export default function About() {
             and cancer are more likely to develop serious illness.
             <br />
           </p>
-          Source:{' '}
+          Source:{" "}
           <a href="https://WHO.org" alt="who-source">
             Who.org
           </a>
@@ -41,7 +41,7 @@ export default function About() {
             and cancer are more likely to develop serious illness.
             <br />
           </p>
-          Source:{' '}
+          Source:{" "}
           <a href="https://WHO.org" alt="who-source">
             Who.org
           </a>
@@ -59,7 +59,7 @@ export default function About() {
             and cancer are more likely to develop serious illness.
             <br />
           </p>
-          Source:{' '}
+          Source:{" "}
           <a href="https://WHO.org" alt="who-source">
             Who.org
           </a>
@@ -77,7 +77,7 @@ export default function About() {
             and cancer are more likely to develop serious illness.
             <br />
           </p>
-          Source:{' '}
+          Source:{" "}
           <a href="https://WHO.org" alt="who-source">
             Who.org
           </a>
@@ -95,7 +95,7 @@ export default function About() {
             and cancer are more likely to develop serious illness.
             <br />
           </p>
-          Source:{' '}
+          Source:{" "}
           <a href="https://WHO.org" alt="who-source">
             Who.org
           </a>
@@ -113,7 +113,7 @@ export default function About() {
             and cancer are more likely to develop serious illness.
             <br />
           </p>
-          Source:{' '}
+          Source:{" "}
           <a href="https://WHO.org" alt="who-source">
             Who.org
           </a>
@@ -121,4 +121,6 @@ export default function About() {
       </div>
     </div>
   );
-}
+};
+
+export default About;
