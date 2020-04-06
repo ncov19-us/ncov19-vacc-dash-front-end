@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Pagination } from 'semantic-ui-react';
+import React, { useState } from "react";
+import { Pagination } from "semantic-ui-react";
 
 function PageBar({ count, setUrl }) {
   const pageSize = 20;
@@ -10,7 +10,7 @@ function PageBar({ count, setUrl }) {
   const handleClick = (event, data) => {
     event.preventDefault();
     setActivePage(data.activePage);
-    setUrl(`api/trials?limit=15&page=${data.activePage}`);
+    setUrl(`api/trials?limit=7&page=${data.activePage}`);
   };
 
   return (
