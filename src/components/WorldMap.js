@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import { ResponsiveChoropleth } from "@nivo/geo";
+import React, { useContext, useEffect, useState } from 'react';
+import { ResponsiveChoropleth } from '@nivo/geo';
 
-import { TableContext } from "../utils/TableContext/TableState";
-import { features } from "../data/features.json";
+import { TableContext } from '../utils/TableContext/TableState';
+import { features } from '../data/features.json';
 
-import { filter } from "../components/Filter";
-import axios from "axios";
+import axios from 'axios';
 
 /*
 GOAL:
@@ -13,7 +12,6 @@ GOAL:
 	* Upon clicking a country on the map it filter name on dash board and map to display that country. 
 	* And have that countries information filter in a table
 	
-
 USAGE: 
 	- Onclick funtion that passes the contries data and use "mapFilter" function on Context to save the data to Global state
 	- then use a filter function to display filtered data on table
@@ -23,7 +21,7 @@ RETURNS:
 	- Filtered Countries' data 
 */
 
-const WorldMap = ({ setSelectedCountry }) => {
+const WorldMap = ({ setSelectedCountry, dispatch }) => {
   const [data, setData] = useState([]);
   const {
     mapFilterDashCards,
@@ -34,10 +32,9 @@ const WorldMap = ({ setSelectedCountry }) => {
 
   useEffect(() => {
     axios
-      .get("https://covid19-vacc-be.herokuapp.com/api/map")
+      .get('https://covid19-vacc-be.herokuapp.com/api/map')
       .then((response) => {
         setData(response.data);
-        console.log(setData);
       })
       .catch((err) => {
         console.log(err);
@@ -56,9 +53,11 @@ const WorldMap = ({ setSelectedCountry }) => {
     mapFilterByCountryTrials(e.properties.name); //populate table
 
     setSelectedCountry(e.properties.name);
+
+    dispatch({ type: 'CHANGE_COUNTRY', payload: e.properties.name });
   };
   return (
-    <div style={{ height: "600px" }}>
+    <div style={{ height: '600px' }}>
       <ResponsiveChoropleth
         data={data}
         features={features}
@@ -76,25 +75,25 @@ const WorldMap = ({ setSelectedCountry }) => {
         borderColor="#c0c0c0"
         legends={[
           {
-            anchor: "top-left",
-            direction: "column",
+            anchor: 'top-left',
+            direction: 'column',
             justify: false,
             translateX: 30,
             translateY: 300,
             itemsSpacing: 0,
             itemWidth: 60,
             itemHeight: 18,
-            itemDirection: "left-to-right",
-            itemTextColor: "#FFFFFF",
+            itemDirection: 'left-to-right',
+            itemTextColor: '#FFFFFF',
             itemOpacity: 0.85,
             symbolSize: 20,
-            symbolShape: "square",
+            symbolShape: 'square',
 
             effects: [
               {
-                on: "hover",
+                on: 'hover',
                 style: {
-                  itemTextColor: "#FFFFFF",
+                  itemTextColor: '#FFFFFF',
                   itemOpacity: 1,
                 },
               },

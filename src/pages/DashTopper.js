@@ -1,113 +1,93 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu } from 'semantic-ui-react';
 
-import moment from 'moment';
-
-import { filter } from '../components/Filter';
-import { TableContext } from '../utils/TableContext/TableState';
-
+import Today from '../components/Today';
+import { client } from '../utils/axiosWithAuth';
 // FIXME: Move this to stylesheets.
 import 'semantic-ui-css/semantic.min.css';
 
-/*
-Used Moment to get format date that we get using new Date
-using useEffect so that everytime the page renders you get a new date current date
-for usage:
-	moment docs: https://momentjs.com/docs/#/parsing/
+function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
+  const [numPhase, setNumPhase] = useState({
+    early: null,
+    mid: null,
+    complete: null,
+  });
 
-Created cards that have a conditial statement from VaccineStat
-send old={numberOfOldTrial} new={numberOfNewTrial}
-	if the old number is greater than the old number it will return a green triangle
-	if the new number is greater it will return a red return 
-	if the number number is the same it will return nothing 
-*/
-export default function DashTopper({ selectedCountry }) {
-  const {
-    getTrials,
-    table,
-    getTrialByCountryAndType,
-    mapFilterDashCards,
-    populateWorld,
-    populateDashCards,
-  } = useContext(TableContext);
+  const [totals, setTotals] = useState({
+    countries: null,
+    vaccines: [],
+    treatments: [],
+    alternatives: [],
+  });
+
   const [active, setActive] = useState('all');
-  const [numPhase, setNumPhase] = useState([]);
-  const [time, setTime] = useState('');
 
   useEffect(() => {
-    const time = new Date();
-    setTime(time);
+    let apiUrl = '/api/totals';
 
-    /* 
-			populateDashCards() hits /api/totals 
-			and stores the entire response in `table` in Context.
-		*/
+    async function fetchTotals() {
+      if (selectedCountry !== 'Global') {
+        apiUrl = `/api/totals?countries=${selectedCountry.toLowerCase()}`;
+      }
 
-    populateDashCards(selectedCountry);
+      const { data } = await client().get(apiUrl);
 
-    // table && table.countries === "world"
-    // 	? mapFilterDashCards(table.countries)
-    // 	: populateWorld();
+      setTotals(data);
+    }
+
+    fetchTotals();
   }, [selectedCountry]);
 
   useEffect(() => {
-    active === 'all'
-      ? setNumPhase(getPhase(['vaccines', 'treatments', 'alternatives']))
-      : setNumPhase(getPhase([`${active}`]));
+    if (totals.countries) {
+      setNumPhase(
+        active === 'all'
+          ? calcPhases(totals, ['vaccines', 'treatments', 'alternatives'])
+          : calcPhases(totals, [`${active}`])
+      );
+    }
+  }, [totals, active]);
 
-    console.log(table);
-  }, [table]);
-
-  /*
-	function that sums all the phases together 
-	where 
-		1-2 early
-		3-4 mid 
-		5 complete
-	
-	USAGE: 
-		accepts an array parameter of what to is going to be sorted
-	*/
-  function getPhase(types) {
-    // keep track of sum phases
-    const sumPhase = {
-      early: 0,
-      mid: 0,
-      complete: 0,
-    };
+  function calcPhases(totals, types) {
+    let early = 0;
+    let mid = 0;
+    let complete = 0;
 
     types.forEach((type) => {
-      if (table.countries) {
-        const typeTotals = table[type];
+      const trialType = totals[type];
 
-        sumPhase.early += typeTotals[0] + typeTotals[1];
-        sumPhase.mid += typeTotals[2] + typeTotals[3];
-        sumPhase.complete += typeTotals[4];
-      }
+      early += trialType[0];
+      early += trialType[1];
+      mid += trialType[2];
+      mid += trialType[3];
+      complete += trialType[4];
     });
 
-    return sumPhase;
+    return { early, mid, complete };
   }
 
-  // Semantic calls onClick with event, object containing all props
   const handleClick = (evt, { name }) => {
     setActive(name);
-    const countryName = table.countries.toLowerCase();
-    name === 'all' ? getTrials() : getTrialByCountryAndType(name, countryName);
-    // active === "all"
-    // 	? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
-    // 	: setNumPhase(getPhase([`${active.toLowerCase()}`]));
+
+    dispatch({ type: 'CHANGE_TYPE', payload: name });
+  };
+
+  const returnGlobal = (evt) => {
+    evt.preventDefault();
+
+    setSelectedCountry('Global');
+    dispatch({ type: 'CHANGE_COUNTRY', payload: 'global' });
   };
 
   return (
     <div className="vacine-dash-header">
       <div className="title">
-        <h1>{table && table.countries} Dashboard</h1>
+        <h1>{selectedCountry} Dashboard</h1>
       </div>
-      <div className="date">
-        <p className="day">{moment(`${time}`).format('dddd')}</p>
-        <p className="format">{` •  ${moment(`${time}`).format('LL')}`}</p>
-      </div>
+      {selectedCountry !== 'Global' && (
+        <button onClick={returnGlobal}>Return to Global View</button>
+      )}
+      <Today />
       <div className="cards">
         <div className="card">
           <div className="stats">
@@ -160,3 +140,5 @@ export default function DashTopper({ selectedCountry }) {
     </div>
   );
 }
+
+export default DashTopper;
