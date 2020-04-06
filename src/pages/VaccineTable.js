@@ -1,11 +1,11 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from 'react';
 
-import { TableContext } from "../utils/TableContext/TableState";
+import { TableContext } from '../utils/TableContext/TableState';
 
-import Table from "./Table";
-import PageBar from "../components/PageBar";
+import Table from './Table';
+import PageBar from '../components/PageBar';
 
-import "./pages.scss";
+// import "./pages.scss";
 
 /*
 GOAL:
@@ -16,7 +16,7 @@ function VaccineTable() {
   const { getTable, getTrials, trials, isLoading, count } = useContext(
     TableContext
   );
-  const [apiUrl, setApiUrl] = useState("api/trials?limit=8&page=1");
+  const [apiUrl, setApiUrl] = useState('api/trials?limit=8&page=1');
 
   // useEffect(() => {
   // 	// getTrials();
