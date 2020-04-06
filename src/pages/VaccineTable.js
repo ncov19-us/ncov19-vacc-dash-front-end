@@ -16,7 +16,7 @@ function VaccineTable() {
   const { getTable, getTrials, trials, isLoading, count } = useContext(
     TableContext
   );
-  const [apiUrl, setApiUrl] = useState('api/trials?limit=15&page=1');
+  const [apiUrl, setApiUrl] = useState('api/trials?limit=8&page=1');
 
   // useEffect(() => {
   // 	// getTrials();
