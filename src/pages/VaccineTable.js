@@ -31,14 +31,14 @@ function VaccineTable({ filterInfo, dispatch }) {
 
   return (
     <div className="trial-padding">
-      {/* {isLoading && (
+      {isLoading && (
 				<div className="ui inverted segment">
 					<div className="ui active inverted loader" />
 					<br />
 					<br />
 					<br />
 				</div>
-			)} */}
+			)}
       {trials.length > 0 ? (
         <div>
           <Table data={trials} />

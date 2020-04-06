@@ -141,13 +141,6 @@ const populateWorldError = (state, action) => {
 	};
 };
 
-const changeCountry = (state, action) => {
-	return {
-		...state,
-		country: action.payload,
-	};
-};
-
 const getWorldType = (state, action) => {
 	console.log("action", action);
 	return {
