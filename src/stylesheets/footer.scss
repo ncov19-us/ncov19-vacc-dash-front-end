@@ -1,0 +1,64 @@
+// foot
+.foot {
+  @include flex(space-around, row);
+  background: #010915;
+  color: #bdbdbd;
+  padding: 1.5% 3%;
+  // margin-left: 8%;
+  // margin-right: 8%;
+  max-width: 100%;
+  left: 0;
+  bottom: 0;
+  .foot-content {
+    font-size: 0.75rem;
+    margin: auto;
+    margin-right: 3%;
+  }
+  .foot-copyright {
+    @include flex(flex-end, row);
+    width: 40%;
+    font-size: 1.05rem;
+    margin: auto;
+    a {
+      margin: auto 4% auto 0;
+    }
+    img {
+      background: #bdbdbd;
+      border-radius: 100%;
+    }
+  }
+  @media #{$mobile} {
+    @include flex(center, row);
+    padding: 2.5% 4% 3.5% 3%;
+    margin: auto;
+    .foot-copyright {
+      font-size: 1rem;
+      a {
+        margin: auto 13% auto 0;
+      }
+      p {
+        margin-right: 5%;
+      }
+    }
+    .foot-content {
+      padding: 0% 7% 0% 2%;
+    }
+  }
+  @media #{$tablet} {
+    @include flex(center, row);
+    padding: 2.5% 6% 3.5% 3%;
+    margin: auto;
+    .foot-copyright {
+      font-size: 1rem;
+      a {
+        margin: auto 13% auto 0;
+      }
+      p {
+        margin-right: 5%;
+      }
+    }
+    .foot-content {
+      padding: 0% 7% 0% 2%;
+    }
+  }
+}

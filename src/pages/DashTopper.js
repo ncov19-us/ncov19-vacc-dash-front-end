@@ -5,7 +5,7 @@ import moment from "moment";
 
 import { TableContext } from "../utils/TableContext/TableState";
 
-import "./pages.scss";
+// FIXME: Move this to stylesheets.
 import "semantic-ui-css/semantic.min.css";
 
 /*

@@ -1,0 +1,32 @@
+// Vaccine colors
+
+/*
+Media Queries for usage 
+				@media #{$mobile} for mobile
+				@media #{$tablet} for table
+
+ Breakpoints at 
+	Mobile at 500px
+	Table 	800px 
+*/
+
+/*
+ DRY: for usage @include flex(content, direction)
+ For defaults
+    justify-content : flex-start
+    flex-direction : row
+*/
+
+// trial menu
+.trial-padding {
+  padding: 2% 5%;
+}
+
+.trial-headers {
+  @include flex(space-around, row);
+  color: white;
+  h2 {
+    margin: auto;
+    padding-bottom: 2%;
+  }
+}

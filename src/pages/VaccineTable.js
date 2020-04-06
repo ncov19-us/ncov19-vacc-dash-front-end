@@ -5,7 +5,7 @@ import { TableContext } from "../utils/TableContext/TableState";
 import Table from "./Table";
 import PageBar from "../components/PageBar";
 
-import "./pages.scss";
+// import "./pages.scss";
 
 /*
 GOAL:

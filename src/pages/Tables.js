@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import { TableContext } from "../utils/TableContext/TableState";
 
-import "./pages.scss";
-
 export default function Tables() {
 	const { trials } = useContext(TableContext);
 	return (
