@@ -18,29 +18,24 @@ function VaccineTable() {
 	);
 	const [apiUrl, setApiUrl] = useState("api/trials?limit=8&page=1");
 
-	// useEffect(() => {
-	// 	// getTrials();
-	// }, []);
-	// console.log("trials", trials);
-
 	useEffect(() => {
 		getTrials(apiUrl);
 	}, [apiUrl]);
-
 	return (
 		<div className="trial-padding">
-			{isLoading && (
+			{/* {isLoading && (
 				<div className="ui inverted segment">
 					<div className="ui active inverted loader" />
 					<br />
 					<br />
 					<br />
 				</div>
-			)}
-			{!isLoading && trials && (
-				<>
-					{/* {trials.length > 0 ? (
-				<Table />
+			)} */}
+			{trials.length > 0 ? (
+				<div>
+					<Table data={trials} />
+					<PageBar count={count} setUrl={setApiUrl} />
+				</div>
 			) : (
 				<p
 					style={{
@@ -51,10 +46,6 @@ function VaccineTable() {
 				>
 					NO RECORD ON FILE
 				</p>
-			)} */}
-					<Table data={trials} />
-					<PageBar count={count} setUrl={setApiUrl} />
-				</>
 			)}
 		</div>
 	);

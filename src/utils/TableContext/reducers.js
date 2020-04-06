@@ -15,7 +15,9 @@ import {
 	SET_MAP_FILTER_TABLE_SUCCESS,
 	SET_MAP_FILTER_TABLE_ERROR,
 	POPULATE_WORLD_SUCCESS,
-	POPULATE_WORLD_ERROR
+	POPULATE_WORLD_ERROR,
+	GET_WORLD_TYPE_SUCCESS,
+	GET_WORLD_TYPE_ERROR,
 } from "./types";
 
 // updates the state
@@ -29,7 +31,7 @@ const getTable = (state, action) => {
 	return {
 		...state,
 		is_loading: false,
-		table: { ...action.payload },
+		table: action.payload,
 	};
 };
 const getTableError = (state, action) => {
@@ -44,7 +46,7 @@ const getTrials = (state, action) => {
 		...state,
 		is_loading: false,
 		trials: action.payload.results,
-		count: action.payload.count
+		count: action.payload.count,
 	};
 };
 const getTrialsError = (state, action) => {
@@ -58,7 +60,7 @@ const mapFilter = (state, action) => {
 	return {
 		...state,
 		is_loading: false,
-		table: { ...action.payload },
+		table: action.payload,
 	};
 };
 const mapFilterError = (state, action) => {
@@ -86,7 +88,7 @@ const getMap = (state, action) => {
 	return {
 		...state,
 		is_loading: false,
-		map: { ...action.payload },
+		map: action.payload,
 	};
 };
 const getMapError = (state, action) => {
@@ -100,7 +102,7 @@ const getTrialByCountry = (state, action) => {
 	return {
 		...state,
 		is_loading: false,
-		trials: { ...action.payload },
+		trials: action.payload,
 	};
 };
 const getTrialByCountryError = (state, action) => {
@@ -142,8 +144,38 @@ const populateWorldError = (state, action) => {
 const changeCountry = (state, action) => {
 	return {
 		...state,
-		country: action.payload
-	}
+		country: action.payload,
+	};
+};
+
+const getWorldType = (state, action) => {
+	console.log("action", action);
+	return {
+		...state,
+		is_loading: false,
+		trials: action.payload,
+	};
+};
+const getWorldTypeError = (state, action) => {
+	return {
+		...state,
+		error: action.payload,
+		is_loading: false,
+	};
+};
+const mapFilterTable = (state, action) => {
+	return {
+		...state,
+		is_loading: false,
+		trials: action.payload,
+	};
+};
+const mapFilterTableError = (state, action) => {
+	return {
+		...state,
+		error: action.payload,
+		is_loading: false,
+	};
 };
 
 // cases
@@ -175,6 +207,14 @@ export const reducer = (state, action) => {
 			return getTrialByCountry(state, action);
 		case GET_TRIAL_BY_COUNTRY_ERROR:
 			return getTrialByCountryError(state, action);
+		case GET_WORLD_TYPE_SUCCESS:
+			return getWorldType(state, action);
+		case GET_WORLD_TYPE_ERROR:
+			return getWorldTypeError(state, action);
+		case SET_MAP_FILTER_TABLE_SUCCESS:
+			return mapFilterTable(state, action);
+		case SET_MAP_FILTER_TABLE_ERROR:
+			return mapFilterTableError(state, action);
 		default:
 			return state;
 	}

@@ -3,7 +3,6 @@ import { Menu } from "semantic-ui-react";
 
 import moment from "moment";
 
-import { filter } from "../components/Filter";
 import { TableContext } from "../utils/TableContext/TableState";
 
 import "./pages.scss";
@@ -25,10 +24,13 @@ export default function DashTopper({ selectedCountry }) {
 	const {
 		table,
 		getTrialByCountryAndType,
-		mapFilterDashCards,
-		populateWorld,
+		mapFilterByCountryTrials,
+		getWorldTrials,
+		getWorldType,
+		getTrials,
 		populateDashCards,
 	} = useContext(TableContext);
+	const [apiUrl, setApiUrl] = useState("api/trials?limit=8&page=1");
 	const [active, setActive] = useState("all");
 	const [numPhase, setNumPhase] = useState([]);
 	const [time, setTime] = useState("");
@@ -49,13 +51,11 @@ export default function DashTopper({ selectedCountry }) {
 		// 	: populateWorld();
 	}, [selectedCountry]);
 
-	useEffect(() => {
-		active === "all"
-			? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
-			: setNumPhase(getPhase([`${active}`]));
-
-		console.log(table);
-	}, [table]);
+	// useEffect(() => {
+	// 	active === "all"
+	// 		? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
+	// 		: setNumPhase(getPhase([`${active}`]));
+	// }, [table]);
 
 	/*
 	function that sums all the phases together 
@@ -74,6 +74,7 @@ export default function DashTopper({ selectedCountry }) {
 			mid: 0,
 			complete: 0,
 		};
+		console.log("table.countries", table.countries);
 
 		types.forEach((type) => {
 			if (table.countries) {
@@ -92,9 +93,17 @@ export default function DashTopper({ selectedCountry }) {
 	const handleClick = (evt, { name }) => {
 		setActive(name);
 		const countryName = table.countries.toLowerCase();
-		name === "all"
-			? getTrials()
-			: getTrialByCountryAndType(name, countryName);
+
+		if (countryName === "world") {
+			name === "all" ? getTrials(apiUrl) : getWorldType(name);
+			// name === "all"
+			// 	? getTrials()
+			// 	: getTrialByCountryAndType(name, countryName);
+		} else {
+			name === "all"
+				? mapFilterByCountryTrials(countryName)
+				: getTrialByCountryAndType(name, countryName);
+		}
 		// active === "all"
 		// 	? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
 		// 	: setNumPhase(getPhase([`${active.toLowerCase()}`]));
