@@ -10,7 +10,7 @@ export default class Table extends React.Component {
 	}
 
 	getColumns = function () {
-		return ["Sponsors", "Country", "Drug", "Phase", "Type"];
+		return ["Sponsors", "Country", "Intervention", "Phase", "Type"];
 	};
 
 	getHeader = function () {

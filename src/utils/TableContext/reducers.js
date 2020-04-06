@@ -12,6 +12,10 @@ import {
 	GET_MAP_ERROR,
 	GET_TRIAL_BY_COUNTRY_SUCCESS,
 	GET_TRIAL_BY_COUNTRY_ERROR,
+	SET_MAP_FILTER_TABLE_SUCCESS,
+	SET_MAP_FILTER_TABLE_ERROR,
+	POPULATE_WORLD_SUCCESS,
+	POPULATE_WORLD_ERROR
 } from "./types";
 
 // updates the state
@@ -106,6 +110,42 @@ const getTrialByCountryError = (state, action) => {
 		is_loading: false,
 	};
 };
+const setMapFilterTable = (state, action) => {
+	return {
+		...state,
+		is_loading: false,
+		trials: action.payload,
+	};
+};
+const setMapFilterTableError = (state, action) => {
+	return {
+		...state,
+		error: action.payload,
+		is_loading: false,
+	};
+};
+const populateWorld = (state, action) => {
+	return {
+		...state,
+		is_loading: false,
+		table: action.payload,
+	};
+};
+const populateWorldError = (state, action) => {
+	return {
+		...state,
+		error: action.payload,
+		is_loading: false,
+	};
+};
+
+const changeCountry = (state, action) => {
+	return {
+		...state,
+		country: action.payload
+	}
+};
+
 // cases
 export const reducer = (state, action) => {
 	switch (action.type) {
