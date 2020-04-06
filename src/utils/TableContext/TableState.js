@@ -18,7 +18,7 @@ import {
 	GET_WORLD_TYPE_ERROR,
 } from "./types";
 import { loadState, saveState } from "../localStorage";
-import { axiosWithAuth, client } from "../axiosWithAuth";
+import { client } from "../axiosWithAuth";
 import { reducer } from "./reducers";
 
 export const TableContext = createContext();
@@ -53,11 +53,9 @@ export const TableState = (props) => {
 	};
 
 	// get updated state from localStorage
-	// const localState = loadState("table");
+	const localState = loadState("table");
 
-	// NOTE: uncomment local storage hook for now for debugging purposes
-	// const [state, dispatch] = useReducer(reducer, localState || initialState);
-	const [state, dispatch] = useReducer(reducer, initialState);
+	const [state, dispatch] = useReducer(reducer, localState || initialState);
 
 	// save state to localstorage on page render
 	useEffect(() => {
@@ -91,22 +89,23 @@ export const TableState = (props) => {
 		}
 	};
 
-	const populateDashCards = async (country) => {
-		dispatch({ type: IS_LOADING, payload: true });
+	// const populateDashCards = async (country) => {
+	// 	dispatch({ type: IS_LOADING, payload: true });
 
-		let apiUrl = "/api/totals";
-		if (country !== "Global") {
-			apiUrl = `/api/totals?countries=${country.toLowerCase()}`;
-		}
+	// 	let apiUrl = "/api/totals";
 
-		try {
-			const res = await client().get(apiUrl);
-			dispatch({ type: SET_FILTER_SUCCESS, payload: res.data });
-		} catch ({ message, response }) {
-			console.log(message);
-			dispatch({ type: SET_FILTER_ERROR, payload: response });
-		}
-	};
+	// 	if (country !== "Global") {
+	// 		apiUrl = `/api/totals?countries=${country.toLowerCase()}`;
+	// 	}
+
+	// 	try {
+	// 		const res = await client().get(apiUrl);
+	// 		dispatch({ type: SET_FILTER_SUCCESS, payload: res.data });
+	// 	} catch ({ message, response }) {
+	// 		console.log(message);
+	// 		dispatch({ type: SET_FILTER_ERROR, payload: response });
+	// 	}
+	// };
 
 	const filterByOnClick = async (data) => {
 		dispatch({ type: IS_LOADING, payload: true });
@@ -219,7 +218,7 @@ export const TableState = (props) => {
 				getTrialByCountryAndType,
 				mapFilterDashCards,
 				mapFilterByCountryTrials,
-				populateDashCards,
+				// populateDashCards,
 				getWorldType,
 			}}
 		>

@@ -5273,7 +5273,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "UK"
+        "name": "United Kingdom"
       },
       "geometry": {
         "type": "MultiPolygon",
