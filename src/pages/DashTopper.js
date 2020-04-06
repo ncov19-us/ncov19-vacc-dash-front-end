@@ -72,12 +72,19 @@ function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
     dispatch({ type: 'CHANGE_TYPE', payload: name });
   };
 
+  const returnGlobal = (evt) => {
+    evt.preventDefault();
+
+    setSelectedCountry('Global');
+    dispatch({ type: 'CHANGE_COUNTRY', payload: 'global' })
+  };
+
   return (
     <div className="vacine-dash-header">
       <div className="title">
         <h1>{selectedCountry} Dashboard</h1>
       </div>
-      <button onClick={() => setSelectedCountry('Global')}>
+      <button onClick={returnGlobal}>
         Return to Global View
       </button>
       <Today />

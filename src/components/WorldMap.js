@@ -4,7 +4,6 @@ import { ResponsiveChoropleth } from '@nivo/geo';
 import { TableContext } from '../utils/TableContext/TableState';
 import { features } from '../data/features.json';
 
-import { filter } from '../components/Filter';
 import axios from 'axios';
 
 /*
