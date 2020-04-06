@@ -38,7 +38,7 @@
       height: 310px;
     }
     .cards {
-      @include flex(start, row);
+      @include flex(flex-start, row);
       .card {
         padding: 2% 3%;
         width: 100%;
