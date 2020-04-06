@@ -76,7 +76,7 @@ function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
     evt.preventDefault();
 
     setSelectedCountry('Global');
-    dispatch({ type: 'CHANGE_COUNTRY', payload: 'global' })
+    dispatch({ type: 'CHANGE_COUNTRY', payload: 'global' });
   };
 
   return (
@@ -84,9 +84,9 @@ function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
       <div className="title">
         <h1>{selectedCountry} Dashboard</h1>
       </div>
-      <button onClick={returnGlobal}>
-        Return to Global View
-      </button>
+      {selectedCountry !== 'Global' && (
+        <button onClick={returnGlobal}>Return to Global View</button>
+      )}
       <Today />
       <div className="cards">
         <div className="card">

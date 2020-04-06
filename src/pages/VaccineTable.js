@@ -13,9 +13,7 @@ GOAL:
 */
 
 function VaccineTable({ filterInfo, dispatch }) {
-  const { getTable, getTrials, trials, isLoading, count } = useContext(
-    TableContext
-  );
+  const { getTrials, trials, isLoading, count } = useContext(TableContext);
 
   useEffect(() => {
     let apiUrl = `api/trials?limit=8&page=${filterInfo.page}`;
@@ -24,7 +22,7 @@ function VaccineTable({ filterInfo, dispatch }) {
       apiUrl += `&countries=${filterInfo.country}`;
     }
 
-		if (filterInfo.type && filterInfo.type !== 'all') {
+    if (filterInfo.type && filterInfo.type !== 'all') {
       apiUrl += `&type=${filterInfo.type}`;
     }
 
