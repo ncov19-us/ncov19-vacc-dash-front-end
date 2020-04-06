@@ -46,15 +46,18 @@ export const TableState = (props) => {
 	const initialState = {
 		error: "",
 		isLoading: false,
-		table: [],
+		table: {},
 		trials: [],
 		map: [],
 		count: null,
+		country: "Global",
+		filter: [],
 	};
 
 	// get updated state from localStorage
 	const localState = loadState("table");
 
+	// NOTE: uncomment local storage hook for now for debugging purposes
 	// const [state, dispatch] = useReducer(reducer, localState || initialState);
 	const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -66,7 +69,65 @@ export const TableState = (props) => {
 	// method that will dispatch success or error
 	// send CRUD operation to backend server
 
-	// map endpoints
+	const getTrials = async (apiUrl) => {
+		dispatch({ type: IS_LOADING, payload: true });
+		try {
+			const res = await client().get(apiUrl);
+
+			dispatch({ type: GET_TRIALS_SUCCESS, payload: res.data });
+		} catch (e) {
+			console.log("error", e.message);
+			{
+				dispatch({ type: GET_TRIALS_ERROR, payload: e.response });
+			}
+		}
+	};
+	const mapFilterByCountry = async (country) => {
+		dispatch({ type: IS_LOADING, payload: true });
+		try {
+			const res = await client().get(
+				`/api/totals?countries=${country.properties.name}`
+			);
+			dispatch({ type: SET_FILTER_SUCCESS, payload: res.data });
+		} catch (e) {
+			console.log("error", e);
+			{
+				dispatch({ type: SET_FILTER_ERROR, payload: e.response });
+			}
+		}
+	};
+
+	const populateDashCards = async (country) => {
+		dispatch({ type: IS_LOADING, payload: true });
+
+		let apiUrl = "/api/totals";
+		if (country !== "Global") {
+			apiUrl = `/api/totals?countries=${country.toLowerCase()}`;
+		}
+
+		try {
+			const res = await client().get(apiUrl);
+			dispatch({ type: SET_FILTER_SUCCESS, payload: res.data });
+		} catch ({ message, response }) {
+			console.log(message);
+			dispatch({ type: SET_FILTER_ERROR, payload: response });
+		}
+	};
+
+	const filterByOnClick = async (data) => {
+		dispatch({ type: IS_LOADING, payload: true });
+		try {
+			dispatch({ type: FILTER_BY_ON_CLICK_SUCCESS, payload: data });
+		} catch (e) {
+			console.log("error", e);
+			{
+				dispatch({
+					type: FILTER_BY_ON_CLICK_ERROR,
+					payload: e.response,
+				});
+			}
+		}
+	};
 	const getMap = async () => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
@@ -79,18 +140,33 @@ export const TableState = (props) => {
 			}
 		}
 	};
-
-	// populate trials on table
-	const getTrials = async (apiUrl) => {
+	// const getTrialByCountry = async () => {
+	// 	dispatch({ type: IS_LOADING, payload: true });
+	// 	try {
+	// 		const res = await client().call(`endpoint`);
+	// 		dispatch({ type: TYPENAME_SUCCESS, payload: res.data });
+	// 	} catch (e) {
+	// 		console.log("error", e);
+	// 		{
+	// 			dispatch({ type: TYPENAME_ERROR, payload: e.response });
+	// 		}
+	// 	}
+	// };
+	const getTrialByCountryAndType = async (type, country) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
-			const res = await client().get(apiUrl);
-
-			dispatch({ type: GET_TRIALS_SUCCESS, payload: res.data.results });
+			const res = await client().get(
+				`/api/trials?type=${type}&countries=${country}`
+			);
+			console.log("countryTrial", res);
+			dispatch({ type: GET_TRIAL_BY_COUNTRY_SUCCESS, payload: res.data });
 		} catch (e) {
-			console.log("error", e.message);
+			console.log("error", e);
 			{
-				dispatch({ type: GET_TRIALS_ERROR, payload: e.response });
+				dispatch({
+					type: GET_TRIAL_BY_COUNTRY_ERROR,
+					payload: e.response,
+				});
 			}
 		}
 	};
@@ -129,44 +205,11 @@ export const TableState = (props) => {
 		}
 	};
 
-	const filterByOnClick = async (data) => {
-		dispatch({ type: IS_LOADING, payload: true });
-		try {
-			dispatch({ type: FILTER_BY_ON_CLICK_SUCCESS, payload: data });
-		} catch (e) {
-			console.log("error", e);
-			{
-				dispatch({
-					type: FILTER_BY_ON_CLICK_ERROR,
-					payload: e.response,
-				});
-			}
-		}
-	};
-
-	const getTrialByCountryAndType = async (type, country) => {
-		dispatch({ type: IS_LOADING, payload: true });
-		try {
-			const res = await client().get(
-				`/api/trials?type=${type}&countries=${country}`
-			);
-			console.log("countryTrial", res);
-			dispatch({ type: GET_TRIAL_BY_COUNTRY_SUCCESS, payload: res.data });
-		} catch (e) {
-			console.log("error", e);
-			{
-				dispatch({
-					type: GET_TRIAL_BY_COUNTRY_ERROR,
-					payload: e.response,
-				});
-			}
-		}
-	};
 	// populate world
 	const populateWorld = async () => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
-			const res = await client().get(`/api/totals`);
+			const res = await client().get(`api/totals`);
 			dispatch({ type: POPULATE_WORLD_SUCCESS, payload: res.data });
 		} catch (e) {
 			console.log("error", e);
@@ -189,11 +232,13 @@ export const TableState = (props) => {
 				isLoading: state.isLoading,
 				getTrials,
 				getMap,
+				mapFilterByCountry,
 				filterByOnClick,
 				getTrialByCountryAndType,
 				mapFilterDashCards,
 				mapFilterByCountryTrials,
 				populateWorld,
+				populateDashCards,
 			}}
 		>
 			{props.children}

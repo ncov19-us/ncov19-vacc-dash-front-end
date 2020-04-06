@@ -21,12 +21,13 @@ send old={numberOfOldTrial} new={numberOfNewTrial}
 	if the new number is greater it will return a red return 
 	if the number number is the same it will return nothing 
 */
-export default function DashTopper() {
+export default function DashTopper({ selectedCountry }) {
 	const {
 		table,
 		getTrialByCountryAndType,
 		mapFilterDashCards,
 		populateWorld,
+		populateDashCards,
 	} = useContext(TableContext);
 	const [active, setActive] = useState("all");
 	const [numPhase, setNumPhase] = useState([]);
@@ -36,13 +37,26 @@ export default function DashTopper() {
 		const time = new Date();
 		setTime(time);
 
-		console.log("table", table);
-		populateWorld();
+		/* 
+			populateDashCards() hits /api/totals 
+			and stores the entire response in `table` in Context.
+		*/
 
-		table.length > 0 && active === "all"
+		populateDashCards(selectedCountry);
+
+		// table && table.countries === "world"
+		// 	? mapFilterDashCards(table.countries)
+		// 	: populateWorld();
+	}, [selectedCountry]);
+
+	useEffect(() => {
+		active === "all"
 			? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
 			: setNumPhase(getPhase([`${active}`]));
-	}, []);
+
+		console.log(table);
+	}, [table]);
+
 	/*
 	function that sums all the phases together 
 	where 
@@ -53,43 +67,43 @@ export default function DashTopper() {
 	USAGE: 
 		accepts an array parameter of what to is going to be sorted
 	*/
-	function getPhase(type) {
+	function getPhase(types) {
 		// keep track of sum phases
 		const sumPhase = {
 			early: 0,
 			mid: 0,
 			complete: 0,
 		};
-		console.log("table", table);
-		for (let i = 0; i < type.length; i++) {
-			sumPhase.early = table[`${type[i]}`][0] + sumPhase.early;
-			sumPhase.early = table[`${type[i]}`][1] + sumPhase.early;
-			sumPhase.mid = table[`${type[i]}`][2] + sumPhase.mid;
-			sumPhase.mid = table[`${type[i]}`][3] + sumPhase.mid;
-			sumPhase.complete = table[`${type[i]}`][4] + sumPhase.complete;
-		}
+
+		types.forEach((type) => {
+			if (table.countries) {
+				const typeTotals = table[type];
+
+				sumPhase.early += typeTotals[0] + typeTotals[1];
+				sumPhase.mid += typeTotals[2] + typeTotals[3];
+				sumPhase.complete += typeTotals[4];
+			}
+		});
+
 		return sumPhase;
 	}
 
 	// Semantic calls onClick with event, object containing all props
 	const handleClick = (evt, { name }) => {
 		setActive(name);
-		const countryName = table.countries;
-		populateWorld();
-
+		const countryName = table.countries.toLowerCase();
 		name === "all"
-			? mapFilterDashCards(countryName)
+			? getTrials()
 			: getTrialByCountryAndType(name, countryName);
-
 		// active === "all"
 		// 	? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
-		// 	: setNumPhase(getPhase([`${active}`]));
+		// 	: setNumPhase(getPhase([`${active.toLowerCase()}`]));
 	};
 
 	return (
 		<div className="vacine-dash-header">
 			<div className="title">
-				<h1>{table && table.countries} Dashboard </h1>
+				<h1>{table && table.countries} Dashboard</h1>
 			</div>
 			<div className="date">
 				<p className="day">{moment(`${time}`).format("dddd")}</p>
