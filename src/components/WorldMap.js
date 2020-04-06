@@ -23,9 +23,14 @@ RETURNS:
 	- Filtered Countries' data 
 */
 
-const WorldMap = () => {
+const WorldMap = ({ setSelectedCountry }) => {
   const [data, setData] = useState([]);
-  const { mapFilterByCountry, getMap, map } = useContext(TableContext);
+  const {
+    mapFilterDashCards,
+    mapFilterByCountryTrials,
+    getMap,
+    map,
+  } = useContext(TableContext);
 
   useEffect(() => {
     axios
@@ -44,14 +49,16 @@ const WorldMap = () => {
     for (let i = 0; i < Object.keys(map).length; i++) {
       delete map[i].country;
     }
-
     setData([map]);
   }, []);
   const setCountry = (e) => {
-    mapFilterByCountry(e);
+    mapFilterDashCards(e.properties.name); //populate dash cards
+    mapFilterByCountryTrials(e.properties.name); //populate table
+
+    setSelectedCountry(e.properties.name);
   };
   return (
-    <div style={{ height: "800px" }}>
+    <div style={{ height: "600px" }}>
       <ResponsiveChoropleth
         data={data}
         features={features}
@@ -67,14 +74,13 @@ const WorldMap = () => {
         graticuleLineColor="#dddddd"
         borderWidth={0.5}
         borderColor="#c0c0c0"
-        // tooltip={function(e) {}}
         legends={[
           {
             anchor: "top-left",
             direction: "column",
             justify: false,
             translateX: 30,
-            translateY: 400,
+            translateY: 300,
             itemsSpacing: 0,
             itemWidth: 60,
             itemHeight: 18,
