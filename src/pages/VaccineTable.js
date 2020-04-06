@@ -10,8 +10,8 @@ import PageBar from '../components/PageBar';
 /*
 GOAL:
 	* Display current country's data on table
-	 
 */
+
 function VaccineTable({ filterInfo, dispatch }) {
   const { getTable, getTrials, trials, isLoading, count } = useContext(
     TableContext

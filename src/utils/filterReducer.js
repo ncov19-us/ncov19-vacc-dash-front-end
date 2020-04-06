@@ -13,7 +13,11 @@ export const filterReducer = (state, action) => {
       };
 
     case 'CHANGE_COUNTRY':
-      return state;
+      return {
+        ...state,
+        page: 1,
+        country: action.payload.toLowerCase(),
+      };
 
     case 'CHANGE_TYPE':
       return state;

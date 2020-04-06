@@ -9,9 +9,9 @@ import { initialState, filterReducer } from '../utils/filterReducer';
 function Main() {
   const { filter } = useContext(TableContext);
 
-	const [selectedCountry, setSelectedCountry] = useState('Global');
+  const [selectedCountry, setSelectedCountry] = useState('Global');
 
-	const [filterInfo, dispatch] = useReducer(filterReducer, initialState);
+  const [filterInfo, dispatch] = useReducer(filterReducer, initialState);
 
   return (
     <>
@@ -28,7 +28,10 @@ function Main() {
                   <h1 style={{ color: 'white' }}>
                     {filter && filter.label} Dashboard
                   </h1>
-                  <WorldMap setSelectedCountry={setSelectedCountry} />
+                  <WorldMap
+                    setSelectedCountry={setSelectedCountry}
+                    dispatch={dispatch}
+                  />
                 </div>
               </div>
             </div>
