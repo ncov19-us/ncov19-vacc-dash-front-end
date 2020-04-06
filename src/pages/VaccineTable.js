@@ -20,8 +20,6 @@ function VaccineTable() {
 
   const [filterInfo, dispatch] = useReducer(filterReducer, initialState);
 
-  // const [apiUrl, setApiUrl] = useState('api/trials?limit=8&page=1');
-
   useEffect(() => {
     let apiUrl = `api/trials?limit=8&page=${filterInfo.page}`;
 

@@ -12,8 +12,6 @@ function PageBar({ count, dispatch }) {
 
     setActivePage(data.activePage);
 
-    // setUrl(`api/trials?limit=7&page=${data.activePage}`);
-
     dispatch({ type: 'CHANGE_PAGE', payload: data.activePage });
   };
 
