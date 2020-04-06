@@ -1,10 +1,9 @@
-import React, { useContext, useState, useReducer, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { TableContext } from '../utils/TableContext/TableState';
 
 import Table from './Table';
 import PageBar from '../components/PageBar';
-import { initialState, filterReducer } from '../utils/filterReducer';
 
 // import "./pages.scss";
 
@@ -13,12 +12,10 @@ GOAL:
 	* Display current country's data on table
 	 
 */
-function VaccineTable() {
+function VaccineTable({ filterInfo, dispatch }) {
   const { getTable, getTrials, trials, isLoading, count } = useContext(
     TableContext
   );
-
-  const [filterInfo, dispatch] = useReducer(filterReducer, initialState);
 
   useEffect(() => {
     let apiUrl = `api/trials?limit=8&page=${filterInfo.page}`;
