@@ -16,9 +16,9 @@ function VaccineTable() {
 	const { getTrials, trials, isLoading, count } = useContext(TableContext);
 	const [apiUrl, setApiUrl] = useState("api/trials?limit=15&page=1");
 
-	useEffect(() => {
-		getTrials(apiUrl);
-	}, [apiUrl]);
+	// useEffect(() => {
+	// 	getTrials(apiUrl);
+	// }, [apiUrl]);
 
 	return (
 		<div className="trial-padding">

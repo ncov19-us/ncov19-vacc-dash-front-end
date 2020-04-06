@@ -23,7 +23,6 @@ send old={numberOfOldTrial} new={numberOfNewTrial}
 */
 export default function DashTopper() {
 	const {
-		getTrials,
 		table,
 		getTrialByCountryAndType,
 		mapFilterDashCards,
@@ -32,17 +31,15 @@ export default function DashTopper() {
 	const [active, setActive] = useState("all");
 	const [numPhase, setNumPhase] = useState([]);
 	const [time, setTime] = useState("");
-	const name = table.countries;
 
 	useEffect(() => {
 		const time = new Date();
 		setTime(time);
 
-		table && table.countries === "world"
-			? mapFilterDashCards(name)
-			: populateWorld();
+		console.log("table", table);
+		populateWorld();
 
-		active === "all"
+		table.length > 0 && active === "all"
 			? setNumPhase(getPhase(["vaccines", "treatments", "alternatives"]))
 			: setNumPhase(getPhase([`${active}`]));
 	}, []);
@@ -63,9 +60,8 @@ export default function DashTopper() {
 			mid: 0,
 			complete: 0,
 		};
+		console.log("table", table);
 		for (let i = 0; i < type.length; i++) {
-			console.log("type[i]", table.type[i][0]);
-			console.log("table[type[i]", table.type[i]);
 			sumPhase.early = table[`${type[i]}`][0] + sumPhase.early;
 			sumPhase.early = table[`${type[i]}`][1] + sumPhase.early;
 			sumPhase.mid = table[`${type[i]}`][2] + sumPhase.mid;
@@ -79,6 +75,7 @@ export default function DashTopper() {
 	const handleClick = (evt, { name }) => {
 		setActive(name);
 		const countryName = table.countries;
+		populateWorld();
 
 		name === "all"
 			? mapFilterDashCards(countryName)

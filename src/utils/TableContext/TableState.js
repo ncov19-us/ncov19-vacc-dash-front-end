@@ -166,7 +166,7 @@ export const TableState = (props) => {
 	const populateWorld = async () => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
-			const res = await client().get(`api/totals`);
+			const res = await client().get(`/api/totals`);
 			dispatch({ type: POPULATE_WORLD_SUCCESS, payload: res.data });
 		} catch (e) {
 			console.log("error", e);
