@@ -114,7 +114,7 @@ $hoverShadow: #40495b;
       tbody tr {
         &:hover {
           background-color: $tableHover;
-          color: $gunmetal;
+          // color: $gunmetal;
           font-weight: bold;
           transition-delay: 0s;
           transition-duration: 0.4s;
