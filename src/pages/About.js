@@ -6,8 +6,10 @@ const header =
 const About = () => {
   return (
     <div className="about">
-      <div className="title">
-        <h1>What is the COVID-19?</h1>
+      <div className="hero">
+        <div className="title">
+          <h1>What is COVID-19?</h1>
+        </div>
       </div>
       <div className="cards">
         <div className="card">

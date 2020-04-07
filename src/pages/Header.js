@@ -39,7 +39,7 @@ export default function Header() {
                 fontSize: "1.5rem",
               }}
             >
-              {/* <a href="#" alt="mobile-sms" style={aTags}>
+              <a href="#" alt="mobile-sms" style={aTags}>
                 Get Mobile Updates
               </a>
               <Link to="/" style={aTags} className="menubar-right">
@@ -48,9 +48,6 @@ export default function Header() {
               <Link to="/about" style={aTags} className="menubar-right">
                 About
               </Link>
-              <Link to="/abouttest" style={aTags} className="menubar-right">
-                AboutTest
-              </Link> */}
             </div>
           </Modal.Content>
         </Modal>
