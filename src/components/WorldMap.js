@@ -41,13 +41,6 @@ const WorldMap = ({ setSelectedCountry, dispatch }) => {
       });
   });
 
-  useEffect(async () => {
-    getMap();
-    for (let i = 0; i < Object.keys(map).length; i++) {
-      delete map[i].country;
-    }
-    setData([map]);
-  }, []);
   const setCountry = (e) => {
     mapFilterDashCards(e.properties.name); //populate dash cards
     mapFilterByCountryTrials(e.properties.name); //populate table
