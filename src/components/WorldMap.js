@@ -50,22 +50,22 @@ const WorldMap = ({ setSelectedCountry, dispatch }) => {
   };
 
   return (
-    <div style={{ height: "600px" }}>
+    <div style={{ height: "700px" }}>
       <ResponsiveChoropleth
         data={data}
         features={features}
         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
         colors="YlOrRd"
         domain={[0, 10]}
-        unknownColor="#666666"
+        unknownColor="#19202a"
         label="properties.name"
         valueFormat=".2s"
         projectionTranslation={[0.5, 0.5]}
         projectionRotation={[0, 0, 0]}
         enableGraticule={false}
         graticuleLineColor="#dddddd"
-        borderWidth={0.5}
-        borderColor="#c0c0c0"
+        borderWidth={0.7}
+        borderColor="white"
         legends={[
           {
             anchor: "top-left",
