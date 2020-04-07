@@ -14,8 +14,6 @@ import {
 	GET_TRIAL_BY_COUNTRY_ERROR,
 	SET_MAP_FILTER_TABLE_SUCCESS,
 	SET_MAP_FILTER_TABLE_ERROR,
-	POPULATE_WORLD_SUCCESS,
-	POPULATE_WORLD_ERROR,
 	GET_WORLD_TYPE_SUCCESS,
 	GET_WORLD_TYPE_ERROR,
 } from "./types";
@@ -112,34 +110,34 @@ const getTrialByCountryError = (state, action) => {
 		is_loading: false,
 	};
 };
-const setMapFilterTable = (state, action) => {
-	return {
-		...state,
-		is_loading: false,
-		trials: action.payload,
-	};
-};
-const setMapFilterTableError = (state, action) => {
-	return {
-		...state,
-		error: action.payload,
-		is_loading: false,
-	};
-};
-const populateWorld = (state, action) => {
-	return {
-		...state,
-		is_loading: false,
-		table: action.payload,
-	};
-};
-const populateWorldError = (state, action) => {
-	return {
-		...state,
-		error: action.payload,
-		is_loading: false,
-	};
-};
+// const setMapFilterTable = (state, action) => {
+// 	return {
+// 		...state,
+// 		is_loading: false,
+// 		trials: action.payload,
+// 	};
+// };
+// const setMapFilterTableError = (state, action) => {
+// 	return {
+// 		...state,
+// 		error: action.payload,
+// 		is_loading: false,
+// 	};
+// };
+// const populateWorld = (state, action) => {
+// 	return {
+// 		...state,
+// 		is_loading: false,
+// 		table: action.payload,
+// 	};
+// };
+// const populateWorldError = (state, action) => {
+// 	return {
+// 		...state,
+// 		error: action.payload,
+// 		is_loading: false,
+// 	};
+// };
 
 const getWorldType = (state, action) => {
 	console.log("action", action);
