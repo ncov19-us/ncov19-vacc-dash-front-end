@@ -42,9 +42,9 @@ const WorldMap = ({ setSelectedCountry, dispatch }) => {
     if (e.data) {
       mapFilterDashCards(e.properties.name); //populate dash cards
       mapFilterByCountryTrials(e.properties.name); //populate table
-  
+
       setSelectedCountry(e.properties.name);
-  
+
       dispatch({ type: 'CHANGE_COUNTRY', payload: e.properties.name });
     }
   };
