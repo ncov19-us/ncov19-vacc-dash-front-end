@@ -1,5 +1,7 @@
 .about {
-  .tittle {
+  padding-top: 60px;
+
+  .title {
     @include flex(center, row);
     align-items: center;
     background: url('../assets/virus-img.png');
