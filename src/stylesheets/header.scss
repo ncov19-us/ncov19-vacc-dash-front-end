@@ -1,138 +1,137 @@
 // TODO: Move/remove? From main.scss
 .vaccine-dash-header .title {
-  margin-left: 3%;
+	margin-left: 3%;
 }
 
 // Header Menu
 .menubar {
-  @include flex(space-around, row);
-  background: #010915;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  color: #f4f4f4;
-  z-index: 4;
-  margin-top: 1%;
-
-  .title-name {
-    margin-left: 3%;
-  }
-
-  .title {
-    width: 100%;
-    text-align: left;
-    margin-left: 3%;
-    padding: 16.5px 0;
-    a {
-      color: white;
-      .title-name {
-        font-size: 2rem;
-      }
-      .title-unbold {
-        font-weight: normal;
-      }
-    }
-  }
-  .menubar-links {
-    @include flex(flex-end, row);
-    width: 100%;
-    margin: auto;
-    margin-right: 3%;
-    .sms {
-      border: 1px solid white;
-      border-radius: 4px;
-      margin-right: 2%;
-    }
-    .sms:hover {
-      border-color: #f4b000;
-    }
-
-    a {
-      text-decoration: none;
-      color: #fff;
-      padding: 6px 10px;
-      font-size: 1.05rem;
-    }
-    a:hover {
-      color: #f4b000;
-      //  border: 1px solid #f4b000;
-    }
-    .menubar-right {
-      font-size: 1.05rem;
-      :hover {
-        color: #f4b000;
-      }
-    }
-  }
-  .mobile {
-    display: none;
-  }
-  @media #{$mobile} {
-    .title {
-      font-size: 1.5rem;
-    }
-    .menubar-links {
-      display: none;
-    }
-    .mobile {
-      display: block;
-      margin: auto;
-      padding-right: 10px;
-      img {
-        filter: invert(100%);
-        background: white;
-        width: 40px;
-      }
-    }
-  }
+	@include flex(space-around, row);
+	background: #010915;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	color: #f4f4f4;
+	z-index: 4;
+	padding: 1rem 0;
+	.title-name {
+		margin-left: 3%;
+	}
+	.title {
+		width: 100%;
+		text-align: left;
+		margin-left: 3%;
+		padding: 16.5px 0;
+		a {
+			color: white;
+			.title-name {
+				font-size: 2rem;
+			}
+			.title-unbold {
+				font-weight: normal;
+			}
+		}
+	}
+	.menubar-links {
+		@include flex(flex-end, row);
+		width: 100%;
+		margin: auto;
+		margin-right: 3%;
+		#sms {
+			border: 1px solid white;
+			border-radius: 4px;
+			margin-right: 2%;
+		}
+		a {
+			text-decoration: none;
+			color: #fff;
+			padding: 6px 10px;
+			font-size: 1.05rem;
+		}
+		a:hover {
+			color: #f4b000;
+		}
+		.menubar-right {
+			font-size: 1.05rem;
+			:hover {
+				color: #f4b000;
+			}
+		}
+	}
+	.mobile {
+		display: none;
+	}
+	@media #{$mobile} {
+		.title {
+			font-size: 1.5rem;
+		}
+		.menubar-links {
+			display: none;
+		}
+		.mobile {
+			display: block;
+			margin: auto;
+			padding-right: 10px;
+			img {
+				filter: invert(100%);
+				background: white;
+				width: 40px;
+			}
+		}
+	}
 }
 
 // Vaccine Dashboard's header info
 .vacine-dash-header {
-  margin-top: 10%;
-
-  //   background: $gunmetal;
-  color: white;
-  padding: 2% 5%;
-  .date {
-    display: flex;
-    flex-direction: row;
-    margin-left: 3%;
-    .day {
-      color: #ffc428;
-    }
-    .format {
-      padding-left: 4px;
-      color: #ababab;
-    }
-  }
-  .cards {
-    @include flex(space-around, row);
-    // margin-left: 5%;
-    align-items: center;
-    // align-content: stretch;
-    .card {
-      background: $gunmetal;
-      border: 2px solid #dbbc6c;
-      padding: 2% 3%;
-      border-radius: 4px;
-      width: 28%;
-      p {
-        font-size: 3rem;
-        color: #f4b000;
-      }
-      .stats {
-        @include flex(space-between, row);
-        img {
-          padding-left: 6px;
-        }
-      }
-    }
-  }
+	margin-top: 10%;
+	//   background: $gunmetal;
+	color: white;
+	padding: 2% 5%;
+	.today-n-global {
+		display: flex;
+		.return-to-global {
+			margin-left: auto;
+			color: #ffc428;
+			cursor: pointer;
+		}
+	}
+	.date {
+		display: flex;
+		flex-direction: row;
+		.day {
+			color: #ffc428;
+		}
+		.format {
+			padding-left: 4px;
+			color: #ababab;
+		}
+	}
+	.cards {
+		@include flex(space-between, row);
+		// margin-left: 5%;
+		align-items: center;
+		// align-content: stretch;
+		.card {
+			background: $gunmetal;
+			border: 2px solid #dbbc6c;
+			padding: 2% 3%;
+			border-radius: 4px;
+			width: 28%;
+			p {
+				font-size: 3rem;
+				color: #f4b000;
+			}
+			.stats {
+				@include flex(space-between, row);
+				img {
+					padding-left: 6px;
+				}
+			}
+		}
+	}
 }
 @media #{$mobile} {
-  .vacine-dash-header {
-    background: $gunmetal;
-  }
+	.vacine-dash-header {
+		background: $gunmetal;
+	}
 }
