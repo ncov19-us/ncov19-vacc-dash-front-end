@@ -30,11 +30,13 @@
       .title-name {
         font-size: 2rem;
       }
-      .title-unbold {
-        font-weight: normal;
-      }
     }
   }
+
+  h1 > span.title-unbold {
+    font-weight: 200;
+  }
+
   .menubar-links {
     @include flex(flex-end, row);
     width: 100%;
