@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Menu } from 'semantic-ui-react';
+import React, { useState, useEffect } from "react";
+import { Menu } from "semantic-ui-react";
 
-import Today from '../components/Today';
-import { client } from '../utils/axiosWithAuth';
+import Today from "../components/Today";
+import { client } from "../utils/axiosWithAuth";
 // FIXME: Move this to stylesheets.
-import 'semantic-ui-css/semantic.min.css';
+import "semantic-ui-css/semantic.min.css";
 
 function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
   const [numPhase, setNumPhase] = useState({
@@ -20,13 +20,13 @@ function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
     alternatives: [],
   });
 
-  const [active, setActive] = useState('all');
+  const [active, setActive] = useState("all");
 
   useEffect(() => {
-    let apiUrl = '/api/totals';
+    let apiUrl = "/api/totals";
 
     async function fetchTotals() {
-      if (selectedCountry !== 'Global') {
+      if (selectedCountry !== "Global") {
         apiUrl = `/api/totals?countries=${selectedCountry.toLowerCase()}`;
       }
 
@@ -41,8 +41,8 @@ function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
   useEffect(() => {
     if (totals.countries) {
       setNumPhase(
-        active === 'all'
-          ? calcPhases(totals, ['vaccines', 'treatments', 'alternatives'])
+        active === "all"
+          ? calcPhases(totals, ["vaccines", "treatments", "alternatives"])
           : calcPhases(totals, [`${active}`])
       );
     }
@@ -69,14 +69,14 @@ function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
   const handleClick = (evt, { name }) => {
     setActive(name);
 
-    dispatch({ type: 'CHANGE_TYPE', payload: name });
+    dispatch({ type: "CHANGE_TYPE", payload: name });
   };
 
   const returnGlobal = (evt) => {
     evt.preventDefault();
 
-    setSelectedCountry('Global');
-    dispatch({ type: 'CHANGE_COUNTRY', payload: 'global' });
+    setSelectedCountry("Global");
+    dispatch({ type: "CHANGE_COUNTRY", payload: "global" });
   };
 
   return (
@@ -84,7 +84,7 @@ function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
       <div className="title">
         <h1>{selectedCountry} Dashboard</h1>
       </div>
-      {selectedCountry !== 'Global' && (
+      {selectedCountry !== "Global" && (
         <button onClick={returnGlobal}>Return to Global View</button>
       )}
       <Today />
@@ -110,27 +110,28 @@ function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
       </div>
       <div className="ui-left-aligned-container">
         <h3 className="trials">COVID-19 Trials</h3>
+
         <Menu compact pointing secondary inverted>
-          <Menu.Item name="all" active={active === 'all'} onClick={handleClick}>
+          <Menu.Item name="all" active={active === "all"} onClick={handleClick}>
             Trials
           </Menu.Item>
           <Menu.Item
             name="vaccines"
-            active={active === 'vaccines'}
+            active={active === "vaccines"}
             onClick={handleClick}
           >
             Vaccines
           </Menu.Item>
           <Menu.Item
             name="treatments"
-            active={active === 'treatments'}
+            active={active === "treatments"}
             onClick={handleClick}
           >
             Treatments
           </Menu.Item>
           <Menu.Item
             name="alternatives"
-            active={active === 'alternatives'}
+            active={active === "alternatives"}
             onClick={handleClick}
           >
             Alternatives

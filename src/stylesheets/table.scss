@@ -3,6 +3,7 @@
 .trials {
   font-size: 1.3rem;
   color: white;
+  padding-top: 2%;
 }
 
 .table {
@@ -58,6 +59,13 @@
   .content:hover {
     background: rgba(161, 161, 161, 0.5);
   }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: 1%;
+  padding-left: 1%;
 }
 
 // Table

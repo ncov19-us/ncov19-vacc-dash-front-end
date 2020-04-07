@@ -39,11 +39,15 @@
     width: 100%;
     margin: auto;
     margin-right: 3%;
-    #sms {
+    .sms {
       border: 1px solid white;
       border-radius: 4px;
       margin-right: 2%;
     }
+    .sms:hover {
+      border-color: #f4b000;
+    }
+
     a {
       text-decoration: none;
       color: #fff;
@@ -52,6 +56,7 @@
     }
     a:hover {
       color: #f4b000;
+      //  border: 1px solid #f4b000;
     }
     .menubar-right {
       font-size: 1.05rem;

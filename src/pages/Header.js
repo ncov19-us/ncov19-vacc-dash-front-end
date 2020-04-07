@@ -22,7 +22,7 @@ export default function Header() {
     <div className="menubar">
       <div className="tittle">
         <Link to="/" style={{ color: "white" }}>
-          <h1 className="title-name">
+          <h1 className="subtitle-name">
             COVID-19 <span className="title-unbold">Tracker</span>
           </h1>
         </Link>
@@ -56,7 +56,12 @@ export default function Header() {
         </Modal>
       </div>
       <div className="menubar-links">
-        <a href="#" alt="mobile-sms" id="sms">
+        <a
+          className="sms"
+          href="https://ncov19-sms-bot-fe-prod.netlify.com/"
+          alt="mobile-sms"
+          id="sms"
+        >
           Get Mobile Updates
         </a>
         <Link to="/">Vaccine Tracker</Link>

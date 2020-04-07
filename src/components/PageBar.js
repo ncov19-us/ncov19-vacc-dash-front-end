@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Pagination } from 'semantic-ui-react';
+import React, { useState } from "react";
+import { Pagination } from "semantic-ui-react";
 
 function PageBar({ count, dispatch }) {
   const pageSize = 20;
@@ -12,16 +12,18 @@ function PageBar({ count, dispatch }) {
 
     setActivePage(data.activePage);
 
-    dispatch({ type: 'CHANGE_PAGE', payload: data.activePage });
+    dispatch({ type: "CHANGE_PAGE", payload: data.activePage });
   };
 
   return (
-    <Pagination
-      totalPages={pageCount}
-      activePage={activePage}
-      onPageChange={handleClick}
-      inverted
-    />
+    <div className="pagination">
+      <Pagination
+        totalPages={pageCount}
+        activePage={activePage}
+        onPageChange={handleClick}
+        inverted
+      />
+    </div>
   );
 }
 
