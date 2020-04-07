@@ -37,6 +37,13 @@
     font-weight: 200;
   }
 
+  .global-view {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: red;
+  }
+
   .menubar-links {
     @include flex(flex-end, row);
     width: 100%;
@@ -111,7 +118,7 @@
     }
   }
   .cards {
-    @include flex(space-around, row);
+    @include flex(space-between, row);
     // margin-left: 5%;
     align-items: center;
     // align-content: stretch;

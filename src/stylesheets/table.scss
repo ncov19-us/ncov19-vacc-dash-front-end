@@ -63,7 +63,7 @@
 .pagination {
   display: flex;
   justify-content: center;
-  padding-top: 1%;
+  margin-top: 1%;
   padding-left: 1%;
 }
 
@@ -86,7 +86,7 @@ $hoverShadow: #40495b;
     .table {
       text-align: left;
       overflow: hidden;
-      width: 85%;
+      width: 100%;
       font-size: 1rem;
       margin: 0 auto;
       display: table;
@@ -126,7 +126,7 @@ $hoverShadow: #40495b;
     .table {
       text-align: left;
       overflow: hidden;
-      width: 80%;
+      width: 100%;
       font-size: 1rem;
       margin: 0 auto;
       display: table;
