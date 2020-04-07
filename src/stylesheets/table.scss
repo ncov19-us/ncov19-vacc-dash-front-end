@@ -1,76 +1,76 @@
 // The heading of the table underneath the counting cards
 // (dashtopper)
 .trials {
-	font-size: 1.3rem;
-	color: white;
+  font-size: 1.3rem;
+  color: white;
 }
 
 .table {
-	margin-top: 10px;
-	color: white;
-	height: 400px;
-	overflow: scroll;
-	background: #2c3341;
-	border-radius: 15px;
-	padding: 6px;
-	.title {
-		@include flex(space-between, row);
-		h4 {
-			margin: auto;
-			padding-top: 4px;
-		}
-		.sponsor {
-			width: 100%;
-			text-align: left;
-		}
-		.country {
-			width: 100%;
-			text-align: left;
-		}
-		.phase {
-			width: 100%;
-			text-align: left;
-		}
-		.type {
-			width: 100%;
-			text-align: left;
-		}
-	}
-	.content {
-		@include flex(space-between, row);
-		.sponsor {
-			width: 100%;
-			color: green;
-		}
-		.country {
-			width: 100%;
-			text-align: left;
-		}
-		.phase {
-			width: 100%;
-			text-align: left;
-		}
-		.intervention_type {
-			width: 100%;
-			text-align: left;
-		}
-	}
-	.content:hover {
-		background: rgba(161, 161, 161, 0.5);
-	}
+  margin-top: 10px;
+  color: white;
+  height: 400px;
+  overflow: scroll;
+  background: #2c3341;
+  border-radius: 15px;
+  padding: 6px;
+  .title {
+    @include flex(space-between, row);
+    h4 {
+      margin: auto;
+      padding-top: 4px;
+    }
+    .sponsor {
+      width: 100%;
+      text-align: left;
+    }
+    .country {
+      width: 100%;
+      text-align: left;
+    }
+    .phase {
+      width: 100%;
+      text-align: left;
+    }
+    .type {
+      width: 100%;
+      text-align: left;
+    }
+  }
+  .content {
+    @include flex(space-between, row);
+    .sponsor {
+      width: 100%;
+      color: green;
+    }
+    .country {
+      width: 100%;
+      text-align: left;
+    }
+    .phase {
+      width: 100%;
+      text-align: left;
+    }
+    .intervention_type {
+      width: 100%;
+      text-align: left;
+    }
+  }
+  .content:hover {
+    background: #40495b;
+  }
 }
 
 .pagination {
-	display: flex;
-	justify-content: center;
-	padding-top: 1%;
-	padding-left: 1%;
+  display: flex;
+  justify-content: center;
+  padding-top: 1%;
+  padding-left: 1%;
 }
 
 // Table
 
 .ui-left-aligned-container {
-	margin-left: 8%;
+  margin-left: 8%;
 }
 
 $tableHover: rgba(161, 161, 161, 0.5);
@@ -79,7 +79,7 @@ $hoverShadow: #40495b;
   td > a {
     color: white;
     &:hover {
-      color: #FEC400;
+      color: #fec400;
     }
   }
   @media #{$desktop} {
@@ -139,68 +139,68 @@ $hoverShadow: #40495b;
         background-color: #2c3341;
       }
 
-			td {
-				font-weight: normal;
-				color: white;
-				font-size: 1em;
-				padding: 0.3rem;
-				&:hover {
-					background-color: $tableHover;
-					color: $gunmetal;
-				}
-				&:first-child {
-					color: white;
-					&:hover {
-						color: $gunmetal;
-					}
-				}
-			}
-		}
+      td {
+        font-weight: normal;
+        color: white;
+        font-size: 1em;
+        padding: 0.3rem;
+        &:hover {
+          background-color: $tableHover;
+          color: $gunmetal;
+        }
+        &:first-child {
+          color: white;
+          &:hover {
+            color: $gunmetal;
+          }
+        }
+      }
+    }
 
-		overflow-x: scroll;
-		.table {
-			margin-top: 10px;
-			border-radius: 10px;
-			th {
-				padding: 5px 10px;
-				text-align: left;
-				color: white;
-				border: none;
-			}
-			td {
-				width: fit-content;
-				&:nth-child(1) {
-					.country {
-						color: #4d4d4d;
-					}
-					white-space: nowrap;
-				}
-				&:nth-child(4) {
-					color: #e55465;
-				}
-				&:nth-child(5) {
-					color: #dbbc6c;
-				}
-			}
-		}
-	}
+    overflow-x: scroll;
+    .table {
+      margin-top: 10px;
+      border-radius: 10px;
+      th {
+        padding: 5px 10px;
+        text-align: left;
+        color: white;
+        border: none;
+      }
+      td {
+        width: fit-content;
+        &:nth-child(1) {
+          .country {
+            color: #4d4d4d;
+          }
+          white-space: nowrap;
+        }
+        &:nth-child(4) {
+          color: #e55465;
+        }
+        &:nth-child(5) {
+          color: #dbbc6c;
+        }
+      }
+    }
+  }
 }
 .table-wrapper::-webkit-scrollbar-thumb {
-	width: 3px;
-	height: 3px;
-	border-radius: 0;
-	background: white;
+  width: 3px;
+  height: 3px;
+  border-radius: 0;
+  background: white;
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
-	width: 3px;
-	height: 3px;
-	border-radius: 0;
-	background: white;
+  width: 3px;
+  height: 3px;
+  border-radius: 0;
+  background: white;
 }
 .table-wrapper::-webkit-scrollbar-thumb {
-	width: 3px;
-	height: 3px;
-	border-radius: 0;
-	background: white;
+  width: 3px;
+  height: 3px;
+  border-radius: 0;
+  background: white;
 }
