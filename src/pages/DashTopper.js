@@ -82,16 +82,16 @@ function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
   return (
     <div className="vacine-dash-header">
       <div className="title">
-        <div>
-          <h1>{selectedCountry} Dashboard</h1>
-        </div>
-        <div>
-          {selectedCountry !== 'Global' && (
-            <h5 onClick={returnGlobal} className="return-to-global">
-              Return to Global View
-            </h5>
-          )}
-        </div>
+        <h1>{selectedCountry} Dashboard</h1>
+        {/* {selectedCountry !== 'Global' && ( */}
+          <span
+            onClick={returnGlobal}
+            
+            className={selectedCountry === 'Global' ? 'hidden' : "return-to-global"}
+          >
+            &#x25C1; Return to Global View
+          </span>
+        {/* )} */}
       </div>
       <div className="today">
         <Today />
@@ -117,9 +117,9 @@ function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
         </div>
       </div>
       <div>
-        <h3 className="trials" style={{ marginTop: '1.5rem' }}>
+        <h2 className="trials" style={{ marginTop: '1.5rem' }}>
           COVID-19 Trials
-        </h3>
+        </h2>
         <Menu compact pointing secondary inverted style={{ width: '100%' }}>
           <Menu.Item
             name="all"

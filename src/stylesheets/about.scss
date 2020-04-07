@@ -22,16 +22,19 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1190px;
+    max-width: 1440px;
     margin: auto;
     margin-top: 2%;
     margin-bottom: 2%;
     .card {
       padding: 1% 2%;
-      width: 300px;
+      width: 30%;
       color: white;
+      margin-bottom: 2%;
       @media #{$tablet} {
         width: 100%;
+        margin-left: 5%;
+        margin-right: 5%;
       }
     }
   }
@@ -44,6 +47,9 @@
       .card {
         padding: 2% 3%;
         width: 100%;
+        margin-top: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
       }
     }
   }
@@ -51,6 +57,14 @@
     .title {
       height: 372px;
       margin-bottom: -6%;
+    }
+  }
+
+  .hero {
+    
+
+    @media #{$tablet} {
+      padding-bottom: 6%;
     }
   }
 }

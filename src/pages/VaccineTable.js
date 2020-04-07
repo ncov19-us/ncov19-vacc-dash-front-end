@@ -16,7 +16,7 @@ function VaccineTable({ filterInfo, dispatch }) {
   const { getTrials, trials, isLoading, count } = useContext(TableContext);
 
   useEffect(() => {
-    let apiUrl = `api/trials?limit=8&page=${filterInfo.page}`;
+    let apiUrl = `api/trials?limit=7&page=${filterInfo.page}`;
 
     if (filterInfo.country && filterInfo.country !== 'global') {
       apiUrl += `&countries=${filterInfo.country}`;

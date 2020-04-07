@@ -13,7 +13,7 @@ const About = () => {
       </div>
       <div className="cards">
         <div className="card">
-          <h3>What is the Novel Coronavirus</h3>
+          <h2>What is the Novel Coronavirus?</h2>
           <p>
             {header}
             <br />
@@ -26,12 +26,12 @@ const About = () => {
             <br />
           </p>
           Source:{" "}
-          <a href="https://WHO.org" alt="who-source">
+          <a href="https://WHO.org" alt="who-source" style={{ color: 'white'}}>
             Who.org
           </a>
         </div>
         <div className="card">
-          <h3>How does the Coronavirus spread?</h3>
+          <h2>How does the Coronavirus spread?</h2>
           <p>
             {header}
             <br />
@@ -44,12 +44,12 @@ const About = () => {
             <br />
           </p>
           Source:{" "}
-          <a href="https://WHO.org" alt="who-source">
+          <a href="https://WHO.org" alt="who-source" style={{ color: 'white'}}>
             Who.org
           </a>
         </div>
         <div className="card">
-          <h3>How does the Coronavirus spread?</h3>
+          <h2>How does the Coronavirus spread?</h2>
           <p>
             {header}
             <br />
@@ -62,12 +62,12 @@ const About = () => {
             <br />
           </p>
           Source:{" "}
-          <a href="https://WHO.org" alt="who-source">
+          <a href="https://WHO.org" alt="who-source" style={{ color: 'white'}}>
             Who.org
           </a>
         </div>
         <div className="card">
-          <h3>What are Coronavirus Symptoms?</h3>
+          <h2>What are Coronavirus Symptoms?</h2>
           <p>
             {header}
             <br />
@@ -80,12 +80,12 @@ const About = () => {
             <br />
           </p>
           Source:{" "}
-          <a href="https://WHO.org" alt="who-source">
+          <a href="https://WHO.org" alt="who-source" style={{ color: 'white'}}>
             Who.org
           </a>
         </div>
         <div className="card">
-          <h3>How do I know if I am in high risk?</h3>
+          <h2>How do I know if I am in high risk?</h2>
           <p>
             {header}
             <br />
@@ -98,12 +98,12 @@ const About = () => {
             <br />
           </p>
           Source:{" "}
-          <a href="https://WHO.org" alt="who-source">
+          <a href="https://WHO.org" alt="who-source" style={{ color: 'white'}}>
             Who.org
           </a>
         </div>
         <div className="card">
-          <h3>How do I know if I have Coronavirus?</h3>
+          <h2>How do I know if I have Coronavirus?</h2>
           <p>
             {header}
             <br />
@@ -116,7 +116,7 @@ const About = () => {
             <br />
           </p>
           Source:{" "}
-          <a href="https://WHO.org" alt="who-source">
+          <a href="https://WHO.org" alt="who-source" style={{ color: 'white'}}>
             Who.org
           </a>
         </div>

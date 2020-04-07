@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Popup } from 'semantic-ui-react';
 export default class Table extends React.Component {
   // props.data
   constructor(props) {
@@ -51,21 +51,27 @@ const RenderRow = (props) => {
   return (
     <>
       <td>
-        <a
-          href={props.data.data_source}
-          target="_blank"
-					rel="noreferrer noopener"
-					// style={{ color: 'white' }}
-        >
-          {props.data.sponsors}
-        </a>
+        <Popup
+          trigger={
+            <a
+              href={props.data.data_source}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {props.data.sponsors}
+            </a>
+          }
+          content={`${props.data.sponsors}`}
+          position="bottom center"
+          basic
+        />
       </td>
+
       <td>
         <a
           href={props.data.data_source}
           target="_blank"
-					rel="noreferrer noopener"
-					// style={{ color: 'white' }}
+          rel="noreferrer noopener"
         >
           {props.data.countries}
         </a>
@@ -74,8 +80,7 @@ const RenderRow = (props) => {
         <a
           href={props.data.data_source}
           target="_blank"
-					rel="noreferrer noopener"
-					// style={{ color: 'white' }}
+          rel="noreferrer noopener"
         >
           {props.data.intervention}
         </a>
@@ -84,8 +89,7 @@ const RenderRow = (props) => {
         <a
           href={props.data.data_source}
           target="_blank"
-					rel="noreferrer noopener"
-					// style={{ color: 'white' }}
+          rel="noreferrer noopener"
         >
           {props.data.phase}
         </a>
@@ -94,8 +98,7 @@ const RenderRow = (props) => {
         <a
           href={props.data.data_source}
           target="_blank"
-					rel="noreferrer noopener"
-					// style={{ color: 'white' }}
+          rel="noreferrer noopener"
         >
           {props.data.intervention_type}
         </a>
