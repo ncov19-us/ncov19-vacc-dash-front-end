@@ -77,6 +77,12 @@
 $tableHover: rgba(161, 161, 161, 0.5);
 $hoverShadow: #40495b;
 .table-wrapper {
+  td > a {
+    color: white;
+    &:hover {
+      color: #FEC400;
+    }
+  }
   @media #{$desktop} {
     .table {
       text-align: left;
@@ -87,7 +93,6 @@ $hoverShadow: #40495b;
       display: table;
       padding: 0 0 8em 0;
       background-color: #2c3341;
-      // border-radius: 15px;
       border-collapse: collapse;
       th {
         font-weight: bold;
