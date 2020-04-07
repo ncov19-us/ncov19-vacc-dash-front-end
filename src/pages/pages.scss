@@ -201,10 +201,10 @@ Media Queries for usage
     align-items: center;
     // align-content: stretch;
     .card {
-      background: #19202a;
-      border: 2px solid #f4b000;
+      background: $gunmetal;
+      border: 2px solid #dbbc6c;
       padding: 2% 3%;
-      border-radius: px;
+      border-radius: 4px;
       width: 28%;
       p {
         font-size: 3rem;
@@ -381,7 +381,7 @@ body {
 // Table
 
 .ui-left-aligned-container {
-  margin-left: 8%;
+  margin-left: 2.5%;
 }
 
 $tableHover: rgba(161, 161, 161, 0.5);

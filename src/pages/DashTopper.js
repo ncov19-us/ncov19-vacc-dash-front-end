@@ -87,14 +87,15 @@ function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
 		<div className="vacine-dash-header">
 			<div className="title">
 				<h1>{selectedCountry} Dashboard</h1>
-			</div>
-			<div className="today-n-global">
-				<Today />
 				{selectedCountry !== "Global" && (
 					<p onClick={returnGlobal} className="return-to-global">
 						Return to Global View
 					</p>
 				)}
+			</div>
+			<div className="today">
+				<Today />
+				
 			</div>
 			<div className="cards">
 				<div className="card">

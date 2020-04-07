@@ -101,7 +101,9 @@
   .date {
     display: flex;
     flex-direction: row;
-    margin-left: 3%;
+    // margin-left: 3%;
+    // margin: 2% 0;
+
     .day {
       color: #ffc428;
     }
@@ -110,8 +112,20 @@
       color: #ababab;
     }
   }
+
+  .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .return-to-global {
+      padding: 2% 0;
+    }
+  }
+
   .cards {
-    @include flex(space-around, row);
+    @include flex(space-between, row);
     // margin-left: 5%;
     align-items: center;
     // align-content: stretch;
