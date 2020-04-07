@@ -68,19 +68,35 @@ const WorldMap = ({ setSelectedCountry, dispatch }) => {
         borderColor="white"
         legends={[
           {
-            anchor: "top-left",
-            direction: "column",
-            justify: false,
-            translateX: 30,
-            translateY: 300,
-            itemsSpacing: 0,
-            itemWidth: 60,
-            itemHeight: 18,
-            itemDirection: "left-to-right",
-            itemTextColor: "#FFFFFF",
-            itemOpacity: 0.85,
-            symbolSize: 20,
-            symbolShape: "square",
+            // anchor: "top-left",
+            // direction: "column",
+            // justify: false,
+            // translateX: 30,
+            // translateY: 300,
+            // itemsSpacing: 0,
+            // itemWidth: 60,
+            // itemHeight: 18,
+            // itemDirection: "left-to-right",
+            // itemTextColor: "#FFFFFF",
+            // itemOpacity: 0.85,
+            // symbolSize: 20,
+            // symbolShape: "square",
+
+anchor: 'bottom',
+direction: 'row',
+justify: true,
+translateX: 7,
+translateY: -24,
+itemsSpacing: 0,
+itemWidth: 62,
+itemHeight: 10,
+itemDirection: 'left-to-right',
+itemTextColor: '#FFFFFF',
+itemOpacity: 0.85,
+symbolSize: 11,
+symbolShape: "square",
+
+
 
             effects: [
               {
