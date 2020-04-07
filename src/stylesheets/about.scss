@@ -4,15 +4,15 @@
   .title {
     @include flex(center, row);
     align-items: center;
-    background: url('../assets/virus-img.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../assets/virus-img.png');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
 
     height: 442px;
     color: white;
     width: 100%;
-    max-width: 1440px;
+    // max-width: 1440px;
     margin: auto;
     h1 {
       font-size: 2.2rem;
