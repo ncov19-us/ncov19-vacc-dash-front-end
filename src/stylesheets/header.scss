@@ -1,6 +1,6 @@
 // TODO: Move/remove? From main.scss
 .vaccine-dash-header .title {
-  margin-left: 3%;
+	margin-left: 3%;
 }
 
 // Header Menu
@@ -92,49 +92,55 @@
 
 // Vaccine Dashboard's header info
 .vacine-dash-header {
-  margin-top: 10%;
-
-  //   background: $gunmetal;
-  color: white;
-  padding: 2% 5%;
-  .date {
-    display: flex;
-    flex-direction: row;
-    margin-left: 3%;
-    .day {
-      color: #ffc428;
-    }
-    .format {
-      padding-left: 4px;
-      color: #ababab;
-    }
-  }
-  .cards {
-    @include flex(space-around, row);
-    // margin-left: 5%;
-    align-items: center;
-    // align-content: stretch;
-    .card {
-      background: $gunmetal;
-      border: 2px solid #dbbc6c;
-      padding: 2% 3%;
-      border-radius: 4px;
-      width: 28%;
-      p {
-        font-size: 3rem;
-        color: #f4b000;
-      }
-      .stats {
-        @include flex(space-between, row);
-        img {
-          padding-left: 6px;
-        }
-      }
-    }
-  }
+	margin-top: 10%;
+	//   background: $gunmetal;
+	color: white;
+	padding: 2% 5%;
+	.today-n-global {
+		display: flex;
+		.return-to-global {
+			margin-left: auto;
+			color: #ffc428;
+			cursor: pointer;
+		}
+	}
+	.date {
+		display: flex;
+		flex-direction: row;
+		.day {
+			color: #ffc428;
+		}
+		.format {
+			padding-left: 4px;
+			color: #ababab;
+		}
+	}
+	.cards {
+		@include flex(space-between, row);
+		// margin-left: 5%;
+		align-items: center;
+		// align-content: stretch;
+		.card {
+			background: $gunmetal;
+			border: 2px solid #dbbc6c;
+			padding: 2% 3%;
+			border-radius: 4px;
+			width: 28%;
+			p {
+				font-size: 3rem;
+				color: #f4b000;
+			}
+			.stats {
+				@include flex(space-between, row);
+				img {
+					padding-left: 6px;
+				}
+			}
+		}
+	}
 }
 @media #{$mobile} {
-  .vacine-dash-header {
-    background: $gunmetal;
-  }
+	.vacine-dash-header {
+		background: $gunmetal;
+	}
 }
