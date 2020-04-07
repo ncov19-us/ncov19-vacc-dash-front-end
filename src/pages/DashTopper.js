@@ -118,9 +118,9 @@ function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
 				</div>
 			</div>
 			<div>
-				<h3 className="trials" style={{ marginTop: "1.5rem" }}>
+				<h2 className="trials" style={{ marginTop: "1.5rem" }}>
 					COVID-19 Trials
-				</h3>
+				</h2>
 				<Menu
 					compact
 					pointing

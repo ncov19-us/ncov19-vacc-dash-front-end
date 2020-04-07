@@ -32,9 +32,6 @@ function Main() {
 							</div>
 							<div className="sixteen wide tablet eight wide computer column">
 								<div className="map-wrapper">
-									<h1 style={{ color: "white" }}>
-										COVID-19 Global Trials Map
-									</h1>
 									<WorldMap
 										setSelectedCountry={setSelectedCountry}
 										dispatch={dispatch}

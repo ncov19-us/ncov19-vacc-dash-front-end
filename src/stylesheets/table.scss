@@ -1,8 +1,8 @@
 // The heading of the table underneath the counting cards
 // (dashtopper)
 .trials {
-  font-size: 1.3rem;
   color: white;
+  margin: 0;
 }
 
 .table {
@@ -63,7 +63,7 @@
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 1%;
+  margin-top: 2%;
   padding-left: 1%;
 }
 
