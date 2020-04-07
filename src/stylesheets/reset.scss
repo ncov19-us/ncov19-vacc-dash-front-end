@@ -13,7 +13,7 @@ h2,
 h3,
 h4,
 h5, td {
-  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 p
@@ -46,4 +46,7 @@ body {
 .tittle {
   margin-left: 3%;
   width: 100%;
+  @media #{$mobile} {
+    width: 65%
+    }
 }

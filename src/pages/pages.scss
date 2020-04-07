@@ -170,7 +170,7 @@ Media Queries for usage
       img {
         filter: invert(100%);
         background: white;
-        width: 40px;
+        width: 35px;
       }
     }
   }
@@ -263,6 +263,7 @@ Media Queries for usage
   }
   @media #{$mobile} {
     @include flex(center, row);
+    
     padding: 2.5% 4% 3.5% 3%;
     margin: auto;
     .foot-copyright {
@@ -314,6 +315,10 @@ body {
 .tittle {
   margin-left: 3%;
   width: 100%;
+
+  @media #{$mobile} {
+    width: 65%
+    }
 }
 
 .about {
