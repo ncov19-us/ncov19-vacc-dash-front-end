@@ -23,12 +23,9 @@ RETURNS:
 
 const WorldMap = ({ setSelectedCountry, dispatch }) => {
   const [data, setData] = useState([]);
-  const {
-    mapFilterDashCards,
-    mapFilterByCountryTrials,
-    getMap,
-    map,
-  } = useContext(TableContext);
+  const { mapFilterDashCards, mapFilterByCountryTrials } = useContext(
+    TableContext
+  );
 
   useEffect(() => {
     axios
@@ -42,13 +39,16 @@ const WorldMap = ({ setSelectedCountry, dispatch }) => {
   });
 
   const setCountry = (e) => {
-    mapFilterDashCards(e.properties.name); //populate dash cards
-    mapFilterByCountryTrials(e.properties.name); //populate table
-
-    setSelectedCountry(e.properties.name);
-
-    dispatch({ type: 'CHANGE_COUNTRY', payload: e.properties.name });
+    if (e.data) {
+      mapFilterDashCards(e.properties.name); //populate dash cards
+      mapFilterByCountryTrials(e.properties.name); //populate table
+  
+      setSelectedCountry(e.properties.name);
+  
+      dispatch({ type: 'CHANGE_COUNTRY', payload: e.properties.name });
+    }
   };
+
   return (
     <div style={{ height: '600px' }}>
       <ResponsiveChoropleth
