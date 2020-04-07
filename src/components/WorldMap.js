@@ -45,12 +45,8 @@ const WorldMap = ({ setSelectedCountry, dispatch }) => {
 
       setSelectedCountry(e.properties.name);
 
-<<<<<<< HEAD
-    dispatch({ type: "CHANGE_COUNTRY", payload: e.properties.name });
-=======
-      dispatch({ type: 'CHANGE_COUNTRY', payload: e.properties.name });
+      dispatch({ type: "CHANGE_COUNTRY", payload: e.properties.name });
     }
->>>>>>> 01129fff0be1e2b38cae6bd6b518dd23a8bf5d05
   };
 
   return (
