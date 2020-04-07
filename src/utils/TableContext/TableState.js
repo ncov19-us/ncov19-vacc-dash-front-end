@@ -89,24 +89,6 @@ export const TableState = (props) => {
 		}
 	};
 
-	// const populateDashCards = async (country) => {
-	// 	dispatch({ type: IS_LOADING, payload: true });
-
-	// 	let apiUrl = "/api/totals";
-
-	// 	if (country !== "Global") {
-	// 		apiUrl = `/api/totals?countries=${country.toLowerCase()}`;
-	// 	}
-
-	// 	try {
-	// 		const res = await client().get(apiUrl);
-	// 		dispatch({ type: SET_FILTER_SUCCESS, payload: res.data });
-	// 	} catch ({ message, response }) {
-	// 		console.log(message);
-	// 		dispatch({ type: SET_FILTER_ERROR, payload: response });
-	// 	}
-	// };
-
 	const filterByOnClick = async (data) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
@@ -218,7 +200,6 @@ export const TableState = (props) => {
 				getTrialByCountryAndType,
 				mapFilterDashCards,
 				mapFilterByCountryTrials,
-				// populateDashCards,
 				getWorldType,
 			}}
 		>

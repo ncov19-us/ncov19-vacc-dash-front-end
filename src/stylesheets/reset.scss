@@ -1,3 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  // font-size: 62.5%;
+  font-family: Roboto, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  // height: 100%; // For footer
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+p,
+td {
+  font-family: Roboto, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+td {
+  text-transform: capitalize;
+}
+
 // main
 .main {
   background-color: $gunmetal;
