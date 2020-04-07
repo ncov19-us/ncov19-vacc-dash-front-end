@@ -130,15 +130,22 @@ $hoverShadow: #40495b;
       font-size: 1rem;
       margin: 0 auto;
       display: table;
+      // th {
+      //   font-weight: bold;
+      //   font-size: 1em;
+      //   text-align: center;
+      //   color: #dbbc6c;
+      //   padding: 0.3rem;
+      //   background-color: #2c3341;
+      // }
       th {
         font-weight: bold;
         font-size: 1em;
-        text-align: center;
-        color: #dbbc6c;
-        padding: 0.3rem;
-        background-color: #2c3341;
+        text-align: left;
+        color: #a1a1a1;
+        padding: 1.5rem;
+        border-bottom: #ffffff 1px solid;
       }
-
       td {
         font-weight: normal;
         color: white;

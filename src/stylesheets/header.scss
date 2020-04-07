@@ -124,13 +124,17 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 
     .return-to-global {
       cursor: pointer;
     }
     .return-to-global:hover {
       color: $gold;
+    }
+
+    .hidden {
+      color: #010915;
     }
   }
 
@@ -163,6 +167,6 @@
 }
 @media #{$mobile} {
   .vacine-dash-header {
-    background: $gunmetal;
+    background: #010915;
   }
 }

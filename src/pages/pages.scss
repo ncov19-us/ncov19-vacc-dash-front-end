@@ -179,10 +179,7 @@ Media Queries for usage
 // Vaccine Dashboard's header info
 .vacine-dash-header {
   margin-top: 10%;
-  
-  //   background: $gunmetal;
   color: white;
-  
   padding-top: 2%;
   padding-right: 5%;
   padding-left: 5%;
@@ -222,10 +219,11 @@ Media Queries for usage
       }
     }
   }
-}
-@media #{$mobile} {
-  .vacine-dash-header {
-    background: $gunmetal;
+  @media #{$mobile} {
+    background: #010915;
+    .title {
+      margin-top: 15%;
+    }
   }
 }
 
