@@ -1,14 +1,14 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React from "react";
+import { Route } from "react-router-dom";
 
-import { TableState } from './utils/TableContext/TableState';
+import { TableState } from "./utils/TableContext/TableState";
 
-import Header from './pages/Header';
-import Footer from './pages/Footer';
-import Main from './pages/Main';
-import About from './pages/About';
+import Header from "./pages/Header";
+import Footer from "./pages/Footer";
+import Main from "./pages/Main";
+import About from "./pages/About";
 
-import './index.scss';
+import "./index.scss";
 
 export default function App() {
   return (

@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { ResponsiveChoropleth } from '@nivo/geo';
+import React, { useContext, useEffect, useState } from "react";
+import { ResponsiveChoropleth } from "@nivo/geo";
 
-import { TableContext } from '../utils/TableContext/TableState';
-import { features } from '../data/features.json';
+import { TableContext } from "../utils/TableContext/TableState";
+import { features } from "../data/features.json";
 
-import axios from 'axios';
+import axios from "axios";
 
 /*
 GOAL:
@@ -29,14 +29,14 @@ const WorldMap = ({ setSelectedCountry, dispatch }) => {
 
   useEffect(() => {
     axios
-      .get('https://covid19-vacc-be.herokuapp.com/api/map')
+      .get("https://covid19-vacc-be.herokuapp.com/api/map")
       .then((response) => {
         setData(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, []);
 
   const setCountry = (e) => {
     if (e.data) {
@@ -45,18 +45,18 @@ const WorldMap = ({ setSelectedCountry, dispatch }) => {
 
       setSelectedCountry(e.properties.name);
 
-      dispatch({ type: 'CHANGE_COUNTRY', payload: e.properties.name });
+      dispatch({ type: "CHANGE_COUNTRY", payload: e.properties.name });
     }
   };
 
   return (
-    <div style={{ height: '600px' }}>
+    <div style={{ height: "600px" }}>
       <ResponsiveChoropleth
         data={data}
         features={features}
         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
         colors="YlOrRd"
-        domain={[0, 300]}
+        domain={[0, 10]}
         unknownColor="#666666"
         label="properties.name"
         valueFormat=".2s"
@@ -68,25 +68,25 @@ const WorldMap = ({ setSelectedCountry, dispatch }) => {
         borderColor="#c0c0c0"
         legends={[
           {
-            anchor: 'top-left',
-            direction: 'column',
+            anchor: "top-left",
+            direction: "column",
             justify: false,
             translateX: 30,
             translateY: 300,
             itemsSpacing: 0,
             itemWidth: 60,
             itemHeight: 18,
-            itemDirection: 'left-to-right',
-            itemTextColor: '#FFFFFF',
+            itemDirection: "left-to-right",
+            itemTextColor: "#FFFFFF",
             itemOpacity: 0.85,
             symbolSize: 20,
-            symbolShape: 'square',
+            symbolShape: "square",
 
             effects: [
               {
-                on: 'hover',
+                on: "hover",
                 style: {
-                  itemTextColor: '#FFFFFF',
+                  itemTextColor: "#FFFFFF",
                   itemOpacity: 1,
                 },
               },

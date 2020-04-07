@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 // burger for menu
-import burger from '../assets/menu.png';
+import burger from "../assets/menu.png";
 
-import { Modal } from 'semantic-ui-react';
+import { Modal } from "semantic-ui-react";
 
 /*
 menubar COMPONENT 
@@ -15,14 +15,14 @@ Styling is in pages.scss
 Needed inline styling for Modal 
 */
 
-const aTags = { color: 'white' };
+const aTags = { color: "white" };
 
 export default function Header() {
   return (
     <div className="menubar">
       <div className="tittle">
-        <Link to="/" style={{ color: 'white' }}>
-          <h1 className="title-name">
+        <Link to="/" style={{ color: "white" }}>
+          <h1 className="subtitle-name">
             COVID-19 <span className="title-unbold">Tracker</span>
           </h1>
         </Link>
@@ -33,13 +33,13 @@ export default function Header() {
           <Modal.Content>
             <div
               style={{
-                display: 'flex',
-                flexDirection: 'column',
-                textAlign: 'center',
-                fontSize: '1.5rem',
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "center",
+                fontSize: "1.5rem",
               }}
             >
-              <a href="#" alt="mobile-sms" style={aTags}>
+              {/* <a href="#" alt="mobile-sms" style={aTags}>
                 Get Mobile Updates
               </a>
               <Link to="/" style={aTags} className="menubar-right">
@@ -48,12 +48,20 @@ export default function Header() {
               <Link to="/about" style={aTags} className="menubar-right">
                 About
               </Link>
+              <Link to="/abouttest" style={aTags} className="menubar-right">
+                AboutTest
+              </Link> */}
             </div>
           </Modal.Content>
         </Modal>
       </div>
       <div className="menubar-links">
-        <a href="#" alt="mobile-sms" id="sms">
+        <a
+          className="sms"
+          href="https://ncov19-sms-bot-fe-prod.netlify.com/"
+          alt="mobile-sms"
+          id="sms"
+        >
           Get Mobile Updates
         </a>
         <Link to="/">Vaccine Tracker</Link>
