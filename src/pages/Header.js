@@ -11,6 +11,7 @@ Styling is in pages.scss
 	unable to see body content 
 	for menubar hover 
 		.menubar position and top to get menubar to hover 
+	
 Needed inline styling for Modal 
 */
 

@@ -27,7 +27,6 @@
   top: 0;
   // width: 100%;
   color: #f4f4f4;
-  z-index: 4;
   padding: 0.75rem 1rem;
   // padding-top: 1%;
   // padding-bottom: 1%;
@@ -68,7 +67,8 @@
     @include flex(flex-end, row);
     width: 100%;
     margin: auto;
-    padding: 0.75rem 1rem;
+    // padding: 0.75rem 1rem;
+    padding-right: 3%;
     letter-spacing: 0.01em;
     .sms {
       border: 1px solid white;
@@ -83,8 +83,10 @@
       text-decoration: none;
       color: #fff;
       padding: 6px 10px;
+      margin-left:3%;
       font-size: 1.05rem;
       width: max-content;
+      
     }
     a:hover {
       color: $gold;
@@ -104,6 +106,7 @@
     .title {
       font-size: 1.5rem;
     }
+
     .menubar-links {
       display: none;
     }
