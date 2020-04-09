@@ -12,6 +12,7 @@ function PageBar({ count, dispatch }) {
 
     setActivePage(data.activePage);
 
+
     dispatch({ type: "CHANGE_PAGE", payload: data.activePage });
   };
 

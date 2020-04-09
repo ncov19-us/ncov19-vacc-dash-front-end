@@ -11,7 +11,6 @@ Styling is in pages.scss
 	unable to see body content 
 	for menubar hover 
 		.menubar position and top to get menubar to hover 
-		
 Needed inline styling for Modal 
 */
 
@@ -23,7 +22,7 @@ export default function Header() {
       <div className="tittle">
         <Link to="/" style={{ color: "white" }}>
           <h1 className="subtitle-name">
-            COVID-19 <span className="title-unbold">Tracker</span>
+            <span className="title-bold"> COVID-19 </span> <span className="title-unbold">Tracker</span>
           </h1>
         </Link>
       </div>
