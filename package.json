@@ -10,7 +10,7 @@
     "axios": "^0.19.2",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
-    "plotly.js": "^1.53.0",
+    "plotly.js-geo-dist": "^1.53.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
