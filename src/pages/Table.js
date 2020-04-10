@@ -1,5 +1,8 @@
 import React from "react";
 import { Popup } from "semantic-ui-react";
+
+const tableRow = { hover: { color: "red", background: "white" } };
+
 export default class Table extends React.Component {
 	// props.data
 	constructor(props) {
@@ -28,7 +31,7 @@ export default class Table extends React.Component {
 		var items = this.props.data;
 		return items.map((row, index) => {
 			return (
-				<tr key={index} className="record">
+				<tr key={index} className="record" style={tableRow}>
 					<RenderRow key={index} data={row} />
 				</tr>
 			);
