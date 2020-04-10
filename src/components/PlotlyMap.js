@@ -15,7 +15,6 @@ const PlotlyMap = ({ setSelectedCountry, dispatch }) => {
       // https://covid19-vacc-be.herokuapp.com/api/map
       .get("http://localhost:5000/api/map")
       .then((response) => {
-        console.log(response.data);
         setData(response.data);
       })
       .catch((err) => {
