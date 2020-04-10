@@ -15,7 +15,6 @@ const PlotlyMap = ({ setSelectedCountry, dispatch }) => {
     // https://covid19-vacc-be.herokuapp.com/api/map
     .get("http://localhost:5000/api/map")
     .then((response) => {
-      console.log(response.data);
       setData(response.data);
     })
     .catch((err) => {
@@ -31,6 +30,10 @@ const PlotlyMap = ({ setSelectedCountry, dispatch }) => {
     console.log(data.points);
   };
   
+  // zauto:false,
+  //              zmin: 0,
+  //              zmax : 6000,
+
   return (
     <Plot
     data={[
@@ -39,19 +42,22 @@ const PlotlyMap = ({ setSelectedCountry, dispatch }) => {
         locationmode: 'country names',
         locations: data.map((row) => row.id),
         z: data.map((row) => row.value),
-        text: data.map((row) => row.id),
-        autocolorscale: false,
+        zauto: false,
+        zmin: 0,
+        zmax: 10,
+        text: data.map((row) => row.country_codes),
+        autocolorscale: true,
         colorscale: [
-          ['0.0', 'rgb(165,0,38)'],
-          ['1.11111111111', 'rgb(215,48,39)'],
-          ['2.22222222222', 'rgb(244,109,67)'],
-          ['3.3333333333', 'rgb(253,174,97)'],
-          ['4.44444444444', 'rgb(254,224,144)'],
-          ['5.55555555556', 'rgb(224,243,248)'],
-          ['6.66666666667', 'rgb(171,217,233)'],
-          ['7.77777777778', 'rgb(116,173,209)'],
-          ['8.88888888889', 'rgb(69,117,180)'],
-          ['10.0', 'rgb(49,54,149)']
+          ['0.0', '#0091ea'],
+          ['0.11111111111', '#0091ea'],
+          ['0.22222222222', '#0091ea'],
+          ['0.3333333333', '#00b0ff'],
+          ['0.44444444444', '#00b0ff'],
+          ['0.55555555556', '#40c4ff'],
+          ['0.66666666667', '#40c4ff'],
+          ['0.77777777778', '#80d8ff'],
+          ['0.88888888889', '#80d8ff'],
+          ['1.0', '#b3e5f']
         ],
       },
     ]}
@@ -63,3 +69,4 @@ const PlotlyMap = ({ setSelectedCountry, dispatch }) => {
   
   export default PlotlyMap;
   
+  // ['#0091ea','#00b0ff','#40c4ff','#80d8ff','#b3e5f'] 
