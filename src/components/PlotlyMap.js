@@ -7,7 +7,6 @@ const Plot = createPlotlyComponent(Plotly);
 
 // import data from '../data/alcohol.json';
 
-
 const PlotlyMap = ({ setSelectedCountry, dispatch }) => {
   const [data, setData] = useState([]);
   
