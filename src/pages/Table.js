@@ -66,9 +66,6 @@ const RenderRow = (props) => {
 							{props.data.sponsors}
 						</a>
 					}
-					// content={`${props.data.sponsors.replace(/^\w/, (c) =>
-					// 	c.toUpperCase()
-					// )}`}
 					content={`${props.data.sponsors.replace(
 						/\w\S*/g,
 						(c) => c.charAt(0).toUpperCase() + c.substr(1)
