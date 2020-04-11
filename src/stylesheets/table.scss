@@ -21,6 +21,7 @@
 $tableHover: rgba(90, 74, 74, 0.5);
 $hoverShadow: #40495b;
 .table-wrapper {
+	min-width: 100%;
 	td > a {
 		color: white;
 		&:hover {
@@ -28,10 +29,10 @@ $hoverShadow: #40495b;
 		}
 	}
 	.table {
+		width: 100%;
 		text-align: left;
 		font-size: 1rem;
 		display: table;
-		padding: 0 0 8em 0;
 		background-color: #2c3341;
 		border-collapse: collapse;
 		border-radius: 10px;
