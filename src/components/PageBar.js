@@ -21,6 +21,10 @@ function PageBar({ count, dispatch }) {
         totalPages={pageCount}
         activePage={activePage}
         onPageChange={handleClick}
+        siblingRange={0}
+        firstItem={null}
+        lastItem={null}
+        size="tiny"
         inverted
       />
     </div>
