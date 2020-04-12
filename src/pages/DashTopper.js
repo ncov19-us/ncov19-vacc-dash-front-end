@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Menu } from "semantic-ui-react";
 
 import Today from "../components/Today";
+import CountryDropdown from "../components/CountryDropdown";
+
 import { client } from "../utils/axiosWithAuth";
 // FIXME: Move this to stylesheets.
 import "semantic-ui-css/semantic.min.css";
@@ -87,18 +89,19 @@ function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
 		<div className="vacine-dash-header">
 			<div className="title">
 				<h1>{selectedCountry}</h1>
-				{/* {selectedCountry !== 'Global' && ( */}
-				<span
-					onClick={returnGlobal}
-					className={
-						selectedCountry === "Global"
-							? "hidden"
-							: "return-to-global"
-					}
-				>
-					&#x25C1; Return to Global View
-				</span>
-				{/* )} */}
+				<div className="dropdown">
+					<CountryDropdown />
+					<span
+						onClick={returnGlobal}
+						className={
+							selectedCountry === "Global"
+								? "hidden"
+								: "return-to-global"
+						}
+					>
+						&#x25C1; Return to Global View
+					</span>
+				</div>
 			</div>
 			<div className="today">
 				<Today />

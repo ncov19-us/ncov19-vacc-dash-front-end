@@ -6,8 +6,6 @@ import {
 	GET_TRIALS_ERROR,
 	SET_FILTER_SUCCESS,
 	SET_FILTER_ERROR,
-	FILTER_BY_ON_CLICK_SUCCESS,
-	FILTER_BY_ON_CLICK_ERROR,
 	GET_MAP_SUCCESS,
 	GET_MAP_ERROR,
 	GET_TRIAL_BY_COUNTRY_SUCCESS,
@@ -44,7 +42,7 @@ export const TableState = (props) => {
 	const initialState = {
 		error: "",
 		isLoading: false,
-		table: {},
+		cards: [],
 		trials: [],
 		map: [],
 		count: null,
@@ -76,12 +74,10 @@ export const TableState = (props) => {
 			dispatch({ type: GET_TRIALS_ERROR, payload: e.response });
 		}
 	};
-	const mapFilterByCountry = async (country) => {
+	const getDashCardsByCountry = async (country) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
-			const res = await client().get(
-				`/api/totals?countries=${country.properties.name}`
-			);
+			const res = await client().get(`/api/totals?countries=${country}`);
 			dispatch({ type: SET_FILTER_SUCCESS, payload: res.data });
 		} catch (e) {
 			console.log("error", e);
@@ -89,18 +85,7 @@ export const TableState = (props) => {
 		}
 	};
 
-	const filterByOnClick = async (data) => {
-		dispatch({ type: IS_LOADING, payload: true });
-		try {
-			dispatch({ type: FILTER_BY_ON_CLICK_SUCCESS, payload: data });
-		} catch (e) {
-			console.log("error", e);
-			dispatch({
-				type: FILTER_BY_ON_CLICK_ERROR,
-				payload: e.response,
-			});
-		}
-	};
+	// populates map
 	const getMap = async () => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
@@ -111,6 +96,7 @@ export const TableState = (props) => {
 			dispatch({ type: GET_MAP_ERROR, payload: e.response });
 		}
 	};
+
 	const getWorldType = async (type) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
@@ -121,11 +107,11 @@ export const TableState = (props) => {
 			});
 		} catch (e) {
 			console.log("error", e);
-			{
-				dispatch({ type: GET_WORLD_TYPE_ERROR, payload: e.response });
-			}
+			dispatch({ type: GET_WORLD_TYPE_ERROR, payload: e.response });
 		}
 	};
+
+	// gets trials by type and country
 	const getTrialByCountryAndType = async (type, country) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
@@ -139,17 +125,15 @@ export const TableState = (props) => {
 			});
 		} catch (e) {
 			console.log("error", e);
-			{
-				dispatch({
-					type: GET_TRIAL_BY_COUNTRY_ERROR,
-					payload: e.response,
-				});
-			}
+			dispatch({
+				type: GET_TRIAL_BY_COUNTRY_ERROR,
+				payload: e.response,
+			});
 		}
 	};
 
 	// table populates on click with map
-	const mapFilterByCountryTrials = async (country) => {
+	const getTrialsByCountry = async (country) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
 			const res = await client().get(`/api/trials?countries=${country}`);
@@ -159,26 +143,10 @@ export const TableState = (props) => {
 			});
 		} catch (e) {
 			console.log("error", e);
-			{
-				dispatch({
-					type: SET_MAP_FILTER_TABLE_ERROR,
-					payload: e.response,
-				});
-			}
-		}
-	};
-
-	// dash cards populate on click with map
-	const mapFilterDashCards = async (country) => {
-		dispatch({ type: IS_LOADING, payload: true });
-		try {
-			const res = await client().get(`/api/totals?countries=${country}`);
-			dispatch({ type: SET_FILTER_SUCCESS, payload: res.data.results });
-		} catch (e) {
-			console.log("error", e);
-			{
-				dispatch({ type: SET_FILTER_ERROR, payload: e.response });
-			}
+			dispatch({
+				type: SET_MAP_FILTER_TABLE_ERROR,
+				payload: e.response,
+			});
 		}
 	};
 
@@ -193,13 +161,11 @@ export const TableState = (props) => {
 				count: state.count,
 				filter: state.filter,
 				isLoading: state.isLoading,
-				getTrials,
+				getTrialsByCountry, // table
+				getDashCardsByCountry, // dash cards
+				getTrials, //gets all trials
 				getMap,
-				mapFilterByCountry,
-				filterByOnClick,
 				getTrialByCountryAndType,
-				mapFilterDashCards,
-				mapFilterByCountryTrials,
 				getWorldType,
 			}}
 		>

@@ -6,8 +6,6 @@ import {
 	GET_TRIALS_ERROR,
 	SET_FILTER_SUCCESS,
 	SET_FILTER_ERROR,
-	FILTER_BY_ON_CLICK_SUCCESS,
-	FILTER_BY_ON_CLICK_ERROR,
 	GET_MAP_SUCCESS,
 	GET_MAP_ERROR,
 	GET_TRIAL_BY_COUNTRY_SUCCESS,
@@ -54,28 +52,14 @@ const getTrialsError = (state, action) => {
 		is_loading: false,
 	};
 };
-const mapFilter = (state, action) => {
+const dashCard = (state, action) => {
 	return {
 		...state,
 		is_loading: false,
-		table: action.payload,
+		cards: action.payload,
 	};
 };
-const mapFilterError = (state, action) => {
-	return {
-		...state,
-		error: action.payload,
-		is_loading: false,
-	};
-};
-const filterByOnClick = (state, action) => {
-	return {
-		...state,
-		is_loading: false,
-		trials: { trials: { ...action.payload } },
-	};
-};
-const filterByOnClickError = (state, action) => {
+const dashCardError = (state, action) => {
 	return {
 		...state,
 		error: action.payload,
@@ -183,13 +167,9 @@ export const reducer = (state, action) => {
 		case GET_TRIALS_ERROR:
 			return getTrialsError(state, action);
 		case SET_FILTER_SUCCESS:
-			return mapFilter(state, action);
+			return dashCard(state, action);
 		case SET_FILTER_ERROR:
-			return mapFilterError(state, action);
-		case FILTER_BY_ON_CLICK_SUCCESS:
-			return filterByOnClick(state, action);
-		case FILTER_BY_ON_CLICK_ERROR:
-			return filterByOnClickError(state, action);
+			return dashCardError(state, action);
 		case GET_MAP_SUCCESS:
 			return getMap(state, action);
 		case GET_MAP_ERROR:

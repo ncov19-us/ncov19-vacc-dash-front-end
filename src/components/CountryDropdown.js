@@ -1,41 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Dropdown } from 'semantic-ui-react';
+import React, { useState, useEffect, useContext } from "react";
+import { TableContext } from "../utils/TableContext/TableState";
 
-const CountryDropdown = ({ setSelectedCountry }) => {
-  const [countryOptions, setCountryOptions] = useState([]);
-  const [selectedValue, setSelectedValue] = useState(null);
+import { Dropdown } from "semantic-ui-react";
 
-  useEffect(() => {
-    axios.get('https://covid19-vacc-be.herokuapp.com/api/map').then((res) => {
-      setCountryOptions(
-        res.data.map((country) => {
-          return {
-            key: country.id,
-            text: country.id,
-            value: country.id,
-          };
-        })
-      );
-    });
-  }, []);
+export default function CountryDropdown() {
+	const { map, getDashCardsByCountry, getTrialsByCountry } = useContext(
+		TableContext
+	);
+	const [dropdown, setDropdown] = useState();
 
-  // Semantic onChange called with SyntheticEvent and all props
-  const handleChange = (evt, { value }) => {
-    setSelectedValue(value);
-    setSelectedCountry('Thailand');
-  };
+	useEffect(() => {
+		setDropdown(
+			map.map((data) => {
+				return { key: data.id, text: data.id, value: data.id };
+			})
+		);
+	}, [map]);
 
-  return (
-    <Dropdown
-      onChange={handleChange}
-      options={countryOptions}
-      placeholder="Choose a country"
-      selection
-      value={selectedValue}
-      search
-    />
-  );
-};
+	// Semantic onChange called with SyntheticEvent and all props
+	const handleChange = (evt, { value }) => {
+		getDashCardsByCountry(value.toLowerCase());
+		getTrialsByCountry(value.toLowerCase());
+	};
 
-export default CountryDropdown;
+	return (
+		<Dropdown
+			placeholder="Choose a Country"
+			options={dropdown}
+			fluid
+			selection
+			onChange={handleChange}
+		/>
+	);
+}

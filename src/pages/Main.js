@@ -1,14 +1,16 @@
-import React, { useContext, useState, useReducer } from "react";
+import React, { useContext, useState, useReducer, useEffect } from "react";
 import DashTopper from "./DashTopper";
 import VaccineTable from "./VaccineTable";
 import WorldMap from "../components/WorldMap";
-import CountryDropdown from "../components/CountryDropdown";
+import MapBox from "../components/MapBox";
 
 import { TableContext } from "../utils/TableContext/TableState";
 import { initialState, filterReducer } from "../utils/filterReducer";
 
 function Main() {
-	const { filter } = useContext(TableContext);
+	const { getMap } = useContext(TableContext);
+
+	useEffect(() => getMap(), []); // populate map
 
 	const [selectedCountry, setSelectedCountry] = useState("Global");
 
@@ -31,18 +33,12 @@ function Main() {
 									dispatch={dispatch}
 								/>
 							</div>
-							<div className="sixteen wide tablet eight wide computer column">
-								<div className="dropdown-wrapper">
-									<CountryDropdown
-										setSelectedCountry={setSelectedCountry}
-									/>
-								</div>
-								<div className="map-wrapper">
-									<WorldMap
-										setSelectedCountry={setSelectedCountry}
-										dispatch={dispatch}
-									/>
-								</div>
+							<div className="map-wrapper">
+								<WorldMap
+									setSelectedCountry={setSelectedCountry}
+									dispatch={dispatch}
+								/>
+								{/* <MapBox /> */}
 							</div>
 						</div>
 					</div>
