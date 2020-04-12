@@ -1,29 +1,30 @@
 @charset 'utf-8';
 
 // Abstracts
-@import './stylesheets/variables';
-@import './stylesheets/mixins';
+@import "./stylesheets/variables";
+@import "./stylesheets/mixins";
 // ...functions, placeholders
 
 // Vendors
 
 // Base
-@import './stylesheets/reset';
+@import "./stylesheets/reset";
 // @import './stylesheets/typography';
 
 // Layout
 // navigation, grid, header, footer, sidebar, forms, etc.
-@import './stylesheets/header';
-@import './stylesheets/footer';
+@import "./stylesheets/header";
+@import "./stylesheets/footer";
 
 // Components
 // buttons, carousel, cover, dropdown, etc.
 
 // Pages
-@import './stylesheets/table';
-@import './stylesheets/map';
-@import './stylesheets/about';
+@import "./stylesheets/table";
+@import "./stylesheets/map";
+@import "./stylesheets/mapbox.scss";
+@import "./stylesheets/about";
 
 // Originals
-@import './stylesheets/main';
-@import './stylesheets/pages';
+@import "./stylesheets/main";
+@import "./stylesheets/pages";
