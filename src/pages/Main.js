@@ -32,11 +32,11 @@ function Main() {
                 <VaccineTable filterInfo={filterInfo} dispatch={dispatch} />
               </div>
               <div className="map-wrapper">
-                <WorldMap
+                {/* <WorldMap
                   setSelectedCountry={setSelectedCountry}
                   dispatch={dispatch}
-                />
-                {/* <MapBox /> */}
+                /> */}
+                <MapBox />
               </div>
             </div>
           </div>
