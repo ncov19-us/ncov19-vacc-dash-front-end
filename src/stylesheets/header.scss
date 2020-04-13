@@ -1,7 +1,7 @@
-// TODO: Move/remove? From main.scss
-.vaccine-dash-header .title {
-  margin-left: 3%;
-}
+// TODO: Unused From main.scss
+// .vaccine-dash-header .title {
+//   margin-left: 3%;
+// }
 
 // Header Menu
 .menubar {
@@ -37,12 +37,13 @@
   //   font-weight: 200;
   // }
 
-  .global-view {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    color: red;
-  }
+  // TODO: Unused
+  // .global-view {
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: space-evenly;
+  //   color: red;
+  // }
 
   .menubar-links {
     @include flex(flex-end, row);
@@ -55,7 +56,7 @@
       margin-right: 2%;
     }
     .sms:hover {
-      border-color: $gold;
+      border-color: $link-hover-color;
     }
 
     a {
@@ -65,13 +66,15 @@
       font-size: 1.05rem;
     }
     a:hover {
-      color: $gold;
+      color: $link-hover-color;
       //  border: 1px solid #f4b000;
     }
     .menubar-right {
       font-size: 1.05rem;
       :hover {
-        color: #f4b000;
+        color: $gold;
+        // TODO: overridden by .menubar .menubar-links a:hover
+        // (Just a few lines above)
       }
     }
   }
@@ -112,7 +115,7 @@
     // margin: 2% 0;
 
     .day {
-      color: $gold;
+      color: $highlight-text-color;
     }
     .format {
       padding-left: 4px;
@@ -130,7 +133,7 @@
       cursor: pointer;
     }
     .return-to-global:hover {
-      color: $gold;
+      color: $link-hover-color;
     }
 
     .hidden {
@@ -145,7 +148,7 @@
     // align-content: stretch;
     .card {
       background: #19202a;
-      border: 2px solid $gold;
+      border: 2px solid $border-color;
       padding: 2% 3%;
       border-radius: 8px;
       width: 28%;
@@ -154,7 +157,7 @@
       }
       p {
         font-size: 3rem;
-        color: $gold;
+        color: $highlight-text-color;
       }
       .stats {
         @include flex(space-between, row);

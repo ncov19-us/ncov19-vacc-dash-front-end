@@ -4,7 +4,7 @@
 
 html {
   // font-size: 62.5%;
-  font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: Roboto, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   // height: 100%; // For footer
 }
 
@@ -12,13 +12,13 @@ h1,
 h2,
 h3,
 h4,
-h5, td {
-  font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
+h5,
+td {
+  font-family: Roboto, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
-p
-{
-  font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
+p {
+  font-family: Roboto, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
 td {
@@ -43,10 +43,13 @@ body {
   margin-left: 3%;
 }
 
-.tittle {
+// TODO: overridden by:
+// style: color:white
+// h1  class subtitle-name
+.main-title {
   margin-left: 3%;
   width: 100%;
   @media #{$mobile} {
-    width: 65%
-    }
+    width: 65%;
+  }
 }

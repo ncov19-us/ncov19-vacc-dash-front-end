@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 // burger for menu
-import burger from "../assets/menu.png";
+import burger from '../assets/menu.png';
 
-import { Modal } from "semantic-ui-react";
+import { Modal } from 'semantic-ui-react';
 
 /*
 menubar COMPONENT 
@@ -15,13 +15,13 @@ Styling is in pages.scss
 Needed inline styling for Modal 
 */
 
-const aTags = { color: "white" };
+const aTags = { color: 'white' };
 
 export default function Header() {
   return (
     <div className="menubar">
-      <div className="tittle">
-        <Link to="/" style={{ color: "white" }}>
+      <div className="main-title">
+        <Link to="/" style={{ color: 'white' }}>
           <h1 className="subtitle-name">
             COVID-19 <span className="title-unbold">Tracker</span>
           </h1>
@@ -33,10 +33,10 @@ export default function Header() {
           <Modal.Content>
             <div
               style={{
-                display: "flex",
-                flexDirection: "column",
-                textAlign: "center",
-                fontSize: "1.5rem",
+                display: 'flex',
+                flexDirection: 'column',
+                textAlign: 'center',
+                fontSize: '1.5rem',
               }}
             >
               <a href="#" alt="mobile-sms" style={aTags}>
