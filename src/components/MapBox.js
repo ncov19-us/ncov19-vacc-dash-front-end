@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -13,35 +13,26 @@ const MapBox = () => {
 	const mapContainer = useRef(null);
 
 	useEffect(() => {
-		mapboxgl.accessToken = process.env.REACT_APP_ACCESS_TOKEN;
-
+		mapboxgl.accessToken =
+			"pk.eyJ1IjoianJoZW1hbm4iLCJhIjoiY2s4cXJmeGx3MDRvdzNsbjA0eHlzcHh5diJ9.62toL3HZx60UCky-naglQg";
 		const initializeMap = ({ setMap, mapContainer }) => {
 			const map = new mapboxgl.Map({
 				container: mapContainer.current,
 				style: "mapbox://styles/jrhemann/ck8v4sksk1dts1irtxthkfpvk",
 				center: [0, 0],
-				zoom: 5,
+				zoom: 0.6,
 			});
+
 			map.on("load", () => {
 				setMap(map);
 				map.resize();
 			});
-			if (!map) initializeMap({ setMap, mapContainer });
 		};
+
+		if (!map) initializeMap({ setMap, mapContainer });
 	}, [map]);
 
 	return <div ref={(el) => (mapContainer.current = el)} style={styles} />;
 };
 
-{
-	/* <div>
-      Longitude: {this.state.lng} | Latitude: {this.state.lat} | Zoom:{" "}
-      {this.state.zoom}
-    </div>
-  </div> */
-}
-{
-	/* <div ref={(el) => (this.mapContainer = el)} className="mapContainer" /> */
-}
-// </div>
 export default MapBox;
