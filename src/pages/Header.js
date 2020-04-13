@@ -11,7 +11,7 @@ Styling is in pages.scss
 	unable to see body content 
 	for menubar hover 
 		.menubar position and top to get menubar to hover 
-		
+	
 Needed inline styling for Modal 
 */
 
@@ -42,10 +42,18 @@ export default function Header() {
 							<a href="#" alt="mobile-sms" style={aTags}>
 								Get Mobile Updates
 							</a>
-							<Link to="/" style={aTags} className="menubar-right">
+							<Link
+								to="/"
+								style={aTags}
+								className="menubar-right"
+							>
 								Vaccine Tracker
 							</Link>
-							<Link to="/about" style={aTags} className="menubar-right">
+							<Link
+								to="/about"
+								style={aTags}
+								className="menubar-right"
+							>
 								About
 							</Link>
 						</div>
