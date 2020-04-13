@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Pagination } from "semantic-ui-react";
 
 function PageBar({ count, dispatch }) {
-  const pageSize = 20;
+  // this needs to be the same as limit in backend call
+  const pageSize = 7;
   const pageCount = Math.ceil(count / pageSize);
   const [activePage, setActivePage] = useState(1);
 
@@ -11,6 +12,7 @@ function PageBar({ count, dispatch }) {
     event.preventDefault();
 
     setActivePage(data.activePage);
+
 
     dispatch({ type: "CHANGE_PAGE", payload: data.activePage });
   };
@@ -21,6 +23,10 @@ function PageBar({ count, dispatch }) {
         totalPages={pageCount}
         activePage={activePage}
         onPageChange={handleClick}
+        siblingRange={0}
+        firstItem={null}
+        lastItem={null}
+        size="tiny"
         inverted
       />
     </div>

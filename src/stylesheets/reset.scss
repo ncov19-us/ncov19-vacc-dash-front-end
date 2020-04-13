@@ -8,12 +8,16 @@ html {
   // height: 100%; // For footer
 }
 
-h1,
+h1 {
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 3.7vh;
+}
+
 h2,
 h3,
 h4,
 h5, td {
-  font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 p
@@ -44,8 +48,9 @@ body {
 }
 
 .tittle {
-  margin-left: 3%;
+  padding-left: 1.63vw;
   width: 100%;
+  letter-spacing: 0.01em;
   @media #{$mobile} {
     width: 65%
     }
