@@ -1,4 +1,4 @@
-import React, { useContext, useState, useReducer } from "react";
+import React, { useContext, useState, useReducer, useEffect } from "react";
 import DashTopper from "./DashTopper";
 import VaccineTable from "./VaccineTable";
 import WorldMap from "../components/WorldMap";
@@ -35,11 +35,11 @@ function Main() {
 								/>
 							</div>
 							<div className="map-wrapper">
-								<WorldMap
+								{/* <WorldMap
 									setSelectedCountry={setSelectedCountry}
 									dispatch={dispatch}
-								/>
-								{/* <MapBox /> */}
+								/> */}
+								<MapBox />
 							</div>
 						</div>
 					</div>
