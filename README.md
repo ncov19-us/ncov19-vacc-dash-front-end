@@ -7,6 +7,10 @@
 
 A Vaccine/Treatment RnD tracker for easily getting the latest SARS-CoV2/COVID-19 research and clinical trials happening all over the world.
 
+Data Sources:
+- [WHO ICTRP](https://www.who.int/ictrp/en/) 
+- [ClinicialTrials.gov](https://clinicaltrials.gov/)
+
 ## 2️⃣ Tech Stack 
 
 - React/Redux
