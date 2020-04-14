@@ -36,10 +36,13 @@ function Main() {
 							</div>
 							<div className="map-wrapper">
 								{/* <WorldMap
+                  setSelectedCountry={setSelectedCountry}
+                  dispatch={dispatch}
+                /> */}
+								<MapBox
 									setSelectedCountry={setSelectedCountry}
 									dispatch={dispatch}
-								/> */}
-								<MapBox />
+								/>
 							</div>
 						</div>
 					</div>

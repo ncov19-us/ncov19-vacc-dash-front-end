@@ -1,4 +1,5 @@
 {
+  "type": "FeatureCollection",
   "features": [
     {
       "type": "Feature",
@@ -13497,7 +13498,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Korea"
+        "name": "South Korea"
       },
       "geometry": {
         "type": "Polygon",
