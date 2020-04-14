@@ -5,6 +5,33 @@
 	margin: 0;
 }
 
+// --- The dashtopper menu tabs ---
+.ui.inverted.menu {
+	background-color: $gunmetal;
+}
+
+.ui.secondary.inverted.pointing.menu {
+	border-color: transparent;
+	border-radius: 0;
+}
+
+.ui.secondary.inverted.menu a.active.item {
+	// Selected table topper selected text
+	color: $selected-color !important;
+	// Selected table topper selected underline
+	border-bottom-color: $selected-color !important;
+}
+
+.ui.secondary.inverted.menu a.item {
+	border-bottom-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.ui.secondary.inverted.menu a.item:hover {
+	// Table topper tab hover text
+	color: $link-hover-color !important;
+}
+
+// --- Pagination ---
 .pagination {
 	display: flex;
 	justify-content: center;
@@ -12,7 +39,13 @@
 	padding-left: 1%;
 }
 
-// Table
+// --- Table ---
+
+// trial menu
+.trial-padding {
+	margin-left: 5%;
+	margin-right: 5%;
+}
 
 // .ui-left-aligned-container {
 // 	margin-left: 8%;
@@ -21,10 +54,13 @@
 $tableHover: rgba(90, 74, 74, 0.5);
 $hoverShadow: #40495b;
 .table-wrapper {
+	border-radius: 10px;
+	background-color: #2c3341; // Makes table appear to always be the same height.
+	height: 400px; // Forces the table area consistent
 	td > a {
 		color: white;
 		&:hover {
-			color: #fec400;
+			color: $link-hover-color;
 		}
 	}
 	.table {
@@ -32,6 +68,7 @@ $hoverShadow: #40495b;
 		text-align: left;
 		font-size: 1rem;
 		display: table;
+		padding: 0 0 8em 0;
 		background-color: #2c3341;
 		border-collapse: collapse;
 		border-radius: 10px;
@@ -40,16 +77,17 @@ $hoverShadow: #40495b;
 		}
 		th {
 			font-weight: bold;
-			font-size: 1em;
+			font-size: 1rem;
 			text-align: left;
 			color: #a1a1a1;
 			padding: 1.5rem;
 			border-bottom: #ffffff 1px solid;
+			height: 4rem; // Force Table head to be consistent.
 		}
 		td {
 			font-weight: normal;
 			color: #ffffff;
-			font-size: 1em;
+			font-size: 1rem;
 			padding: 1rem;
 		}
 		tbody tr {

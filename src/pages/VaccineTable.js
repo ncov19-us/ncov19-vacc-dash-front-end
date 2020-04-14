@@ -32,17 +32,18 @@ function VaccineTable({ filterInfo, dispatch }) {
   return (
     <div className="trial-padding">
       {isLoading && (
-				<div className="ui inverted segment">
-					<div className="ui active inverted loader" />
-					<br />
-					<br />
-					<br />
-				</div>
-			)}
+        <div className="ui inverted segment">
+          <div className="ui active inverted loader" />
+          <br />
+          <br />
+          <br />
+        </div>
+      )}
       {trials.length > 0 ? (
         <div>
           <Table data={trials} />
-          <PageBar count={count} dispatch={dispatch} />
+          <PageBar count={count} dispatch={dispatch} />{' '}
+          {/* TODO: Only display when count > 7 */}
         </div>
       ) : (
         <p

@@ -1,57 +1,60 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html {
-  // font-size: 62.5%;
-  font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
-  // height: 100%; // For footer
+	// font-size: 62.5%;
+	font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
+	// height: 100%; // For footer
 }
 
 h1 {
-  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
-  font-size: 3.7vh;
+	font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size: 3.7vh;
 }
 
 h2,
 h3,
 h4,
-h5, td {
-  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+h5,
+td {
+	font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
-p
-{
-  font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
+p {
+	font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 td {
-  text-transform: capitalize;
-  max-width: 120px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+	text-transform: capitalize;
+	max-width: 120px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 // main
 .main {
-  background-color: $midnight;
-  max-width: 1440px;
+	background-color: $midnight;
+	max-width: 1440px;
 }
 
 body {
-  background-color: $gray-dark;
+	background-color: $gray-dark;
 }
 
 .title-dash {
-  margin-left: 3%;
+	margin-left: 3%;
 }
 
-.tittle {
-  padding-left: 1.63vw;
-  width: 100%;
-  letter-spacing: 0.01em;
-  @media #{$mobile} {
-    width: 65%
-    }
+// TODO: overridden by:
+// style: color:white
+// h1  class subtitle-name
+.main-title {
+	margin-left: 3%;
+	width: 100%;
+	letter-spacing: 0.01em;
+	@media #{$mobile} {
+		width: 65%;
+	}
 }

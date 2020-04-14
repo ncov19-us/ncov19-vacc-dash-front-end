@@ -1,25 +1,8 @@
-.ui.inverted.menu {
-  background-color: $gunmetal;
-}
+// This file should not be added to.
+// The following items should be moved higher up the hierarchy
+// (if they are used at all)
 
-.ui.secondary.inverted.pointing.menu {
-  border-color: transparent;
-  border-radius: 0;
-}
-
-.ui.secondary.inverted.menu a.active.item {
-  color: $gold !important;
-  border-bottom-color: $gold !important;
-}
-
-.ui.secondary.inverted.menu a.item {
-  border-bottom-color: rgba(255, 255, 255, 0.7) !important;
-}
-
-.ui.secondary.inverted.menu a.item:hover {
-  color: $gold !important;
-}
-
+// TODO: Where is this overridden?
 @media only screen and (min-width: 1200px) {
   .ui.grid > .column.row > [class*='eight wide computer'].column,
   .ui.grid > .row > [class*='eight wide computer'].column {
