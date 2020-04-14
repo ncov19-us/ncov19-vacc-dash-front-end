@@ -1,4 +1,4 @@
-# [COVID-19 Vaccine R&D Dashboard](https://vaccine.ncov19.us)
+# [SARS-CoV2 Vaccine and COVID-19 Treatments R&D Dashboard](https://vaccine.ncov19.us)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![CodeFactor](https://www.codefactor.io/repository/github/ncov19-us/ncov19-vacc-dash-front-end/badge)](https://www.codefactor.io/repository/github/ncov19-us/ncov19-vacc-dash-front-end)
@@ -46,30 +46,32 @@ A Vaccine/Treatment RnD tracker for easily getting the latest SARS-CoV2/COVID-19
 
 Run `yarn test` to launch the test runner. Tests are written with Jest and React Testing Library.
 
+---
+
 ## 5️⃣ Contributing
 
 ### Git Workflow
 
 - Our commits use a style called **[semantic commits](https://seesparkbox.com/foundry/semantic_commit_messages)**. 
-- Pick a task to work on from the Trello board, assign your name to it via the top right of the Trello card, and confirm that no one is already working on this task, or another task that is likely to cause merge issues with yours.
+- Pick a task to work on from the Github issues or Trello board, assign your name to it via the top right of the Trello card, and confirm that no one is already working on this task, or another task that is likely to cause merge issues with yours.
 
 ```sh
 git clone https://github.com/ncov19-us/ncov19-vacc-dash-front-end.git
-git checkout <staging-branch>
+git checkout staging
 git checkout -b <your-feature-branch>
 ```
 Commit your work using semantic commits structure.
 
 When done:
 ```sh
-git checkout <staging-branch>
+git checkout staging
 git pull  # sync your local feature branch with origin/github
 git checkout <your-feature-branch>
-git rebase <staging-branch>  # merge your branch w/ feature-branch
+git rebase staging  # merge your branch w/ feature-branch
 git commit
 ```
 
-Push your branch: `git push origin <your-feature-branch>`. Then open a pull request from your working branch into `staging-branch` for review.
+Push your branch: `git push origin <your-feature-branch>`. Then open a pull request from your working branch into `staging` for review.
 
 Please note we have a [CODE OF CONDUCT](./CODE_OF_CONDUCT.md). Please follow it in all your interactions with the project.
 
