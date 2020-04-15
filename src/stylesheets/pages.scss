@@ -1,4 +1,5 @@
-// Vaccine colors
+// Do not add new content to this file.
+// This file should be removed in the next iteration.
 
 /*
 Media Queries for usage 
@@ -17,18 +18,12 @@ Media Queries for usage
     flex-direction : row
 */
 
-// trial menu
-.trial-padding {
-  // padding: 2% 5% 0% 5%;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
-.trial-headers {
-  @include flex(space-around, row);
-  color: white;
-  h2 {
-    margin: auto;
-    padding-bottom: 2%;
-  }
-}
+// TODO: Not used anywhere
+// .trial-headers {
+//   @include flex(space-around, row);
+//   color: white;
+//   h2 {
+//     margin: auto;
+//     padding-bottom: 2%;
+//   }
+// }

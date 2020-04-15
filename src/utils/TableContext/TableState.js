@@ -14,6 +14,16 @@ import {
 	SET_MAP_FILTER_TABLE_ERROR,
 	GET_WORLD_TYPE_SUCCESS,
 	GET_WORLD_TYPE_ERROR,
+	GET_DASH_CARDS_GLOBAL_SUCCESS,
+	GET_DASH_CARDS_GLOBAL_ERROR,
+	FILL_TABLE_BY_TYPE_GLOBAL_SUCCESS,
+	FILL_TABLE_BY_TYPE_GLOBAL_ERROR,
+	GET_TABLE_GLOBAL_SUCCESS,
+	GET_TABLE_GLOBAL_ERROR,
+	GET_DASH_CARDS_BY_COUNTRY_AND_TYPE_SUCCESS,
+	GET_DASH_CARDS_BY_COUNTRY_AND_TYPE_ERROR,
+	GET_DASH_CARDS_BY_TYPE_GLOBAL_SUCCESS,
+	GET_DASH_CARDS_BY_TYPE_GLOBAL_ERROR,
 } from "./types";
 import { loadState, saveState } from "../localStorage";
 import { client } from "../axiosWithAuth";
@@ -43,11 +53,10 @@ export const TableState = (props) => {
 		error: "",
 		isLoading: false,
 		cards: [],
-		trials: [],
+		table: [],
 		map: [],
 		count: null,
 		country: "Global",
-		filter: [],
 	};
 
 	// get updated state from localStorage
@@ -63,6 +72,47 @@ export const TableState = (props) => {
 	// method that will dispatch success or error
 	// send CRUD operation to backend server
 
+	// initialze global by setting cards table and map
+	// populates map
+	const getMap = async () => {
+		dispatch({ type: IS_LOADING, payload: true });
+		try {
+			const res = await client().get(`/api/map`);
+			dispatch({ type: GET_MAP_SUCCESS, payload: res.data });
+		} catch (e) {
+			console.log("error getting map", e);
+			dispatch({ type: GET_MAP_ERROR, payload: e.response });
+		}
+	};
+	// Cards by global
+	const getDashCardsGlobal = async () => {
+		dispatch({ type: IS_LOADING, payload: true });
+		try {
+			const res = await client().get(`/api/totals`);
+			dispatch({
+				type: GET_DASH_CARDS_GLOBAL_SUCCESS,
+				payload: res.data,
+			});
+		} catch (e) {
+			console.log("error", e);
+			dispatch({
+				type: GET_DASH_CARDS_GLOBAL_ERROR,
+				payload: e.response,
+			});
+		}
+	};
+	// fill global table
+	const getTableGlobal = async () => {
+		dispatch({ type: IS_LOADING, payload: true });
+		try {
+			const res = await client().get(`api/trials`);
+			dispatch({ type: GET_TABLE_GLOBAL_SUCCESS, payload: res.data });
+		} catch (e) {
+			console.log("error", e);
+			dispatch({ type: GET_TABLE_GLOBAL_ERROR, payload: e.response });
+		}
+	};
+
 	const getTrials = async (apiUrl) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
@@ -74,6 +124,8 @@ export const TableState = (props) => {
 			dispatch({ type: GET_TRIALS_ERROR, payload: e.response });
 		}
 	};
+
+	// Cards by country
 	const getDashCardsByCountry = async (country) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
@@ -82,18 +134,6 @@ export const TableState = (props) => {
 		} catch (e) {
 			console.log("error", e);
 			dispatch({ type: SET_FILTER_ERROR, payload: e.response });
-		}
-	};
-
-	// populates map
-	const getMap = async () => {
-		dispatch({ type: IS_LOADING, payload: true });
-		try {
-			const res = await client().get(`/api/map`);
-			dispatch({ type: GET_MAP_SUCCESS, payload: res.data });
-		} catch (e) {
-			console.log("error getting map", e);
-			dispatch({ type: GET_MAP_ERROR, payload: e.response });
 		}
 	};
 
@@ -112,12 +152,13 @@ export const TableState = (props) => {
 	};
 
 	// gets trials by type and country
-	const getTrialByCountryAndType = async (type, country) => {
+	const fillTableByCountryAndType = async (country, type) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
 			const res = await client().get(
 				`/api/trials?type=${type}&countries=${country}`
 			);
+			console.log("res", res);
 
 			dispatch({
 				type: GET_TRIAL_BY_COUNTRY_SUCCESS,
@@ -133,7 +174,7 @@ export const TableState = (props) => {
 	};
 
 	// table populates on click with map
-	const getTrialsByCountry = async (country) => {
+	const fillTableByCountry = async (country) => {
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
 			const res = await client().get(`/api/trials?countries=${country}`);
@@ -149,6 +190,58 @@ export const TableState = (props) => {
 			});
 		}
 	};
+	const fillTableByTypeGlobal = async (type) => {
+		dispatch({ type: IS_LOADING, payload: true });
+		try {
+			const res = await client().get(`/api/trials?type=${type}`);
+			dispatch({
+				type: FILL_TABLE_BY_TYPE_GLOBAL_SUCCESS,
+				payload: res.data.results,
+			});
+		} catch (e) {
+			console.log("error", e);
+			dispatch({
+				type: FILL_TABLE_BY_TYPE_GLOBAL_ERROR,
+				payload: e.response,
+			});
+		}
+	};
+	const getDashCardsByCountryAndType = async (country, type) => {
+		dispatch({ type: IS_LOADING, payload: true });
+		try {
+			const res = await client().get(
+				`/api/totals?countries=${country}&type=${type}`
+			);
+			console.log("res", res);
+			dispatch({
+				type: GET_DASH_CARDS_BY_COUNTRY_AND_TYPE_SUCCESS,
+				payload: res.data,
+			});
+		} catch (e) {
+			console.log("error", e);
+			dispatch({
+				type: GET_DASH_CARDS_BY_COUNTRY_AND_TYPE_ERROR,
+				payload: e.response,
+			});
+		}
+	};
+	const getDashCardsByTypeGlobal = async (type) => {
+		dispatch({ type: IS_LOADING, payload: true });
+		try {
+			const res = await client().get(`/api/totals?type=${type}`);
+			dispatch({
+				type: GET_DASH_CARDS_BY_TYPE_GLOBAL_SUCCESS,
+				payload: res.data,
+			});
+			console.log("res", res);
+		} catch (e) {
+			console.log("error", e);
+			dispatch({
+				type: GET_DASH_CARDS_BY_TYPE_GLOBAL_ERROR,
+				payload: e.response,
+			});
+		}
+	};
 
 	// Provider values are in function or state
 	return (
@@ -157,16 +250,21 @@ export const TableState = (props) => {
 				error: state.error,
 				table: state.table,
 				map: state.map,
-				trials: state.trials,
+				table: state.table,
 				count: state.count,
-				filter: state.filter,
+				cards: state.cards,
 				isLoading: state.isLoading,
-				getTrialsByCountry, // table
+				getMap, // gives map values
+				getDashCardsGlobal, // call to get global cards
+				getTableGlobal, // call to get global cards
+				fillTableByCountry, // fill table by country
+				fillTableByCountryAndType, // fill table by country and type
 				getDashCardsByCountry, // dash cards
 				getTrials, //gets all trials
-				getMap,
-				getTrialByCountryAndType,
 				getWorldType,
+				fillTableByTypeGlobal,
+				getDashCardsByCountryAndType,
+				getDashCardsByTypeGlobal,
 			}}
 		>
 			{props.children}

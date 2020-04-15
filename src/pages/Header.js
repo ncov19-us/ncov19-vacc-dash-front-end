@@ -22,9 +22,7 @@ export default function Header() {
 		<div className="menubar">
 			<div className="tittle">
 				<a href="https://ncov19.us" style={aTags}>
-					<h1 className="subtitle-name">
-						COVID-19 <span className="title-unbold">Tracker</span>
-					</h1>
+					<h1 className="subtitle-name">COVID-19 Tracker</h1>
 				</a>
 			</div>
 

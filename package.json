@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@commodityvectors/react-mapbox-gl": "^2.0.3",
     "@nivo/geo": "^0.61.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -15,6 +16,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-mapbox-gl": "^4.8.3",
     "react-plotly.js": "^2.4.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
