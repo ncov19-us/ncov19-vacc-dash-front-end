@@ -14,6 +14,9 @@ const MapBox = ({ setSelectedCountry, dispatch }) => {
   const [map, setMap] = useState(null);
   const mapContainer = useRef(null);
 
+  const [mapValues, setMapValues] = useState(null);
+
+
   useEffect(() => {
     mapboxgl.accessToken =
       'pk.eyJ1IjoianJoZW1hbm4iLCJhIjoiY2s4cXJmeGx3MDRvdzNsbjA0eHlzcHh5diJ9.62toL3HZx60UCky-naglQg';
@@ -31,6 +34,20 @@ const MapBox = ({ setSelectedCountry, dispatch }) => {
         setMap(map);
         map.resize();
 
+        let mapData = data.features; // from features.json
+
+        res.data.forEach(countryWithValues => {
+          const countryName = countryWithValues.id;
+          const countryValue = countryWithValues.value;
+          mapData.map(country => {
+            if (country.properties.name === countryName) {
+              country.properties.value = countryValue;
+            }
+          
+            return country;
+          });
+        });
+
         // Add a source for the country polygons.
         map.addSource('countries', {
           type: 'geojson',
@@ -44,6 +61,27 @@ const MapBox = ({ setSelectedCountry, dispatch }) => {
           source: 'countries',
           paint: {
             'fill-opacity': 0,
+            'fill-color': [
+              'step',
+              ['get', 'value'],
+              '#ffeda0',
+              10,
+              '#ffeda0',
+              20,
+              '#fed976',
+              50,
+              '#feb24c',
+              100,
+              '#fd8d3c',
+              200,
+              '#fc4e2a',
+              500,
+              '#e31a1c',
+              750,
+              'hsl(348, 100%, 37%)',
+              1000,
+              '#bd0026',
+            ],
           },
         });
 
@@ -56,9 +94,10 @@ const MapBox = ({ setSelectedCountry, dispatch }) => {
 
         // When a click event occurs on a feature in the countries layer,
         map.on('click', 'countries-layer', (evt) => {
-					const countryName = evt.features[0].properties.name;
-					setSelectedCountry(countryName);
-					dispatch({ type: "CHANGE_COUNTRY", payload: countryName });
+          const countryName = evt.features[0].properties.name;
+          setSelectedCountry(countryName);
+          dispatch({ type: 'CHANGE_COUNTRY', payload: countryName });
+          console.log('clicked', evt.features[0]);
         });
       });
     };

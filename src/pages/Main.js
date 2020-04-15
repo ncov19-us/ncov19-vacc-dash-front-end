@@ -4,6 +4,7 @@ import VaccineTable from './VaccineTable';
 import WorldMap from '../components/WorldMap';
 import PlotlyMap from '../components/PlotlyMap';
 import MapBox from '../components/MapBox';
+import PlotlyMapbox from '../components/PlotlyMapbox';
 
 import { TableContext } from '../utils/TableContext/TableState';
 import { initialState, filterReducer } from '../utils/filterReducer';
@@ -36,10 +37,12 @@ function Main() {
                   setSelectedCountry={setSelectedCountry}
                   dispatch={dispatch}
                 /> */}
+                {/* <PlotlyMap setSelectedCountry={setSelectedCountry} dispatch={dispatch} /> */}
                 <MapBox
                   setSelectedCountry={setSelectedCountry}
                   dispatch={dispatch}
                 />
+                {/* <PlotlyMapbox /> */}
               </div>
             </div>
           </div>

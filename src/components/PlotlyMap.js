@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Plotly from "plotly.js-geo-dist";
+// import Plotly from "plotly.js-geo-dist";
+import Plotly from "plotly.js-mapbox-dist";
 import createPlotlyComponent from "react-plotly.js/factory";
 import axios from "axios";
+import mapShapes from '../data/features.json';
 
 const Plot = createPlotlyComponent(Plotly);
 
@@ -34,16 +36,16 @@ const PlotlyMap = ({ setSelectedCountry, dispatch }) => {
     <Plot
       data={[
         {
-          type: "choropleth",
+          type: "choroplethmapbox",
           locationmode: "country names",
           locations: data.map((row) => row.id),
+          geojson: mapShapes,
           z: data.map((row) => row.value),
           zauto: false,
           zmin: 0,
           zmax: 20,
           text: data.map((row) => row.id),
           autocolorscale: false,
-
           colorscale: [
             ["0.0", "#b3e5ff"],
             ["0.25", "#80d8ff"],
@@ -57,6 +59,13 @@ const PlotlyMap = ({ setSelectedCountry, dispatch }) => {
         width: 640,
         height: 480,
         title: "A Fancy Map",
+        mapbox: {
+          center: { lon: -74, lat: 43 },
+          zoom: 3.5
+        }
+      }}
+      config={{
+        mapboxAccessToken: 'pk.eyJ1IjoiaHVuZ3J5cGllMDAiLCJhIjoiY2s4bTZwMzMyMGJ3ZjNycGVuajVtemVjbSJ9.pfXDUCvJrNhGhgCfC47tng'
       }}
       onClick={clickCountry}
     />

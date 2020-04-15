@@ -9251,6 +9251,11 @@ plotly.js-geo-dist@^1.53.0:
   resolved "https://registry.yarnpkg.com/plotly.js-geo-dist/-/plotly.js-geo-dist-1.53.0.tgz#ee581effa9ed0df32910d3992e8a37f649bb6f92"
   integrity sha512-4Whf2wWogKEf9lUakIP4HrLmHYZjcJAlwwcdAdGAKmWpPaNF0O1fvExtUyufJ7jU5hhogct8ciiYirBGSbpZqw==
 
+plotly.js-mapbox-dist@^1.53.0:
+  version "1.53.0"
+  resolved "https://registry.yarnpkg.com/plotly.js-mapbox-dist/-/plotly.js-mapbox-dist-1.53.0.tgz#ba0a1af17d03d96c194f6c6be483979c3592099d"
+  integrity sha512-j0PBmzcG5RwiScfXPegRJMZ3RxvwQvMOYtVDa7iMgumri9fh5KGsJuSzeiF/5qVjipUcGO006J8RosnRnUONQw==
+
 pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"

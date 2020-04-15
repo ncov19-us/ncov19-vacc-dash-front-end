@@ -3512,7 +3512,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "China"
+        "name": "China",
+        "value": 500
       },
       "geometry": {
         "type": "MultiPolygon",
