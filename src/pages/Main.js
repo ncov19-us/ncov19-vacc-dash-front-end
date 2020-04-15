@@ -9,11 +9,14 @@ import { TableContext } from "../utils/TableContext/TableState";
 import { initialState, filterReducer } from "../utils/filterReducer";
 
 function Main() {
-	const { getMap } = useContext(TableContext);
-
-	useEffect(() => getMap(), []); // populate map
-
-	const [selectedCountry, setSelectedCountry] = useState("Global");
+	const { getMap, getDashCardsGlobal, getTableGlobal } = useContext(
+		TableContext
+	);
+	useEffect(() => {
+		getMap(); // give map values,
+		getDashCardsGlobal(); // populate global  cards,
+		getTableGlobal(); // populate global table ,
+	}, []);
 
 	const [filterInfo, dispatch] = useReducer(filterReducer, initialState);
 
@@ -24,25 +27,14 @@ function Main() {
 					<div className="ui stackable grid">
 						<div className="two column row content">
 							<div className="sixteen wide tablet eight wide computer column">
-								<DashTopper
-									selectedCountry={selectedCountry}
-									setSelectedCountry={setSelectedCountry}
-									dispatch={dispatch}
-								/>
+								<DashTopper dispatch={dispatch} />
 								<VaccineTable
 									filterInfo={filterInfo}
 									dispatch={dispatch}
 								/>
 							</div>
 							<div className="map-wrapper">
-								{/* <WorldMap
-                  setSelectedCountry={setSelectedCountry}
-                  dispatch={dispatch}
-                /> */}
-								<MapBox
-									setSelectedCountry={setSelectedCountry}
-									dispatch={dispatch}
-								/>
+								<MapBox dispatch={dispatch} />
 							</div>
 						</div>
 					</div>

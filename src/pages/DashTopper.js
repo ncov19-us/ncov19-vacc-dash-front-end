@@ -1,67 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Menu } from "semantic-ui-react";
+import { TableContext } from "../utils/TableContext/TableState";
 
 import Today from "../components/Today";
 import CountryDropdown from "../components/CountryDropdown";
 
-import { client } from "../utils/axiosWithAuth";
 // FIXME: Move this to stylesheets.
 import "semantic-ui-css/semantic.min.css";
 
 function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
+	const {
+		fillTableByTypeGlobal,
+		cards,
+		fillTableByCountryAndType,
+		table,
+		getTableGlobal,
+		fillTableByCountry,
+		getDashCardsByCountryAndType,
+		getDashCardsByTypeGlobal,
+		getDashCardsGlobal,
+		getDashCardsByCountry,
+	} = useContext(TableContext);
+	const [active, setActive] = useState("all");
 	const [numPhase, setNumPhase] = useState({
 		early: null,
 		mid: null,
 		complete: null,
 	});
 
-	const [totals, setTotals] = useState({
-		countries: null,
-		vaccines: [],
-		treatments: [],
-		alternatives: [],
-	});
-
-	const [active, setActive] = useState("all");
-
 	useEffect(() => {
-		let apiUrl = "/api/totals";
-
-		async function fetchTotals() {
-			if (selectedCountry !== "Global") {
-				apiUrl = `/api/totals?countries=${selectedCountry.toLowerCase()}`;
-			}
-
-			const { data } = await client().get(apiUrl);
-
-			setTotals(data);
-		}
-
-		fetchTotals();
-	}, [selectedCountry]);
-
-	useEffect(() => {
-		if (totals.countries) {
+		if (active === "all") {
 			setNumPhase(
-				active === "all"
-					? calcPhases(totals, [
-							"vaccines",
-							"treatments",
-							"alternatives",
-					  ])
-					: calcPhases(totals, [`${active}`])
+				calcPhases(cards, [`vaccines`, "treatments", "alternatives"])
 			);
+		} else {
+			setNumPhase(calcPhases(cards, [`${active}`]));
 		}
-	}, [totals, active]);
+	}, [cards]);
 
 	function calcPhases(totals, types) {
 		let early = 0;
 		let mid = 0;
 		let complete = 0;
-
 		types.forEach((type) => {
 			const trialType = totals[type];
-
 			early += trialType[0];
 			early += trialType[1];
 			mid += trialType[2];
@@ -75,28 +57,55 @@ function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
 	const handleClick = (evt, { name }) => {
 		setActive(name);
 
-		dispatch({ type: "CHANGE_TYPE", payload: name });
+		// check if we are in global
+		if (cards.countries === "world") {
+			// check if types are all or specific for tables
+			name === "all" ? getTableGlobal() : fillTableByTypeGlobal(name);
+			// and dash cards
+			name === "all"
+				? getDashCardsGlobal()
+				: getDashCardsByTypeGlobal(name);
+		} else {
+			// check if country types are all or specific for tables
+			name === "all"
+				? fillTableByCountry(cards.countries)
+				: fillTableByCountryAndType(cards.countries, name);
+			// and for dash cards
+			name === "all"
+				? getDashCardsByCountry(cards.countries)
+				: getDashCardsByCountryAndType(cards.countries, name);
+		}
 	};
 
-	const returnGlobal = (evt) => {
-		evt.preventDefault();
-
-		setSelectedCountry("Global");
-		dispatch({ type: "CHANGE_COUNTRY", payload: "global" });
+	const returnGlobal = () => {
+		getDashCardsGlobal();
+		getTableGlobal();
 	};
-
+	console.log("table", cards);
 	return (
 		<div className="vacine-dash-header">
 			<div className="title">
-				<h1>{selectedCountry}</h1>
-				<div className="dropdown">
+				<h1 style={{ fontSize: "2rem" }}>
+					{cards.countries === "world"
+						? "World"
+						: cards.countries.replace(
+								// case first letter of every word
+								/\w\S*/g,
+								(c) => c.charAt(0).toUpperCase() + c.substr(1)
+						  )}
+				</h1>
+				<div style={{ width: "15rem" }}>
 					<CountryDropdown />
 					<span
 						onClick={returnGlobal}
-						className={
-							selectedCountry === "Global"
-								? "hidden"
-								: "return-to-global"
+						style={
+							cards.countries === "world"
+								? { display: "none" }
+								: {
+										display: "block",
+										color: "#f4b000",
+										cursor: "pointer",
+								  }
 						}
 					>
 						&#x25C1; Return to Global View

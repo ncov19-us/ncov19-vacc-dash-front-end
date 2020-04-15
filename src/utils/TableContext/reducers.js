@@ -14,6 +14,16 @@ import {
 	SET_MAP_FILTER_TABLE_ERROR,
 	GET_WORLD_TYPE_SUCCESS,
 	GET_WORLD_TYPE_ERROR,
+	GET_DASH_CARDS_GLOBAL_SUCCESS,
+	GET_DASH_CARDS_GLOBAL_ERROR,
+	FILL_TABLE_BY_TYPE_GLOBAL_SUCCESS,
+	FILL_TABLE_BY_TYPE_GLOBAL_ERROR,
+	GET_TABLE_GLOBAL_SUCCESS,
+	GET_TABLE_GLOBAL_ERROR,
+	GET_DASH_CARDS_BY_COUNTRY_AND_TYPE_SUCCESS,
+	GET_DASH_CARDS_BY_COUNTRY_AND_TYPE_ERROR,
+	GET_DASH_CARDS_BY_TYPE_GLOBAL_SUCCESS,
+	GET_DASH_CARDS_BY_TYPE_GLOBAL_ERROR,
 } from "./types";
 
 // updates the state
@@ -41,7 +51,7 @@ const getTrials = (state, action) => {
 	return {
 		...state,
 		is_loading: false,
-		trials: action.payload.results,
+		table: action.payload.results,
 		count: action.payload.count,
 	};
 };
@@ -84,7 +94,7 @@ const getTrialByCountry = (state, action) => {
 	return {
 		...state,
 		is_loading: false,
-		trials: action.payload,
+		table: action.payload,
 	};
 };
 const getTrialByCountryError = (state, action) => {
@@ -94,41 +104,13 @@ const getTrialByCountryError = (state, action) => {
 		is_loading: false,
 	};
 };
-// const setMapFilterTable = (state, action) => {
-// 	return {
-// 		...state,
-// 		is_loading: false,
-// 		trials: action.payload,
-// 	};
-// };
-// const setMapFilterTableError = (state, action) => {
-// 	return {
-// 		...state,
-// 		error: action.payload,
-// 		is_loading: false,
-// 	};
-// };
-// const populateWorld = (state, action) => {
-// 	return {
-// 		...state,
-// 		is_loading: false,
-// 		table: action.payload,
-// 	};
-// };
-// const populateWorldError = (state, action) => {
-// 	return {
-// 		...state,
-// 		error: action.payload,
-// 		is_loading: false,
-// 	};
-// };
 
 const getWorldType = (state, action) => {
 	console.log("action", action);
 	return {
 		...state,
 		is_loading: false,
-		trials: action.payload,
+		table: action.payload,
 	};
 };
 const getWorldTypeError = (state, action) => {
@@ -142,7 +124,7 @@ const mapFilterTable = (state, action) => {
 	return {
 		...state,
 		is_loading: false,
-		trials: action.payload,
+		table: action.payload,
 	};
 };
 const mapFilterTableError = (state, action) => {
@@ -152,7 +134,76 @@ const mapFilterTableError = (state, action) => {
 		is_loading: false,
 	};
 };
-
+const getDashCardsGlobal = (state, action) => {
+	return {
+		...state,
+		is_loading: false,
+		cards: action.payload,
+	};
+};
+const getDashCardsGlobalError = (state, action) => {
+	return {
+		...state,
+		error: action.payload,
+		is_loading: false,
+	};
+};
+const fillTableByTypeGlobal = (state, action) => {
+	return {
+		...state,
+		is_loading: false,
+		table: action.payload,
+	};
+};
+const fillTableByTypeGlobalError = (state, action) => {
+	return {
+		...state,
+		error: action.payload,
+		is_loading: false,
+	};
+};
+const getTableGlobal = (state, action) => {
+	return {
+		...state,
+		is_loading: false,
+		table: action.payload.results,
+	};
+};
+const getTableGlobalError = (state, action) => {
+	return {
+		...state,
+		error: action.payload,
+		is_loading: false,
+	};
+};
+const getDashCardsByCountryAndType = (state, action) => {
+	return {
+		...state,
+		is_loading: false,
+		cards: action.payload,
+	};
+};
+const getDashCardsByCountryAndTypeError = (state, action) => {
+	return {
+		...state,
+		error: action.payload,
+		is_loading: false,
+	};
+};
+const getDashCardsByTypeGlobal = (state, action) => {
+	return {
+		...state,
+		is_loading: false,
+		cards: action.payload,
+	};
+};
+const getDashCardsByTypeGlobalError = (state, action) => {
+	return {
+		...state,
+		error: action.payload,
+		is_loading: false,
+	};
+};
 // cases
 export const reducer = (state, action) => {
 	switch (action.type) {
@@ -186,6 +237,26 @@ export const reducer = (state, action) => {
 			return mapFilterTable(state, action);
 		case SET_MAP_FILTER_TABLE_ERROR:
 			return mapFilterTableError(state, action);
+		case GET_DASH_CARDS_GLOBAL_SUCCESS:
+			return getDashCardsGlobal(state, action);
+		case GET_DASH_CARDS_GLOBAL_ERROR:
+			return getDashCardsGlobalError(state, action);
+		case FILL_TABLE_BY_TYPE_GLOBAL_SUCCESS:
+			return fillTableByTypeGlobal(state, action);
+		case FILL_TABLE_BY_TYPE_GLOBAL_ERROR:
+			return fillTableByTypeGlobalError(state, action);
+		case GET_TABLE_GLOBAL_SUCCESS:
+			return getTableGlobal(state, action);
+		case GET_TABLE_GLOBAL_ERROR:
+			return getTableGlobalError(state, action);
+		case GET_DASH_CARDS_BY_COUNTRY_AND_TYPE_SUCCESS:
+			return getDashCardsByCountryAndType(state, action);
+		case GET_DASH_CARDS_BY_COUNTRY_AND_TYPE_ERROR:
+			return getDashCardsByCountryAndTypeError(state, action);
+		case GET_DASH_CARDS_BY_TYPE_GLOBAL_SUCCESS:
+			return getDashCardsByTypeGlobal(state, action);
+		case GET_DASH_CARDS_BY_TYPE_GLOBAL_ERROR:
+			return getDashCardsByTypeGlobalError(state, action);
 		default:
 			return state;
 	}
