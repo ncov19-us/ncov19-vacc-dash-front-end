@@ -1,11 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ResponsiveChoropleth } from "@nivo/geo";
-
 import { TableContext } from "../utils/TableContext/TableState";
 import { features } from "../data/features.json";
-
-import axios from "axios";
-
 /*
 GOAL:
 	* Use global in conjunction with the map 
@@ -21,41 +17,35 @@ RETURNS:
 	- Filtered Countries' data 
 */
 
-const WorldMap = ({ setSelectedCountry, dispatch }) => {
-	const [data, setData] = useState([]);
-	const { getDashCardsByCountry, mapFilterByCountryTrials } = useContext(
+const WorldMap = () => {
+	const { map, fillTableByCountry, getDashCardsByCountry } = useContext(
 		TableContext
 	);
-
+	const [data, setData] = useState([]);
 	useEffect(() => {
-		axios
-			.get("https://covid19-vacc-be.herokuapp.com/api/map")
-			.then((response) => {
-				setData(response.data);
+		setData(
+			map.map((key) => {
+				return { id: key.country_codes, value: key.value };
 			})
-			.catch((err) => {
-				console.log(err);
-			});
-	}, []);
-
-	const setCountry = (e) => {
-		if (e.data) {
-			getDashCardsByCountry(e.properties.name); //populate dash cards
-			mapFilterByCountryTrials(e.properties.name); //populate table
-
-			setSelectedCountry(e.properties.name);
-
-			dispatch({ type: "CHANGE_COUNTRY", payload: e.properties.name });
-		}
-	};
+		);
+	}, [map]);
+	function setCountry(e) {
+		map.forEach((c) => {
+			if (c.country_codes === e.id)
+				return (
+					fillTableByCountry(c.id.toLowerCase()),
+					getDashCardsByCountry(c.id.toLowerCase())
+				);
+		});
+	}
 
 	return (
-		<div style={{ height: "700px" }}>
+		<div style={{ height: "700px", width: "700px" }}>
 			<ResponsiveChoropleth
 				data={data}
 				features={features}
 				margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-				colors="YlOrRd"
+				colors="blues"
 				domain={[0, 10]}
 				unknownColor="#19202a"
 				label="properties.name"
@@ -66,22 +56,8 @@ const WorldMap = ({ setSelectedCountry, dispatch }) => {
 				graticuleLineColor="#dddddd"
 				borderWidth={0.7}
 				borderColor="white"
-				legends={[
+				legengs={[
 					{
-						// anchor: "top-left",
-						// direction: "column",
-						// justify: false,
-						// translateX: 30,
-						// translateY: 300,
-						// itemsSpacing: 0,
-						// itemWidth: 60,
-						// itemHeight: 18,
-						// itemDirection: "left-to-right",
-						// itemTextColor: "#FFFFFF",
-						// itemOpacity: 0.85,
-						// symbolSize: 20,
-						// symbolShape: "square",
-
 						anchor: "bottom",
 						direction: "row",
 						justify: true,
@@ -95,19 +71,18 @@ const WorldMap = ({ setSelectedCountry, dispatch }) => {
 						itemOpacity: 0.85,
 						symbolSize: 11,
 						symbolShape: "square",
-
 						effects: [
 							{
 								on: "hover",
 								style: {
-									itemTextColor: "#FFFFFF",
+									itemTextColor: "#ffffff",
 									itemOpacity: 1,
 								},
 							},
 						],
 					},
 				]}
-				onClick={(feature) => setCountry(feature)}
+				onClick={(e) => setCountry(e)}
 			/>
 		</div>
 	);

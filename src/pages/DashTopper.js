@@ -8,12 +8,11 @@ import CountryDropdown from "../components/CountryDropdown";
 // FIXME: Move this to stylesheets.
 import "semantic-ui-css/semantic.min.css";
 
-function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
+function DashTopper() {
 	const {
 		fillTableByTypeGlobal,
 		cards,
 		fillTableByCountryAndType,
-		table,
 		getTableGlobal,
 		fillTableByCountry,
 		getDashCardsByCountryAndType,
@@ -81,7 +80,7 @@ function DashTopper({ selectedCountry, setSelectedCountry, dispatch }) {
 		getDashCardsGlobal();
 		getTableGlobal();
 	};
-	console.log("table", cards);
+
 	return (
 		<div className="vacine-dash-header">
 			<div className="title">
