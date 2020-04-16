@@ -25,3 +25,4 @@ yarn-error.log*
 /.vscode
 /package-lock.json
 .env
+package-lock.json
