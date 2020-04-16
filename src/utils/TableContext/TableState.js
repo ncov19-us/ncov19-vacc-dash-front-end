@@ -25,7 +25,6 @@ import {
 	GET_DASH_CARDS_BY_TYPE_GLOBAL_SUCCESS,
 	GET_DASH_CARDS_BY_TYPE_GLOBAL_ERROR,
 } from "./types";
-import { loadState, saveState } from "../localStorage";
 import { client } from "../axiosWithAuth";
 import { reducer } from "./reducers";
 
@@ -59,15 +58,7 @@ export const TableState = (props) => {
 		country: "Global",
 	};
 
-	// get updated state from localStorage
-	const localState = loadState("table");
-
-	const [state, dispatch] = useReducer(reducer, localState || initialState);
-
-	// save state to localstorage on page render
-	useEffect(() => {
-		saveState("table", state);
-	}, [state]);
+	const [state, dispatch] = useReducer(reducer, initialState);
 
 	// method that will dispatch success or error
 	// send CRUD operation to backend server
