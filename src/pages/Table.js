@@ -38,7 +38,10 @@ export default class Table extends React.Component {
 
 	render() {
 		return (
-			<div className="table-wrapper">
+			<div
+				className="table-wrapper"
+				style={{ height: "600px", overflow: "auto" }}
+			>
 				<table className="table">
 					<thead>
 						<tr>{this.getHeader()}</tr>

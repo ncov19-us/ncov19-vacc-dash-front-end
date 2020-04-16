@@ -1,9 +1,7 @@
-import React, { useContext, useState, useReducer, useEffect } from "react";
+import React, { useContext, useReducer, useEffect } from "react";
 import DashTopper from "./DashTopper";
 import VaccineTable from "./VaccineTable";
 import WorldMap from "../components/WorldMap";
-import PlotlyMap from "../components/PlotlyMap";
-import MapBox from "../components/MapBox";
 
 import { TableContext } from "../utils/TableContext/TableState";
 import { initialState, filterReducer } from "../utils/filterReducer";
@@ -34,7 +32,7 @@ function Main() {
 								/>
 							</div>
 							<div className="map-wrapper">
-								<MapBox dispatch={dispatch} />
+								<WorldMap />
 							</div>
 						</div>
 					</div>

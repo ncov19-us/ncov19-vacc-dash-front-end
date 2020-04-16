@@ -175,6 +175,7 @@ export const TableState = (props) => {
 
 	// table populates on click with map
 	const fillTableByCountry = async (country) => {
+		console.log("country", country);
 		dispatch({ type: IS_LOADING, payload: true });
 		try {
 			const res = await client().get(`/api/trials?countries=${country}`);
