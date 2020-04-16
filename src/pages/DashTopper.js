@@ -26,13 +26,13 @@ function DashTopper() {
 		mid: null,
 		complete: null,
 	});
-
 	useEffect(() => {
-		if (active === "all") {
+		console.log("cards", cards);
+		if (cards.countries && active === "all") {
 			setNumPhase(
 				calcPhases(cards, [`vaccines`, "treatments", "alternatives"])
 			);
-		} else {
+		} else if (cards.countries && active !== "all") {
 			setNumPhase(calcPhases(cards, [`${active}`]));
 		}
 	}, [cards]);
@@ -85,13 +85,13 @@ function DashTopper() {
 		<div className="vacine-dash-header">
 			<div className="title">
 				<h1 style={{ fontSize: "2rem" }}>
-					{cards.countries === "world"
-						? "World"
-						: cards.countries.replace(
+					{cards.countries !== "world" && cards.countries
+						? cards.countries.replace(
 								// case first letter of every word
 								/\w\S*/g,
 								(c) => c.charAt(0).toUpperCase() + c.substr(1)
-						  )}
+						  )
+						: "World"}
 				</h1>
 				<div style={{ width: "15rem" }}>
 					<CountryDropdown />

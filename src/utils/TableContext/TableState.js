@@ -64,10 +64,10 @@ export const TableState = (props) => {
 
 	const [state, dispatch] = useReducer(reducer, localState || initialState);
 
-	// save state to localstorage on page render
-	useEffect(() => {
-		saveState("table", state);
-	}, [state]);
+	// // save state to localstorage on page render
+	// useEffect(() => {
+	// 	saveState("table", state);
+	// }, [state]);
 
 	// method that will dispatch success or error
 	// send CRUD operation to backend server
