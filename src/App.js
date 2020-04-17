@@ -11,14 +11,14 @@ import About from "./pages/About";
 import "./index.scss";
 
 export default function App() {
-  return (
-    <div className="App">
-      <TableState>
-        <Header />
-        <Route exact path="/" component={Main} />
-        <Route path="/about" component={About} />
-        <Footer />
-      </TableState>
-    </div>
-  );
+	return (
+		<div className="App">
+			<TableState>
+				<Header />
+				<Route exact path="/" component={Main} />
+				<Route path="/about" component={About} />
+				<Footer />
+			</TableState>
+		</div>
+	);
 }

@@ -22,7 +22,7 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"test": "react-scripts test",
+		"test": "react-scripts test --watch",
 		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {
@@ -41,6 +41,8 @@
 		]
 	},
 	"devDependencies": {
-		"@testing-library/react": "^9.5.0"
+		"@testing-library/react": "^9.5.0",
+		"@types/jest": "^25.2.1",
+		"react-test-renderer": "^16.13.1"
 	}
 }
