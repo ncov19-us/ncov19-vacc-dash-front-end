@@ -79,6 +79,8 @@
 .vacine-dash-header {
 	margin-top: 10%;
 
+
+
 	//   background: $gunmetal;
 	color: white;
 	padding: 2% 3%;
@@ -120,6 +122,11 @@
 		// margin-left: 5%;
 		align-items: center;
 		// align-content: stretch;
+
+		@media #{$tablet} {
+			flex-wrap: wrap;
+		}
+
 		.card {
 			background: #19202a;
 			border: 2px solid $border-color;
