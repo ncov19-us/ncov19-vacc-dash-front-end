@@ -40,7 +40,7 @@ const WorldMap = () => {
 	}
 
 	return (
-		<div style={{ height: "700px", width: "700px" }}>
+		<div className="map-wrapper">
 			<ResponsiveChoropleth
 				data={data}
 				features={features}
