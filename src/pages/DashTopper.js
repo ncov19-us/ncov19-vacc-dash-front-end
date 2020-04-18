@@ -4,6 +4,7 @@ import { TableContext } from "../utils/TableContext/TableState";
 
 import Today from "../components/Today";
 import CountryDropdown from "../components/CountryDropdown";
+import TrialCountCard from './TrialCountCard';
 
 // FIXME: Move this to stylesheets.
 import "semantic-ui-css/semantic.min.css";
@@ -50,7 +51,8 @@ function DashTopper() {
 			complete += trialType[4];
 		});
 
-		return { early, mid, complete };
+		const total = early + mid + complete;
+		return { early, mid, complete, total };
 	}
 
 	const handleClick = (evt, { name }) => {
@@ -114,26 +116,14 @@ function DashTopper() {
 			<div className="today">
 				<Today />
 			</div>
+				
 			<div className="cards">
-				<div className="card">
-					<div className="stats">
-						<h4>Early Phase Trials</h4>
-					</div>
-					<p>{numPhase && numPhase.early}</p>
-				</div>
-				<div className="card">
-					<div className="stats">
-						<h4>Mid Phase Trials</h4>
-					</div>
-					<p>{numPhase && numPhase.mid}</p>
-				</div>
-				<div className="card">
-					<div className="stats">
-						<h4>Completed Trials</h4>
-					</div>
-					<p>{numPhase && numPhase.complete}</p>
-				</div>
+					<TrialCountCard title="Early Phase" count={numPhase.early} />
+					<TrialCountCard title="Mid Phase" count={numPhase.mid} />
+					<TrialCountCard title="Completed" count={numPhase.complete} />
+					<TrialCountCard title="Total" count={numPhase.total} />
 			</div>
+
 			<div>
 				<h2 className="trials" style={{ marginTop: "1.5rem" }}>
 					COVID-19 Trials
