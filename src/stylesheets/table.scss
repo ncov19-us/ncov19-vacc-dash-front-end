@@ -54,12 +54,11 @@
 $tableHover: rgba(90, 74, 74, 0.5);
 $hoverShadow: #40495b;
 .table-wrapper {
-	height: 600px;
   overflow-y: auto;
 
 	border-radius: 10px;
 	background-color: #2c3341; // Makes table appear to always be the same height.
-	height: 400px; // Forces the table area consistent
+	height: 600px; // Forces the table area consistent
 	
 	@media #{$tablet} {
 		min-width: 100%;
