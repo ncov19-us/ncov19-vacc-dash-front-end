@@ -18,16 +18,21 @@ export default function CountryDropdown({ type, dispatch }) {
 	// Semantic onChange called with SyntheticEvent and all props
 	const handleChange = (evt, { value }) => {
 		// dispatch country filter option
-		dispatch({type: "CHANGE_COUNTRY", payload: value})
+		console.log("value", value);
+		dispatch({ type: "CHANGE_COUNTRY", payload: value });
 	};
+	console.log("dropdown", dropdown);
 
 	return (
 		<Dropdown
-			placeholder="Choose a Country"
 			options={dropdown}
-			fluid
-			selection
 			onChange={handleChange}
+			button
+			labeled
+			search
+			icon="triangle down"
+			text=" "
+			style={{ background: "white", color: "white", marginLeft: "8px" }}
 		/>
 	);
 }
