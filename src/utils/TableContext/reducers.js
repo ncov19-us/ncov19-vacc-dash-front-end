@@ -38,6 +38,7 @@ const getTable = (state, action) => {
 		...state,
 		is_loading: false,
 		table: action.payload,
+		count: action.payload.count,
 	};
 };
 const getTableError = (state, action) => {
@@ -95,6 +96,7 @@ const getTrialByCountry = (state, action) => {
 		...state,
 		is_loading: false,
 		table: action.payload,
+		count: action.payload.count,
 	};
 };
 const getTrialByCountryError = (state, action) => {
@@ -106,11 +108,11 @@ const getTrialByCountryError = (state, action) => {
 };
 
 const getWorldType = (state, action) => {
-	console.log("action", action);
 	return {
 		...state,
 		is_loading: false,
 		table: action.payload,
+		count: action.payload.count,
 	};
 };
 const getWorldTypeError = (state, action) => {
@@ -125,6 +127,7 @@ const mapFilterTable = (state, action) => {
 		...state,
 		is_loading: false,
 		table: action.payload,
+		count: action.payload.count,
 	};
 };
 const mapFilterTableError = (state, action) => {
@@ -153,6 +156,7 @@ const fillTableByTypeGlobal = (state, action) => {
 		...state,
 		is_loading: false,
 		table: action.payload,
+		count: action.payload.count,
 	};
 };
 const fillTableByTypeGlobalError = (state, action) => {
@@ -167,6 +171,7 @@ const getTableGlobal = (state, action) => {
 		...state,
 		is_loading: false,
 		table: action.payload.results,
+		count: action.payload.count,
 	};
 };
 const getTableGlobalError = (state, action) => {

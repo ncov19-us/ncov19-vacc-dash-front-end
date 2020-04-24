@@ -11,19 +11,20 @@ GOAL:
 */
 
 function VaccineTable({ filterInfo, dispatch }) {
-	const { getTrials, table, isLoading, count, cards } = useContext(
-		TableContext
-	);
+	const { getTrials, table, isLoading, count, cards } = useContext(TableContext);
+
+	const {countries} = cards
+	const {page, type} = filterInfo;
 
 	useEffect(() => {
 		let apiUrl = `api/trials?limit=7&page=${filterInfo.page}`;
 
-		if (cards.countries && cards.countries !== "global") {
-			apiUrl += `&countries=${cards.countries}`;
+		if (countries && countries !== "world") {
+			apiUrl += `&countries=${countries}`;
 		}
 
-		if (filterInfo.type && filterInfo.type !== "all") {
-			apiUrl += `&type=${filterInfo.type}`;
+		if (type && type !== "all") {
+			apiUrl += `&type=${type}`;
 		}
 
 		getTrials(apiUrl);
@@ -41,9 +42,9 @@ function VaccineTable({ filterInfo, dispatch }) {
 			)}
 			{table.length > 0 ? (
 				<div>
-					<Table data={table} />
-					<PageBar count={count} dispatch={dispatch} />{" "}
-					{/* TODO: Only display when count > 7 */}
+					<Table data={table} page={page} />
+					{count > 7 && <PageBar count={count} page={page} dispatch={dispatch} />}
+					
 				</div>
 			) : (
 				<p

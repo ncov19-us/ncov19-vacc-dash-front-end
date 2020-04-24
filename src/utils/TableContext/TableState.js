@@ -55,7 +55,7 @@ export const TableState = (props) => {
 		table: [],
 		map: [],
 		count: null,
-		country: "Global",
+		country: "world",
 	};
 
 	const [state, dispatch] = useReducer(reducer, initialState);
