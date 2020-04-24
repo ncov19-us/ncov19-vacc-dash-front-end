@@ -9,34 +9,27 @@ import TrialCountCard from './TrialCountCard';
 // FIXME: Move this to stylesheets.
 import "semantic-ui-css/semantic.min.css";
 
-function DashTopper() {
-	const {
-		fillTableByTypeGlobal,
-		cards,
-		fillTableByCountryAndType,
-		getTableGlobal,
-		fillTableByCountry,
-		getDashCardsByCountryAndType,
-		getDashCardsByTypeGlobal,
-		getDashCardsGlobal,
-		getDashCardsByCountry,
-	} = useContext(TableContext);
-	const [active, setActive] = useState("all");
+function DashTopper({filterInfo, dispatch}) {
+	const { cards, getTableGlobal, getDashCardsGlobal } = useContext(TableContext);
+	
+	const { type } = filterInfo;
+	const { countries } = cards;
+	
 	const [numPhase, setNumPhase] = useState({
 		early: null,
 		mid: null,
 		complete: null,
 	});
+
 	useEffect(() => {
-		console.log("cards", cards);
-		if (cards.countries && active === "all") {
+		if (countries && type === "all") {
 			setNumPhase(
 				calcPhases(cards, [`vaccines`, "treatments", "alternatives"])
 			);
-		} else if (cards.countries && active !== "all") {
-			setNumPhase(calcPhases(cards, [`${active}`]));
+		} else if (countries && type !== "all") {
+			setNumPhase(calcPhases(cards, [`${type}`]));
 		}
-	}, [cards]);
+	}, [cards, countries, type]);
 
 	function calcPhases(totals, types) {
 		let early = 0;
@@ -56,25 +49,12 @@ function DashTopper() {
 	}
 
 	const handleClick = (evt, { name }) => {
-		setActive(name);
-
-		// check if we are in global
-		if (cards.countries === "world") {
-			// check if types are all or specific for tables
-			name === "all" ? getTableGlobal() : fillTableByTypeGlobal(name);
-			// and dash cards
-			name === "all"
-				? getDashCardsGlobal()
-				: getDashCardsByTypeGlobal(name);
+		// update filter query based on selections
+		if (countries === "world") {
+			dispatch({type: "CHANGE_TYPE", payload: name})
 		} else {
-			// check if country types are all or specific for tables
-			name === "all"
-				? fillTableByCountry(cards.countries)
-				: fillTableByCountryAndType(cards.countries, name);
-			// and for dash cards
-			name === "all"
-				? getDashCardsByCountry(cards.countries)
-				: getDashCardsByCountryAndType(cards.countries, name);
+			dispatch({type: "CHANGE_TYPE", payload: name})
+			dispatch({type: "CHANGE_COUNTRY", payload: name})
 		}
 	};
 
@@ -87,8 +67,8 @@ function DashTopper() {
 		<div className="vacine-dash-header">
 			<div className="title">
 				<h1 style={{ fontSize: "2rem" }}>
-					{cards.countries !== "world" && cards.countries
-						? cards.countries.replace(
+					{countries !== "world" && countries
+						? countries.replace(
 								// case first letter of every word
 								/\w\S*/g,
 								(c) => c.charAt(0).toUpperCase() + c.substr(1)
@@ -100,7 +80,7 @@ function DashTopper() {
 					<span
 						onClick={returnGlobal}
 						style={
-							cards.countries === "world"
+							countries === "world"
 								? { display: "none" }
 								: {
 										display: "block",
@@ -137,26 +117,26 @@ function DashTopper() {
 				>
 					<Menu.Item
 						name="all"
-						active={active === "all"}
+						active={type === "all"}
 						onClick={handleClick}
 					></Menu.Item>
 					<Menu.Item
 						name="vaccines"
-						active={active === "vaccines"}
+						active={type === "vaccines"}
 						onClick={handleClick}
 					>
 						Vaccines
 					</Menu.Item>
 					<Menu.Item
 						name="treatments"
-						active={active === "treatments"}
+						active={type === "treatments"}
 						onClick={handleClick}
 					>
 						Treatments
 					</Menu.Item>
 					<Menu.Item
 						name="alternatives"
-						active={active === "alternatives"}
+						active={type === "alternatives"}
 						onClick={handleClick}
 					>
 						Alternatives
