@@ -31,9 +31,8 @@ function Main() {
 									dispatch={dispatch}
 								/>
 							</div>
-							<div className="map-wrapper">
-								<WorldMap />
-							</div>
+
+							<WorldMap />
 						</div>
 					</div>
 				</div>
