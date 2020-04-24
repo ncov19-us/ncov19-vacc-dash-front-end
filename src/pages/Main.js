@@ -7,11 +7,10 @@ import { TableContext } from "../utils/TableContext/TableState";
 import { initialState, filterReducer } from "../utils/filterReducer";
 
 function Main() {
-	const { getMap, getDashCardsGlobal } = useContext(TableContext);
+	const { getMap } = useContext(TableContext);
 
 	useEffect(() => {
 		getMap(); // give map values,
-		getDashCardsGlobal(); // populate global  cards,
 		// table data is queried in a useEffect in <VaccineTable />
 	}, []);
 
