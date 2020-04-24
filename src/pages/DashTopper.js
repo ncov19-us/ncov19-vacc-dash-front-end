@@ -10,7 +10,7 @@ import TrialCountCard from './TrialCountCard';
 import "semantic-ui-css/semantic.min.css";
 
 function DashTopper({filterInfo, dispatch}) {
-	const { cards, getTableGlobal, getDashCardsGlobal } = useContext(TableContext);
+	const { cards } = useContext(TableContext);
 	
 	const { type } = filterInfo;
 	const { countries } = cards;
@@ -50,11 +50,11 @@ function DashTopper({filterInfo, dispatch}) {
 
 	const handleClick = (evt, { name }) => {
 			dispatch({type: "CHANGE_TYPE", payload: name})
-	};
-
-	const returnGlobal = () => {
-		getDashCardsGlobal();
-		getTableGlobal();
+		};
+		
+		const returnGlobal = () => {
+			dispatch({type: "CHANGE_COUNTRY", payload: 'world'})
+			dispatch({type: "CHANGE_TYPE", payload: 'all'})
 	};
 
 	return (
@@ -70,7 +70,8 @@ function DashTopper({filterInfo, dispatch}) {
 						: "World"}
 				</h1>
 				<div style={{ width: "15rem" }}>
-					<CountryDropdown />
+					<CountryDropdown type={type} dispatch={dispatch}/>
+
 					<span
 						onClick={returnGlobal}
 						style={

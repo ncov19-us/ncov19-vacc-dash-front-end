@@ -11,24 +11,28 @@ GOAL:
 */
 
 function VaccineTable({ filterInfo, dispatch }) {
-	const { getTrials, table, isLoading, count, cards } = useContext(TableContext);
+	const { getTrials, getDashCardsByCountryAndType, getDashCardsGlobal, table, isLoading, count } = useContext(TableContext);
 
-	const {countries} = cards
-	const {page, type} = filterInfo;
+	const { page, country, type } = filterInfo;
 
 	useEffect(() => {
-		let apiUrl = `api/trials?limit=7&page=${filterInfo.page}`;
+		let apiUrl = `api/trials?limit=7&page=${page}`;
 
-		if (countries && countries !== "world") {
-			apiUrl += `&countries=${countries}`;
+		if (country !== "world") {
+			apiUrl += `&countries=${country}`;
 		}
 
-		if (type && type !== "all") {
+		if (type !== "all") {
 			apiUrl += `&type=${type}`;
 		}
 
+		// fetch totals based on filters
+		if (country !== "world" || type !== "all") getDashCardsByCountryAndType(country, type);
+		if (country === "world" && type === "all") getDashCardsGlobal();
+		
+		// fetch dynamically filtered table results
 		getTrials(apiUrl);
-	}, [filterInfo]);
+	}, [filterInfo, country, type]); // when filter info changes, fetch data
 
 	return (
 		<div className="trial-padding">
