@@ -49,13 +49,7 @@ function DashTopper({filterInfo, dispatch}) {
 	}
 
 	const handleClick = (evt, { name }) => {
-		// update filter query based on selections
-		if (countries === "world") {
 			dispatch({type: "CHANGE_TYPE", payload: name})
-		} else {
-			dispatch({type: "CHANGE_TYPE", payload: name})
-			dispatch({type: "CHANGE_COUNTRY", payload: name})
-		}
 	};
 
 	const returnGlobal = () => {

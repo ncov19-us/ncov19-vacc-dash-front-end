@@ -1,6 +1,6 @@
 export const initialState = {
   page: 1,
-  country: 'global',
+  country: 'world',
   type: 'all',
 };
 
