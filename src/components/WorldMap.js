@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { TableContext } from "../utils/TableContext/TableState";
 import { features } from "../data/features.json";
+
 /*
 GOAL:
 	* Use global in conjunction with the map 

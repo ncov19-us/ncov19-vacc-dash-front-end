@@ -4,17 +4,17 @@ import { TableContext } from "../utils/TableContext/TableState";
 
 import Today from "../components/Today";
 import CountryDropdown from "../components/CountryDropdown";
-import TrialCountCard from './TrialCountCard';
+import TrialCountCard from "./TrialCountCard";
 
 // FIXME: Move this to stylesheets.
 import "semantic-ui-css/semantic.min.css";
 
-function DashTopper({filterInfo, dispatch}) {
+function DashTopper({ filterInfo, dispatch }) {
 	const { cards } = useContext(TableContext);
-	
+
 	const { type } = filterInfo;
 	const { countries } = cards;
-	
+
 	const [numPhase, setNumPhase] = useState({
 		early: null,
 		mid: null,
@@ -49,18 +49,18 @@ function DashTopper({filterInfo, dispatch}) {
 	}
 
 	const handleClick = (evt, { name }) => {
-			dispatch({type: "CHANGE_TYPE", payload: name})
-		};
-		
-		const returnGlobal = () => {
-			dispatch({type: "CHANGE_COUNTRY", payload: 'world'})
-			dispatch({type: "CHANGE_TYPE", payload: 'all'})
+		dispatch({ type: "CHANGE_TYPE", payload: name });
+	};
+
+	const returnGlobal = () => {
+		dispatch({ type: "CHANGE_COUNTRY", payload: "world" });
+		dispatch({ type: "CHANGE_TYPE", payload: "all" });
 	};
 
 	return (
 		<div className="vacine-dash-header">
 			<div className="title">
-				<h1 style={{ fontSize: "2rem" }}>
+				<h1 style={{ fontSize: "2rem", color: "white" }}>
 					{countries !== "world" && countries
 						? countries.replace(
 								// case first letter of every word
@@ -68,35 +68,32 @@ function DashTopper({filterInfo, dispatch}) {
 								(c) => c.charAt(0).toUpperCase() + c.substr(1)
 						  )
 						: "World"}
+					<CountryDropdown type={type} dispatch={dispatch} />
 				</h1>
-				<div style={{ width: "15rem" }}>
-					<CountryDropdown type={type} dispatch={dispatch}/>
-
-					<span
-						onClick={returnGlobal}
-						style={
-							countries === "world"
-								? { display: "none" }
-								: {
-										display: "block",
-										color: "#f4b000",
-										cursor: "pointer",
-								  }
-						}
-					>
-						&#x25C1; Return to Global View
-					</span>
-				</div>
+				<span
+					onClick={returnGlobal}
+					style={
+						countries === "world"
+							? { display: "none" }
+							: {
+									display: "block",
+									color: "#f4b000",
+									cursor: "pointer",
+							  }
+					}
+				>
+					&#x25C1; Return to Global View
+				</span>
 			</div>
 			<div className="today">
 				<Today />
 			</div>
-				
+
 			<div className="cards">
-					<TrialCountCard title="Early Phase" count={numPhase.early} />
-					<TrialCountCard title="Mid Phase" count={numPhase.mid} />
-					<TrialCountCard title="Completed" count={numPhase.complete} />
-					<TrialCountCard title="Total" count={numPhase.total} />
+				<TrialCountCard title="Early Phase" count={numPhase.early} />
+				<TrialCountCard title="Mid Phase" count={numPhase.mid} />
+				<TrialCountCard title="Completed" count={numPhase.complete} />
+				<TrialCountCard title="Total" count={numPhase.total} />
 			</div>
 
 			<div>

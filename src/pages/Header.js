@@ -25,7 +25,6 @@ export default function Header() {
 					<h1 className="subtitle-name">COVID-19 Tracker</h1>
 				</a>
 			</div>
-
 			<div className="mobile">
 				<Modal trigger={<img src={burger} alt="menu-trigger" />} basic>
 					<Modal.Content>
