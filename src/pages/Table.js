@@ -1,5 +1,5 @@
-import React from 'react';
-import { Popup } from 'semantic-ui-react';
+import React from "react";
+import { Popup } from "semantic-ui-react";
 
 export default class Table extends React.Component {
   // props.data
@@ -11,7 +11,7 @@ export default class Table extends React.Component {
   }
 
   getColumns = function () {
-    return ['Sponsors', 'Country', 'Intervention', 'Phase', 'Type'];
+    return ["Sponsors", "Country", "Intervention", "Phase", "Type"];
   };
 
   getHeader = function () {
@@ -40,7 +40,7 @@ export default class Table extends React.Component {
     return (
       <div
         className="table-wrapper"
-        style={{ height: '600px', overflow: 'auto' }}
+        style={{ height: "600px", overflow: "overlay" }}
       >
         <table className="table">
           <thead>
