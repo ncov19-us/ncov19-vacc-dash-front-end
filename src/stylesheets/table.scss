@@ -58,7 +58,7 @@ $hoverShadow: #40495b;
 
 	border-radius: 10px;
 	background-color: #2c3341; // Makes table appear to always be the same height.
-	height: 600px; // Forces the table area consistent
+	height: 410px; // Forces the table area consistent
 	
 	@media #{$tablet} {
 		min-width: 100%;
