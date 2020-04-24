@@ -23,3 +23,5 @@ export function renderWithRouter(
 		history,
 	};
 }
+export const matches = (children) =>
+	expect(renderer.create(children).toJSON()).toMatchSnapshot();
