@@ -11,23 +11,28 @@ GOAL:
 */
 
 function VaccineTable({ filterInfo, dispatch }) {
-	const { getTrials, table, isLoading, count, cards } = useContext(
-		TableContext
-	);
+	const { getTrials, getDashCardsByCountryAndType, getDashCardsGlobal, table, isLoading, count } = useContext(TableContext);
+
+	const { page, country, type } = filterInfo;
 
 	useEffect(() => {
-		let apiUrl = `api/trials?limit=7&page=${filterInfo.page}`;
+		let apiUrl = `api/trials?limit=7&page=${page}`;
 
-		if (cards.countries && cards.countries !== "global") {
-			apiUrl += `&countries=${cards.countries}`;
+		if (country !== "world") {
+			apiUrl += `&countries=${country}`;
 		}
 
-		if (filterInfo.type && filterInfo.type !== "all") {
-			apiUrl += `&type=${filterInfo.type}`;
+		if (type !== "all") {
+			apiUrl += `&type=${type}`;
 		}
 
+		// fetch totals based on filters
+		if (country !== "world" || type !== "all") getDashCardsByCountryAndType(country, type);
+		if (country === "world" && type === "all") getDashCardsGlobal();
+		
+		// fetch dynamically filtered table results
 		getTrials(apiUrl);
-	}, [filterInfo]);
+	}, [filterInfo, country, type]); // when filter info changes, fetch data
 
 	return (
 		<div className="trial-padding">
@@ -41,9 +46,9 @@ function VaccineTable({ filterInfo, dispatch }) {
 			)}
 			{table.length > 0 ? (
 				<div>
-					<Table data={table} />
-					<PageBar count={count} dispatch={dispatch} />{" "}
-					{/* TODO: Only display when count > 7 */}
+					<Table data={table} page={page} />
+					{count > 7 && <PageBar count={count} page={page} dispatch={dispatch} />}
+					
 				</div>
 			) : (
 				<p

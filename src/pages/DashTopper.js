@@ -4,38 +4,32 @@ import { TableContext } from "../utils/TableContext/TableState";
 
 import Today from "../components/Today";
 import CountryDropdown from "../components/CountryDropdown";
+import TrialCountCard from './TrialCountCard';
 
 // FIXME: Move this to stylesheets.
 import "semantic-ui-css/semantic.min.css";
 
-function DashTopper() {
-	const {
-		fillTableByTypeGlobal,
-		cards,
-		fillTableByCountryAndType,
-		getTableGlobal,
-		fillTableByCountry,
-		getDashCardsByCountryAndType,
-		getDashCardsByTypeGlobal,
-		getDashCardsGlobal,
-		getDashCardsByCountry,
-	} = useContext(TableContext);
-	const [active, setActive] = useState("all");
+function DashTopper({filterInfo, dispatch}) {
+	const { cards } = useContext(TableContext);
+	
+	const { type } = filterInfo;
+	const { countries } = cards;
+	
 	const [numPhase, setNumPhase] = useState({
 		early: null,
 		mid: null,
 		complete: null,
 	});
+
 	useEffect(() => {
-		console.log("cards", cards);
-		if (cards.countries && active === "all") {
+		if (countries && type === "all") {
 			setNumPhase(
 				calcPhases(cards, [`vaccines`, "treatments", "alternatives"])
 			);
-		} else if (cards.countries && active !== "all") {
-			setNumPhase(calcPhases(cards, [`${active}`]));
+		} else if (countries && type !== "all") {
+			setNumPhase(calcPhases(cards, [`${type}`]));
 		}
-	}, [cards]);
+	}, [cards, countries, type]);
 
 	function calcPhases(totals, types) {
 		let early = 0;
@@ -50,43 +44,25 @@ function DashTopper() {
 			complete += trialType[4];
 		});
 
-		return { early, mid, complete };
+		const total = early + mid + complete;
+		return { early, mid, complete, total };
 	}
 
 	const handleClick = (evt, { name }) => {
-		setActive(name);
-
-		// check if we are in global
-		if (cards.countries === "world") {
-			// check if types are all or specific for tables
-			name === "all" ? getTableGlobal() : fillTableByTypeGlobal(name);
-			// and dash cards
-			name === "all"
-				? getDashCardsGlobal()
-				: getDashCardsByTypeGlobal(name);
-		} else {
-			// check if country types are all or specific for tables
-			name === "all"
-				? fillTableByCountry(cards.countries)
-				: fillTableByCountryAndType(cards.countries, name);
-			// and for dash cards
-			name === "all"
-				? getDashCardsByCountry(cards.countries)
-				: getDashCardsByCountryAndType(cards.countries, name);
-		}
-	};
-
-	const returnGlobal = () => {
-		getDashCardsGlobal();
-		getTableGlobal();
+			dispatch({type: "CHANGE_TYPE", payload: name})
+		};
+		
+		const returnGlobal = () => {
+			dispatch({type: "CHANGE_COUNTRY", payload: 'world'})
+			dispatch({type: "CHANGE_TYPE", payload: 'all'})
 	};
 
 	return (
 		<div className="vacine-dash-header">
 			<div className="title">
 				<h1 style={{ fontSize: "2rem" }}>
-					{cards.countries !== "world" && cards.countries
-						? cards.countries.replace(
+					{countries !== "world" && countries
+						? countries.replace(
 								// case first letter of every word
 								/\w\S*/g,
 								(c) => c.charAt(0).toUpperCase() + c.substr(1)
@@ -94,11 +70,12 @@ function DashTopper() {
 						: "World"}
 				</h1>
 				<div style={{ width: "15rem" }}>
-					<CountryDropdown />
+					<CountryDropdown type={type} dispatch={dispatch}/>
+
 					<span
 						onClick={returnGlobal}
 						style={
-							cards.countries === "world"
+							countries === "world"
 								? { display: "none" }
 								: {
 										display: "block",
@@ -114,26 +91,14 @@ function DashTopper() {
 			<div className="today">
 				<Today />
 			</div>
+				
 			<div className="cards">
-				<div className="card">
-					<div className="stats">
-						<h4>Early Phase Trials</h4>
-					</div>
-					<p>{numPhase && numPhase.early}</p>
-				</div>
-				<div className="card">
-					<div className="stats">
-						<h4>Mid Phase Trials</h4>
-					</div>
-					<p>{numPhase && numPhase.mid}</p>
-				</div>
-				<div className="card">
-					<div className="stats">
-						<h4>Completed Trials</h4>
-					</div>
-					<p>{numPhase && numPhase.complete}</p>
-				</div>
+					<TrialCountCard title="Early Phase" count={numPhase.early} />
+					<TrialCountCard title="Mid Phase" count={numPhase.mid} />
+					<TrialCountCard title="Completed" count={numPhase.complete} />
+					<TrialCountCard title="Total" count={numPhase.total} />
 			</div>
+
 			<div>
 				<h2 className="trials" style={{ marginTop: "1.5rem" }}>
 					COVID-19 Trials
@@ -147,26 +112,26 @@ function DashTopper() {
 				>
 					<Menu.Item
 						name="all"
-						active={active === "all"}
+						active={type === "all"}
 						onClick={handleClick}
 					></Menu.Item>
 					<Menu.Item
 						name="vaccines"
-						active={active === "vaccines"}
+						active={type === "vaccines"}
 						onClick={handleClick}
 					>
 						Vaccines
 					</Menu.Item>
 					<Menu.Item
 						name="treatments"
-						active={active === "treatments"}
+						active={type === "treatments"}
 						onClick={handleClick}
 					>
 						Treatments
 					</Menu.Item>
 					<Menu.Item
 						name="alternatives"
-						active={active === "alternatives"}
+						active={type === "alternatives"}
 						onClick={handleClick}
 					>
 						Alternatives

@@ -3,10 +3,8 @@ import { TableContext } from "../utils/TableContext/TableState";
 
 import { Dropdown } from "semantic-ui-react";
 
-export default function CountryDropdown() {
-	const { map, getDashCardsByCountry, fillTableByCountry } = useContext(
-		TableContext
-	);
+export default function CountryDropdown({ type, dispatch }) {
+	const { map } = useContext(TableContext);
 	const [dropdown, setDropdown] = useState();
 
 	useEffect(() => {
@@ -19,8 +17,8 @@ export default function CountryDropdown() {
 
 	// Semantic onChange called with SyntheticEvent and all props
 	const handleChange = (evt, { value }) => {
-		getDashCardsByCountry(value.toLowerCase());
-		fillTableByCountry(value.toLowerCase());
+		// dispatch country filter option
+		dispatch({type: "CHANGE_COUNTRY", payload: value})
 	};
 
 	return (

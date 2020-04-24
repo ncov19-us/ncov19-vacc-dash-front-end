@@ -55,7 +55,7 @@ export const TableState = (props) => {
 		table: [],
 		map: [],
 		count: null,
-		country: "Global",
+		country: "world",
 	};
 
 	const [state, dispatch] = useReducer(reducer, initialState);
@@ -204,7 +204,6 @@ export const TableState = (props) => {
 			const res = await client().get(
 				`/api/totals?countries=${country}&type=${type}`
 			);
-			console.log("res", res);
 			dispatch({
 				type: GET_DASH_CARDS_BY_COUNTRY_AND_TYPE_SUCCESS,
 				payload: res.data,
