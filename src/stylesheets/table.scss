@@ -1,50 +1,50 @@
 // The heading of the table underneath the counting cards
 // (dashtopper)
 .trials {
-	color: white;
-	margin: 0;
+  color: white;
+  margin: 0;
 }
 
 // --- The dashtopper menu tabs ---
 .ui.inverted.menu {
-	background-color: $gunmetal;
+  background-color: $gunmetal;
 }
 
 .ui.secondary.inverted.pointing.menu {
-	border-color: transparent;
-	border-radius: 0;
+  border-color: transparent;
+  border-radius: 0;
 }
 
 .ui.secondary.inverted.menu a.active.item {
-	// Selected table topper selected text
-	color: $selected-color !important;
-	// Selected table topper selected underline
-	border-bottom-color: $selected-color !important;
+  // Selected table topper selected text
+  color: $selected-color !important;
+  // Selected table topper selected underline
+  border-bottom-color: $selected-color !important;
 }
 
 .ui.secondary.inverted.menu a.item {
-	border-bottom-color: rgba(255, 255, 255, 0.7) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .ui.secondary.inverted.menu a.item:hover {
-	// Table topper tab hover text
-	color: $link-hover-color !important;
+  // Table topper tab hover text
+  color: $link-hover-color !important;
 }
 
 // --- Pagination ---
 .pagination {
-	display: flex;
-	justify-content: center;
-	margin-top: 2%;
-	padding-left: 1%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+  padding-left: 1%;
 }
 
 // --- Table ---
 
 // trial menu
 .trial-padding {
-	margin-left: 5%;
-	margin-right: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 // .ui-left-aligned-container {
@@ -56,66 +56,67 @@ $hoverShadow: #40495b;
 .table-wrapper {
   overflow-y: auto;
 
-	border-radius: 10px;
-	background-color: #2c3341; // Makes table appear to always be the same height.
-	height: 410px; // Forces the table area consistent
-	
-	@media #{$tablet} {
-		min-width: 100%;
-	}
-	
-	td > a {
-		color: white;
-		&:hover {
-			color: $link-hover-color;
-		}
-	}
-	.table {
-		width: 100%;
-		text-align: left;
-		font-size: 1rem;
-		display: table;
-		padding: 0 0 8em 0;
-		background-color: #2c3341;
-		border-collapse: collapse;
-		border-radius: 10px;
-		&:hover {
-			color: $gunmetal;
-		}
-		th {
-			font-weight: bold;
-			font-size: 1rem;
-			text-align: left;
-			color: #a1a1a1;
-			padding: 1.5rem;
-			border-bottom: #ffffff 1px solid;
-			height: 4rem; // Force Table head to be consistent.
-		}
-		td {
-			font-weight: normal;
-			color: #ffffff;
-			font-size: 1rem;
-			padding: 1rem;
-		}
-		tbody tr {
-			&:hover {
-				background-color: $tableHover;
-				font-weight: bold;
-				transition-delay: 0s;
-				transition-duration: 0.4s;
-				transition-property: all;
-				transition-timing-function: line;
-			}
-		}
-	}
-	@media #{$mobile} {
-		overflow-x: scroll;
-	}
+  border-radius: 10px;
+  background-color: #2c3341; // Makes table appear to always be the same height.
+  height: 410px; // Forces the table area consistent
+
+  @media #{$tablet} {
+    min-width: 100%;
+  }
+
+  td > a {
+    color: white;
+    &:hover {
+      color: $link-hover-color;
+    }
+  }
+  .table {
+    width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    display: table;
+    padding: 0 0 8em 0;
+    background-color: #2c3341;
+    border-collapse: collapse;
+    border-radius: 10px;
+    &:hover {
+      color: $gunmetal;
+    }
+    th {
+      font-weight: bold;
+      font-size: 1rem;
+      text-align: left;
+      color: #a1a1a1;
+      padding: 1.5rem;
+      border-bottom: #ffffff 1px solid;
+      height: 4rem; // Force Table head to be consistent.
+    }
+    td {
+      font-weight: normal;
+      color: #ffffff;
+      font-size: 1rem;
+      padding: 1rem;
+      max-width: 0px; // Keep columns from changing widths when selecting different countries.
+    }
+    tbody tr {
+      &:hover {
+        background-color: $tableHover;
+        font-weight: bold;
+        transition-delay: 0s;
+        transition-duration: 0.4s;
+        transition-property: all;
+        transition-timing-function: line;
+      }
+    }
+  }
+  @media #{$mobile} {
+    overflow-x: scroll;
+  }
 }
 .table-wrapper::-webkit-scrollbar-thumb {
-	width: 3px;
-	height: 3px;
-	border-radius: 0;
-	background: white;
-	visibility: visible;
+  width: 3px;
+  height: 3px;
+  border-radius: 0px;
+  background: white;
+  //   visibility: visible;
 }

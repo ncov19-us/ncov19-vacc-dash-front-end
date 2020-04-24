@@ -6,132 +6,131 @@
 // Header Menu
 
 .menubar {
-	@include flex(space-around, row);
-	background: #010915;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	position: fixed;
-	top: 0;
-	width: 100%;
-	color: #f4f4f4;
-	z-index: 4;
-	padding: 1rem 0;
-	.tittle {
-		width: 100%;
-	}
+  @include flex(space-around, row);
+  background: #010915;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: #f4f4f4;
+  z-index: 4;
+  padding: 1rem 0;
+  .tittle {
+    width: 100%;
+  }
 
-	.menubar-links {
-		@include flex(flex-end, row);
-		width: 100%;
-		margin: auto;
-		margin-right: 3%;
-		.sms {
-			border: 1px solid white;
-			border-radius: 4px;
-			margin-right: 2%;
-		}
-		.sms:hover {
-			border-color: $link-hover-color;
-		}
+  .menubar-links {
+    @include flex(flex-end, row);
+    width: 100%;
+    margin: auto;
+    margin-right: 3%;
+    .sms {
+      border: 1px solid white;
+      border-radius: 4px;
+      margin-right: 2%;
+    }
+    .sms:hover {
+      border-color: $link-hover-color;
+    }
 
-		a {
-			text-decoration: none;
-			color: #fff;
-			padding: 6px 10px;
-			font-size: 1.05rem;
-		}
-		a:hover {
-			color: $link-hover-color;
-			//  border: 1px solid #f4b000;
-		}
-		.menubar-right {
-			font-size: 1.05rem;
-			:hover {
-				color: $gold;
-				// TODO: overridden by .menubar .menubar-links a:hover
-				// (Just a few lines above)
-			}
-		}
-	}
-	.mobile {
-		display: none;
-	}
-	@media #{$mobile} {
-		.title {
-			font-size: 1.5rem;
-		}
-		.menubar-links {
-			display: none;
-		}
-		.mobile {
-			display: block;
-			margin: auto;
-			padding-right: 10px;
-			img {
-				filter: invert(100%);
-				background: white;
-				width: 40px;
-			}
-		}
-	}
+    a {
+      text-decoration: none;
+      color: #fff;
+      padding: 6px 10px;
+      font-size: 1.05rem;
+    }
+    a:hover {
+      color: $link-hover-color;
+      //  border: 1px solid #f4b000;
+    }
+    .menubar-right {
+      font-size: 1.05rem;
+      :hover {
+        color: $gold;
+        // TODO: overridden by .menubar .menubar-links a:hover
+        // (Just a few lines above)
+      }
+    }
+  }
+  .mobile {
+    display: none;
+  }
+  @media #{$mobile} {
+    .title {
+      font-size: 1.5rem;
+    }
+    .menubar-links {
+      display: none;
+    }
+    .mobile {
+      display: block;
+      margin: auto;
+      padding-right: 10px;
+      img {
+        filter: invert(100%);
+        background: white;
+        width: 40px;
+      }
+    }
+  }
 }
 
 // Vaccine Dashboard's header info
 .vacine-dash-header {
-	margin-top: 10%;
+  margin-top: 10%;
 
+  //   background: $gunmetal;
+  color: white;
+  padding: 2% 3%;
+  .date {
+    display: flex;
+    flex-direction: row;
+    // margin-left: 3%;
+    // margin: 2% 0;
 
+    .day {
+      color: $highlight-text-color;
+    }
+    .format {
+      padding-left: 4px;
+      color: #ababab;
+    }
+  }
 
-	//   background: $gunmetal;
-	color: white;
-	padding: 2% 3%;
-	.date {
-		display: flex;
-		flex-direction: row;
-		// margin-left: 3%;
-		// margin: 2% 0;
+  .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 60px;
 
-		.day {
-			color: $highlight-text-color;
-		}
-		.format {
-			padding-left: 4px;
-			color: #ababab;
-		}
-	}
+    .return-to-global {
+      cursor: pointer;
+    }
+    .return-to-global:hover {
+      color: $link-hover-color;
+    }
 
-	.title {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: flex-start;
+    .hidden {
+      color: #010915;
+    }
+  }
 
-		.return-to-global {
-			cursor: pointer;
-		}
-		.return-to-global:hover {
-			color: $link-hover-color;
-		}
+  .cards {
+    @include flex(space-between, row);
+    // margin-left: 5%;
+    align-items: center;
+    // align-content: stretch;
 
-		.hidden {
-			color: #010915;
-		}
-	}
+    @media #{$tablet} {
+      flex-wrap: wrap;
+    }
 
-	.cards {
-		@include flex(space-between, row);
-		// margin-left: 5%;
-		align-items: center;
-		// align-content: stretch;
-
-		@media #{$tablet} {
-			flex-wrap: wrap;
-		}
-
-		.card {
-			background: #19202a;
-			border: 2px solid $border-color;
-			padding: 2% 2.5%;
-			border-radius: 8px;
+    .card {
+      background: #19202a;
+      border: 2px solid $border-color;
+      padding: 2% 2.5%;
+      border-radius: 8px;
 
       width: 24%;
       min-width: 135px;
@@ -142,24 +141,24 @@
         margin-bottom: 10px;
       }
 
-			h4 {
-				font-weight: 100;
-			}
-			p {
-				font-size: 3rem;
-				color: $highlight-text-color;
-			}
-			.stats {
-				@include flex(space-between, row);
-				img {
-					padding-left: 6px;
-				}
-			}
-		}
-	}
+      h4 {
+        font-weight: 100;
+      }
+      p {
+        font-size: 3rem;
+        color: $highlight-text-color;
+      }
+      .stats {
+        @include flex(space-between, row);
+        img {
+          padding-left: 6px;
+        }
+      }
+    }
+  }
 }
 @media #{$mobile} {
-	.vacine-dash-header {
-		background: #010915;
-	}
+  .vacine-dash-header {
+    background: #010915;
+  }
 }

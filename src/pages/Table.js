@@ -1,5 +1,5 @@
-import React from 'react';
-import { Popup } from 'semantic-ui-react';
+import React from "react";
+import { Popup } from "semantic-ui-react";
 
 export default class Table extends React.Component {
   // props.data
@@ -11,7 +11,7 @@ export default class Table extends React.Component {
   }
 
   getColumns = function () {
-    return ['Sponsors', 'Country', 'Intervention', 'Phase', 'Type'];
+    return ["Sponsors", "Country", "Intervention", "Phase", "Type"];
   };
 
   getHeader = function () {
@@ -36,18 +36,18 @@ export default class Table extends React.Component {
     });
   };
 
-	render() {
-		return (
-			<div className="table-wrapper">
-				<table className="table">
-					<thead>
-						<tr>{this.getHeader()}</tr>
-					</thead>
-					<tbody>{this.getRowsData()}</tbody>
-				</table>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div className="table-wrapper">
+        <table className="table">
+          <thead>
+            <tr>{this.getHeader()}</tr>
+          </thead>
+          <tbody>{this.getRowsData()}</tbody>
+        </table>
+      </div>
+    );
+  }
 }
 
 const RenderRow = (props) => {
