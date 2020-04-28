@@ -3,22 +3,6 @@
 // (if they are used at all)
 
 // TODO: Where is this overridden?
-@media only screen and (min-width: 1200px) {
-  .ui.grid > .column.row > [class*='eight wide computer'].column,
-  .ui.grid > .row > [class*='eight wide computer'].column {
-    width: 50% !important;
-  }
-}
-
-@media only screen and (max-width: 1199px) and (min-width: 768px) {
-  .ui.grid > .column.row > [class*='sixteen wide tablet'].column,
-  .ui.grid > .row > [class*='sixteen wide tablet'].column {
-    width: 100% !important;
-  }
-}
-
-.dropdown-wrapper {
-  margin-top: 13.75%;
-  display: flex;
-  justify-content: center;
+.main {
+	margin: auto;
 }
