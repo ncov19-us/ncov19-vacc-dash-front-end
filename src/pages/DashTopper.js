@@ -23,10 +23,8 @@ function DashTopper({ filterInfo, dispatch }) {
 
 	useEffect(() => {
 		if (countries && type === "all") {
-			setNumPhase(
-				calcPhases(cards, [`vaccines`, "treatments", "alternatives"])
-			);
-		} else if (countries && type !== "all") {
+			setNumPhase(calcPhases(cards, [`vaccines`, "treatments", "alternatives"]));
+			} else if (countries && type !== "all") {
 			setNumPhase(calcPhases(cards, [`${type}`]));
 		}
 	}, [cards, countries, type]);
