@@ -2,6 +2,9 @@
 	"name": "ncov19-vacc-dash-front-end",
 	"version": "0.1.0",
 	"private": true,
+	"engines": {
+		"node": "12.11.1"
+		},
 	"dependencies": {
 		"@commodityvectors/react-mapbox-gl": "^2.0.3",
 		"@nivo/geo": "^0.61.1",
