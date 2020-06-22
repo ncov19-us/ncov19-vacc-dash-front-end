@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useEffect } from "react";
+import React, { createContext, useReducer } from "react";
 
 import {
 	IS_LOADING,
@@ -224,7 +224,6 @@ export const TableState = (props) => {
 				type: GET_DASH_CARDS_BY_TYPE_GLOBAL_SUCCESS,
 				payload: res.data,
 			});
-			console.log("res", res);
 		} catch (e) {
 			console.log("error", e);
 			dispatch({
