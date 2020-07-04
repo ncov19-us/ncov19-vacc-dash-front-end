@@ -95,9 +95,9 @@ function DashTopper({ filterInfo, dispatch }) {
 			</div>
 
 			<div>
-				<h2 className="trials" style={{ marginTop: "1.5rem" }}>
+				<h1 className="trials" style={{ marginTop: "1.5rem" }}>
 					COVID-19 Trials
-				</h2>
+				</h1>
 				<Menu
 					compact
 					pointing

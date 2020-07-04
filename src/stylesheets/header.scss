@@ -17,9 +17,10 @@
 	padding: 1rem 0;
 	.tittle {
 		width: 100%;
+		padding-left: 3%;
 		.subtitle-name {
 			font-size: 2rem;
-			padding-left: 1rem;
+			// padding-left: 1rem;
 		}
 	}
 
@@ -27,14 +28,16 @@
 		@include flex(flex-end, row);
 		width: 100%;
 		margin: auto;
-		margin-right: 3%;
+		padding-right: 2%;
 		.sms {
 			border: 1px solid white;
 			border-radius: 4px;
 			margin-right: 2%;
+			
 		}
 		.sms:hover {
 			border-color: $link-hover-color;
+			
 		}
 
 		a {
@@ -144,9 +147,11 @@
 				margin-bottom: 10px;
 			}
 
-			h4 {
+			h3 {
 				font-weight: 100;
+				
 			}
+
 			p {
 				font-size: 3rem;
 				color: $highlight-text-color;
