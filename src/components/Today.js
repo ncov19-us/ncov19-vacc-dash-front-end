@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import moment from 'moment';
+import React from "react";
+import moment from "moment";
 
 /*
   Used Moment to get format date that we get using new Date
@@ -9,17 +9,10 @@ import moment from 'moment';
 */
 
 function Today() {
-  const [time, setTime] = useState('');
-
-  useEffect(() => {
-    const time = new Date();
-    setTime(time);
-  }, []);
-
   return (
     <div className="date">
-      <p className="day">{moment(`${time}`).format('dddd')}</p>
-      <p className="format">{` •  ${moment(`${time}`).format('LL')}`}</p>
+      <p className="day">{moment().format("dddd")}</p>
+      <p className="format">{` •  ${moment().format("LL")}`}</p>
     </div>
   );
 }

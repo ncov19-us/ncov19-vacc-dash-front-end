@@ -6,7 +6,7 @@ const TrialCountCard = ({ title, count }) => {
       <div className="stats">
         <h4>{title} Trials</h4>
       </div>
-      <p>{count}</p>
+      <p className="count">{count}</p>
     </div>
   );
 };
