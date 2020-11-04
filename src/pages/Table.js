@@ -51,8 +51,6 @@ export default class Table extends React.Component {
 }
 
 const RenderRow = (props) => {
-  // props.data
-
   return (
     <>
       <td>
@@ -62,8 +60,7 @@ const RenderRow = (props) => {
               <a
                 href={props.data.data_source}
                 target="_blank"
-                rel="noreferrer noopener"
-              >
+                rel="noreferrer noopener">
                 {props.data.sponsors}
               </a>
             }
@@ -78,8 +75,7 @@ const RenderRow = (props) => {
           <a
             href={props.data.data_source}
             target="_blank"
-            rel="noreferrer noopener"
-          >
+            rel="noreferrer noopener">
             {props.data.sponsors}
           </a>
         )}
@@ -91,8 +87,7 @@ const RenderRow = (props) => {
               <a
                 href={props.data.data_source}
                 target="_blank"
-                rel="noreferrer noopener"
-              >
+                rel="noreferrer noopener">
                 {props.data.countries}
               </a>
             }
@@ -107,8 +102,7 @@ const RenderRow = (props) => {
           <a
             href={props.data.data_source}
             target="_blank"
-            rel="noreferrer noopener"
-          >
+            rel="noreferrer noopener">
             {props.data.countries}
           </a>
         )}
@@ -120,8 +114,7 @@ const RenderRow = (props) => {
               <a
                 href={props.data.data_source}
                 target="_blank"
-                rel="noreferrer noopener"
-              >
+                rel="noreferrer noopener">
                 {props.data.intervention}
               </a>
             }
@@ -136,8 +129,7 @@ const RenderRow = (props) => {
           <a
             href={props.data.data_source}
             target="_blank"
-            rel="noreferrer noopener"
-          >
+            rel="noreferrer noopener">
             {props.data.intervention}
           </a>
         )}
@@ -149,8 +141,7 @@ const RenderRow = (props) => {
               <a
                 href={props.data.data_source}
                 target="_blank"
-                rel="noreferrer noopener"
-              >
+                rel="noreferrer noopener">
                 {props.data.phase}
               </a>
             }
@@ -165,8 +156,7 @@ const RenderRow = (props) => {
           <a
             href={props.data.data_source}
             target="_blank"
-            rel="noreferrer noopener"
-          >
+            rel="noreferrer noopener">
             {props.data.phase}
           </a>
         )}
@@ -178,8 +168,7 @@ const RenderRow = (props) => {
               <a
                 href={props.data.data_source}
                 target="_blank"
-                rel="noreferrer noopener"
-              >
+                rel="noreferrer noopener">
                 {props.data.intervention_type}
               </a>
             }
@@ -194,8 +183,7 @@ const RenderRow = (props) => {
           <a
             href={props.data.data_source}
             target="_blank"
-            rel="noreferrer noopener"
-          >
+            rel="noreferrer noopener">
             {props.data.intervention_type}
           </a>
         )}

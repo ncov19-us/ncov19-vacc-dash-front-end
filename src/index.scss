@@ -5,12 +5,6 @@
 @import "./stylesheets/mixins";
 // ...functions, placeholders
 
-// Vendors
-
-// Base
-@import "./stylesheets/reset";
-// @import './stylesheets/typography';
-
 // Layout
 // navigation, grid, header, footer, sidebar, forms, etc.
 @import "./stylesheets/header";
@@ -25,4 +19,10 @@
 
 // Originals
 @import "./stylesheets/main";
-// @import './stylesheets/pages';
+.App {
+  background-color: #010915;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100vh;
+}

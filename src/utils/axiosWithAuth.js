@@ -1,11 +1,10 @@
 import axios from "axios";
 
 export const client = () => {
-	return axios.create({
-		headers: {
-			contentType: "application/json; charset=utf-8",
-		},
-		// baseURL: "https://covid19-vacc-be.herokuapp.com/",
-		baseURL: "http://localhost:5000"
-	});
+  return axios.create({
+    headers: {
+      contentType: "application/json; charset=utf-8",
+    },
+    baseURL: "https://covid19-vacc-be.herokuapp.com/",
+  });
 };
