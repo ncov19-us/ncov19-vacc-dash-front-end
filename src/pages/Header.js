@@ -5,15 +5,13 @@ import burger from "../assets/menu.png";
 
 import { Modal } from "semantic-ui-react";
 
-import "./pages.scss";
-
 /*
 menubar COMPONENT 
 Styling is in pages.scss 
 	unable to see body content 
 	for menubar hover 
 		.menubar position and top to get menubar to hover 
-		
+	
 Needed inline styling for Modal 
 */
 
@@ -23,11 +21,10 @@ export default function Header() {
 	return (
 		<div className="menubar">
 			<div className="tittle">
-				<Link to="/">
-					<h1 className="title-name">COVID-19 <span className="title-unbold">Tracker</span></h1>
-				</Link>
+				<a href="https://ncov19.us" style={aTags}>
+					<h1 className="subtitle-name">COVID-19 Tracker</h1>
+				</a>
 			</div>
-
 			<div className="mobile">
 				<Modal trigger={<img src={burger} alt="menu-trigger" />} basic>
 					<Modal.Content>
@@ -42,10 +39,18 @@ export default function Header() {
 							<a href="#" alt="mobile-sms" style={aTags}>
 								Get Mobile Updates
 							</a>
-							<Link to="/" style={aTags} className="menubar-right">
+							<Link
+								to="/"
+								style={aTags}
+								className="menubar-right"
+							>
 								Vaccine Tracker
 							</Link>
-							<Link to="/about" style={aTags} className="menubar-right">
+							<Link
+								to="/about"
+								style={aTags}
+								className="menubar-right"
+							>
 								About
 							</Link>
 						</div>
@@ -53,7 +58,12 @@ export default function Header() {
 				</Modal>
 			</div>
 			<div className="menubar-links">
-				<a href="#" alt="mobile-sms" id="sms">
+				<a
+					className="sms"
+					href="https://ncov19-sms-bot-fe-prod.netlify.com/"
+					alt="mobile-sms"
+					id="sms"
+				>
 					Get Mobile Updates
 				</a>
 				<Link to="/">Vaccine Tracker</Link>

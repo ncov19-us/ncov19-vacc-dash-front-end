@@ -1,0 +1,19 @@
+// Base colors
+$gold: #f4b000;
+$gray-dark: #19202a;
+$gunmetal: #1f242d;
+$midnight: #010915;
+
+// Theme colors
+$border-color: $gold;
+$link-color: $gold;
+$link-hover-color: $gold;
+$highlight-text-color: $gold;
+$selected-color: $gold;
+$tableHover: rgba(90, 74, 74, 0.5);
+$hoverShadow: #40495b;
+
+// Media Queries
+$mobile: "only screen and (max-width: 500px)";
+$tablet: "only screen and (max-width: 700px)";
+$desktop: "only screen and (min-width: 701px)";

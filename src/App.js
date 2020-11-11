@@ -8,7 +8,7 @@ import Footer from "./pages/Footer";
 import Main from "./pages/Main";
 import About from "./pages/About";
 
-import "./main.scss";
+import "./index.scss";
 
 export default function App() {
 	return (

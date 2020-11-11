@@ -1,0 +1,11 @@
+// This file should not be added to.
+// The following items should be moved higher up the hierarchy
+// (if they are used at all)
+
+// TODO: Where is this overridden?
+.main {
+  margin: auto;
+  width: 100%;
+  background: $gunmetal;
+  padding: 1rem 2rem;
+}

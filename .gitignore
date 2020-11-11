@@ -8,7 +8,7 @@
 # testing
 /coverage
 
-# production
+# production 
 /build
 
 # misc
@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 /.vscode
+/package-lock.json
+.env
+package-lock.json

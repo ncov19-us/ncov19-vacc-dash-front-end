@@ -1,33 +1,26 @@
-import React, { useState } from 'react';
-import DashTopper from './DashTopper';
-import VaccineTable from './VaccineTable';
-import WorldMap from '../components/WorldMap';
-import data from '../data/map-data.json';
+import React, { useContext, useReducer, useEffect } from "react";
+import DashTopper from "./DashTopper";
+import VaccineTable from "./VaccineTable";
+
+import { TableContext } from "../utils/TableContext/TableState";
+import { initialState, filterReducer } from "../utils/filterReducer";
 
 function Main() {
-  const [filteredCountry, setFilteredCountry] = useState('Global');
+	const { getMap } = useContext(TableContext);
 
-  return (
-    <>
-      <main className="ui centered grid">
-        <div className="twelve wide column main" style={{ marginTop: '100px' }}>
-          <div className="ui stackable grid">
-            <div className="two column row content">
-              <div className="sixteen wide tablet eight wide computer column">
-                <DashTopper />
-                <VaccineTable />
-              </div>
-              <div className="sixteen wide tablet eight wide computer column">
-                <div className="map-wrapper">
-                  <WorldMap data={data} setCountry={setFilteredCountry} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </>
-  );
+	useEffect(() => {
+		getMap(); // give map values,
+		// table data is queried in a useEffect in <VaccineTable />
+	}, []);
+
+	const [filterInfo, dispatch] = useReducer(filterReducer, initialState);
+
+	return (
+		<div className="main">
+			<DashTopper filterInfo={filterInfo} dispatch={dispatch} />
+			<VaccineTable filterInfo={filterInfo} dispatch={dispatch} />
+		</div>
+	);
 }
 
 export default Main;
